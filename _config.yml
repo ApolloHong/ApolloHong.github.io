@@ -35,12 +35,12 @@ links:
     url: /
   - title: Resume
     url: /file/Resume-HanlinCAI.pdf
-  - title: Publications
-    url: /publications/
+#  - title: Publications
+#    url: /publications/
   - title: Projects
     url: /projects/
-  - title: Awards
-    url: /awards/
+#  - title: Awards
+#    url: /awards/
   - title: Hobbies
     url: /hobbies/
   - title: Blogs
