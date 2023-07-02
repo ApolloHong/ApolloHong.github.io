@@ -8,7 +8,7 @@ layout: page
 
 Here is **Lizhan Hong (Lance, [蔡汉霖](https://caihanlin.com/file/蔡汉霖简历.pdf))**.
 
-I am a junior majoring in **Automation** at Fuzhou University and **Robotics** at Maynooth University (Ireland, Combined Degrees). I am extremely fortunate to be advised by [Prof. Zhezhuang Xu](https://dqxy.fzu.edu.cn/info/1102/3547.htm) and [Dr. Chin Hong Wong](https://www.researchgate.net/profile/Chin-Hong-Wong). Here is [my Resume](https://caihanlin.com/file/Resume-HanlinCAI.pdf).
+I am a bachelor majoring in **French and Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://speit.sjtu.edu.cn/faculty/team-152.html) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://caihanlin.com/file/Resume-HanlinCAI.pdf).
 
 <br>
 
