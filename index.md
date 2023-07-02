@@ -6,7 +6,7 @@ layout: page
 
 <img src="https://ApolloHong.github.io/ai2D.jpg" class="floatpic" width="360" height="480">
 
-Here is **Lizhan Hong (Lance, [蔡汉霖](https://caihanlin.com/file/蔡汉霖简历.pdf))**.
+Here is **Lizhan Hong (Apollo, [洪历展]](https://caihanlin.com/file/蔡汉霖简历.pdf))**.
 
 I am a bachelor majoring in **French and Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://speit.sjtu.edu.cn/faculty/team-152.html) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://caihanlin.com/file/Resume-HanlinCAI.pdf).
 
