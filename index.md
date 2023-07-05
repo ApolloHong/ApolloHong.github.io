@@ -39,7 +39,7 @@ My current research focuses on practical problems that artificial intelligence f
 <div class="third">
 <img src="/images/calisthenics.JPG">
 <img src="/images/xuefu.JPG">
-<img src="/images/speech3.JPG">
+<img src="/images/kechuang.JPG">
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end stand out.
