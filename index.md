@@ -14,11 +14,7 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> I am looking for PhD to start in 2025 Fall. Contact me if you have any leads!** [talk with me](https://calendly.com/lancecai/meet-with-lance)
-
-- **Sep 2020 - June 2024:** Fuzhou University (BEng)
-- **Sep 2020 - May 2024:** Maynooth University (BSc)
-- **June 2022 - Nov 2022:** Cambridge University (Intern)
+**<font color='red'>[Highlight]</font> I am looking for partners for the '工业互联网' HELIN GONG's team 2023. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong)
 
 <br>
 
