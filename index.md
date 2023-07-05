@@ -14,7 +14,7 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> I am looking for partners for the [工业互联网](https://www.cii-contest.cn) HELIN GONG's team 2023. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong)
+**<font color='red'>[Highlight]</font> I am looking for partners for the **[工业互联网](https://www.cii-contest.cn) HELIN GONG's team 2023. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong)
 And here is our present demo.
 
 <br>
