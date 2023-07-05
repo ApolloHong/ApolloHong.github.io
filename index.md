@@ -37,9 +37,9 @@ My current research focuses on practical problems that artificial intelligence f
 
 - Leadership: I have been assigned as the leader of the Calisthenics association this year and elected as the co-leader of the Science and Innovation Center, also glad to be the captain of the SPEIT-Fitness team.
 <div class="third">
-<img src="https://ApolloHong.github.io/images/calisthenics.JPG">
-<img src="https://ApolloHong.github.io/images/xuefu.JPG">
-<img src="https://ApolloHong.github.io/images/kechuang.JPG">
+<img src="https://ApolloHong.github.io/images/calisthenics.jpg">
+<img src="https://ApolloHong.github.io/images/xuefu.jpg">
+<img src="https://ApolloHong.github.io/images/kechuang.jpg">
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end stand out.
