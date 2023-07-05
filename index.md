@@ -35,8 +35,9 @@ My current research focuses on practical problems that artificial intelligence f
 
 ## Personal Specialty
 
-- Leadership: I have been assigned as the 
-- Self-discipline: 
+- Leadership: I have been assigned as the leader of the Calisthenics association this year and elected as the co-leader of the Science and Innovation Center.
+<img src="/images/calisthenics.jpg">
+- Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end stand out.
 
 
