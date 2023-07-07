@@ -24,10 +24,5 @@ Lastest Update: 27th June 2023&nbsp;  [中文 (Chinese Version)](https://caihanl
 
 ## Competition Paper
 
-- [Reshape the Crowning Glory of Maasai Mara](https://caihanlin.com/mypaper/modeling/202302COMAP.pdf)<br>**Hanlin Cai**, Yufei Wu, Wenxuan Luo, Zhezhuang Xu<br>Mathematical Contest In Modeling (COMAP 2023)<br>**Finalist Award** (Top 1% of all 20858 paper).<br>
-
-## Working Manuscript
-
-- RMS Testbed for IoT Cybersecurity Using Machine Learning Based Approach.<br>**Hanlin Cai** (Advisor: [Pietro Liò](https://www.cl.cam.ac.uk/~pl219/) and Chin Hong Wong)<br>[The latest manuscript](https://caihanlin.com/mypaper/202210camb.pdf) (during 2022 Summer Intern at Cambridge University)
-
-<br>
+- [Numerous Species in ONE Model: Effects of Biodiversity on Environmental Resistance](https://caihanlin.com/mypaper/modeling/2023COMAP2308434.pdf)<br>**Lizhan Hong**, Ziqian Ren, Yangqing Wu
+<br>Mathematical Contest In Modeling (COMAP 2023)<br>
