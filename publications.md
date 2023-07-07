@@ -6,7 +6,7 @@ title: Publications
 
 # Publications
 
-Lastest Update: 27th June 2023&nbsp;  [中文 (Chinese Version)](https://caihanlin.com/publications-zh/)
+Lastest Update: 07th July 2023&nbsp;  [中文 (Chinese Version)](https://apollohong.github.io/publications-zh/)
 
 ## Undergrad Thesis
 
