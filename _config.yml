@@ -35,8 +35,8 @@ links:
     url: /
   - title: Resume
     url: /file/Resume-LizhanHong.pdf
-#  - title: Publications
-#    url: /publications/
+ - title: Publications
+   url: /publications/
   - title: Projects
     url: /projects/
 #  - title: Awards
