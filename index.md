@@ -30,13 +30,14 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 
 My current research focuses on practical problems that artificial intelligence faces in real life. My interests are on the **Machine Learning** and its applications in **Industrial Nuclear Reactor**, and **Data Learning applied to Kinesiology**. In a word, advanced technologies like ML positively influence the life of everybody.  I wish to devote my talent to this meaningful cause and bring well-being to society.
 
-<br>
-
 ---
 
 ## Personal Specialty
 
 - Leadership: I have been assigned as the leader of the Calisthenics association this year and elected as the co-leader of the Science and Innovation Center, also glad to be the captain of the [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg).
+
+<br>
+
 <div class="third">
   <img src="https://ApolloHong.github.io/images/calisthenics.jpg" width="300" height="200">
   <img src="https://ApolloHong.github.io/images/xuefu.jpg" width="200" height="150">
