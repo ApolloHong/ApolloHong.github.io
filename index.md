@@ -18,7 +18,7 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 **And here is our present demo.**
 <br>
 
-<img src="https://ApolloHong.github.io/images/RODTdemo1.jpg" width="360" height="480">
+<img src="https://ApolloHong.github.io/images/RODTdemo1.png" width="360" height="480">
 
 ---
 
