@@ -9,25 +9,22 @@ title: Hobbies
 ## Fitness & Bodybuilding
 
 <div class="third">
-<img src="/images/18岁背面照.JPG">
-<img src="/images/18岁侧面照.JPG">
-<img src="/images/18岁入学军训侧面.JPG">
+<img src="https://github.com/ApolloHong/images/18岁背面照.JPG">
+<img src="https://github.com/ApolloHong/images/18岁侧面照.JPG">
+<img src="https://github.com/ApolloHong/images/18岁入学军训侧面.JPG">
 </div>
-<br>There must be **something truly magical** about standing on stage to give [a fantastic speech], which considerably lifts my spirits and energizes my entire body. If you desire to master a specific knowledge in depth, just give a prelection. If you can explain to others for complete understanding, you are already an expert. I really enjoy the accomplishment of imparting my knowledge to others, so what I strive for is to be **a student's favorite lecturer** at the [best universities in my hometown].
-
-[a fantastic speech]:https://youtu.be/Dzx84KpGNoE
+<br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a big meal afterwards. Besides, I am the leader of , where I meet many sincere friends. 
 
 
 
 ## musics & movies
 
 <div class="third">
-<img src="/images/swimming2.JPG">
-<img src="/images/swimming.JPG">
-<img src="/images/surfing1.JPG">
+<img src="https://github.com/ApolloHong/images/swimming2.JPG">
+<img src="https://github.com/ApolloHong/images/swimming.JPG">
+<img src="https://github.com/ApolloHong/images/surfing1.JPG">
 </div>
-<br>Swimming removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being immersed in the water. Besides, I am a member of the Swimming Team at Fuzhou University, where I meet many sincere friends. I have reached **China National Second-level athlete Standard** in 50m breaststroke and won **Five Gold Medals** during my swimming career. Recently, I am also keen on surfing.
-
+<br>
 
 ## Past Hobbies
 
@@ -40,7 +37,7 @@ I previously enjoyed making speaches(not meaning that I have give up this hobby)
 This is my love. Her name is Qbo (Q宝).
 
 <div>
-<img src="/images/cat.JPG">
+<img src="https://github.com/ApolloHong/images/cat.JPG">
 </div>
 <br>
 

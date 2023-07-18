@@ -18,8 +18,9 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 **And here is our present demo.**
 <br>
 
-<img src="https://ApolloHong.github.io/images/RODTdemo1.png" width="360" height="480">
+<img src="https://ApolloHong.github.io/images/RODTdemo1.jpg" width="360" height="480">
 
+<br>
 ---
 
 ## Research Interests
@@ -35,8 +36,6 @@ My current research focuses on practical problems that artificial intelligence f
 ## Personal Specialty
 
 - Leadership: I have been assigned as the leader of the Calisthenics association this year and elected as the co-leader of the Science and Innovation Center, also glad to be the captain of the [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg).
-
-<br>
 
 <div class="third">
   <img src="https://ApolloHong.github.io/images/calisthenics.jpg" width="300" height="200">
