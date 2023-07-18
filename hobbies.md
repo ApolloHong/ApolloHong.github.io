@@ -13,8 +13,7 @@ title: Hobbies
 <img src="https://github.com/ApolloHong/images/18岁侧面照.JPG">
 <img src="https://github.com/ApolloHong/images/18岁入学军训侧面.JPG">
 </div>
-<br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a big meal afterwards. Besides, I am the leader of , where I meet many sincere friends. 
-
+<br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), where I meet many sincere friends. 
 
 
 ## musics & movies
