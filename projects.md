@@ -25,6 +25,6 @@ P.S., click the hyperlink title to access the source.
 
 <br>
 
-#### [巴院健身健美院队手册](https://apollohong.github.io/file/巴院健身健美院队计划书/)
+#### [巴院健身健美院队手册](https://apollohong.github.io/file/健身健美院队计划书.pdf)
 
 
