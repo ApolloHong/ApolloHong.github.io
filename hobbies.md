@@ -30,14 +30,6 @@ I previously enjoyed making speaches(not meaning that I have give up this hobby)
 
 [Opening ceremony of the Foreign Language Culture and Art Festival]:https://www.bilibili.com/video/BV1fK4y127ne/?spm_id_from=333.337.search-card.all.click&vd_source=052cbd1795348feadc63934ff61bfd5c
 
-## My Cat
-
-This is my love. Her name is Qbo (Q宝).
-
-<div>
-<img src="https://apollohong.github.io/images/cat.jpg">
-</div>
-<br>
 
 ## Chat with me
 
