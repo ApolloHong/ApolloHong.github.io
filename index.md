@@ -8,14 +8,14 @@ layout: page
 
 Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/洪历展简历.pdf))**.
 
-I am a bachelor majored in **French and Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf).
+I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf).
 
 <br>
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> I am looking for partners for the** [工业互联网](https://www.cii-contest.cn) **HELIN GONG's team 2023. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong)
-**And here is our present demo.**
+**<font color='red'>[Highlight]</font> As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [工业互联网](https://www.cii-contest.cn) **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong), or via wechat: Hong18860376438.
+**And here is our present demo.** 
 <br>
 
 <img src="https://apollohong.github.io/images/RODTdemo1.png" width="360" height="480">
