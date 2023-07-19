@@ -10,7 +10,7 @@ title: Hobbies
 
 <div class="third">
 <img src="https://apollohong.github.io/images/18岁背面照.jpg">
-<img src="https://apollohong.github.io/images/18岁侧面照.jpg">
+<img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="480">
 <img src="https://apollohong.github.io/images/18岁入学军训侧面.jpg">
 </div>
 <br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
@@ -27,7 +27,7 @@ title: Hobbies
 
 ## Past Hobbies
 
-I previously enjoyed making speaches(not meaning that I have give up this hobby), and fortunately before graduating from [ZZFLS](http://www.zzfls.com.cn/), I made a presnetation on 'Why we should learn foreign languages' in the[Opening ceremony of the Foreign Language Culture and Art Festival], running, swimming and playing badminton with my mates in junior high.  
+I previously enjoyed making speaches(not meaning that I have give up this hobby), and fortunately before graduating from [ZZFLS](http://www.zzfls.com.cn/), I made a presnetation on 'Why we should learn foreign languages' in the [Opening ceremony of the Foreign Language Culture and Art Festival], running, swimming and playing badminton with my mates in junior high.  
 
 [Opening ceremony of the Foreign Language Culture and Art Festival]:https://www.bilibili.com/video/BV1fK4y127ne/?spm_id_from=333.337.search-card.all.click&vd_source=052cbd1795348feadc63934ff61bfd5c
 
