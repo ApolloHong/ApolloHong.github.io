@@ -9,7 +9,6 @@ layout: page
 Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/洪历展简历.pdf))**.
 
 I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf).
-
 <br>
 
 ## Academic Background

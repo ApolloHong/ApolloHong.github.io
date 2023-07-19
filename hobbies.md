@@ -33,6 +33,15 @@ I previously enjoyed making speaches(not meaning that I have give up this hobby)
 
 ## Chat with me
 
+ If you are interested in the following such subjects, you may reserve a time for us to discuss the following topics:
+
+- Industrial digital twins
+- Applied Machine Learning
+- Kinesiology
+- Bodybuilding & Fitness
+- Movies & Musics
+- Life in Shanghai
+
 **Jan 2023:** I have set up the [online-coffee-time](https://calendly.com/apollohong) (Inspired by **[Shangzhe Wu](https://elliottwu.com/)**). Welcome to chat with me!
 
 <!-- Calendly inline widget begin -->
