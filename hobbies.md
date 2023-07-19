@@ -9,9 +9,9 @@ title: Hobbies
 ## Fitness & Bodybuilding
 
 <div class="third">
-<img src="https://apollohong.github.io/images/18岁背面照.JPG">
-<img src="https://apollohong.github.io/images/18岁侧面照.JPG">
-<img src="https://apollohong.github.io/images/18岁入学军训侧面.JPG">
+<img src="https://apollohong.github.io/images/18岁背面照.jpg">
+<img src="https://apollohong.github.io/images/18岁侧面照.jpg">
+<img src="https://apollohong.github.io/images/18岁入学军训侧面.jpg">
 </div>
 <br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
 
@@ -19,9 +19,9 @@ title: Hobbies
 ## musics & movies
 
 <div class="third">
-<img src="https://apollohong.github.io/images/into_the_wild.JPG">
-<img src="https://apollohong.github.io/images/swimming.JPG">
-<img src="https://apollohong.github.io/images/surfing1.JPG">
+<img src="https://apollohong.github.io/images/into_the_wild.jpg">
+<img src="https://apollohong.github.io/images/swimming.jpg">
+<img src="https://apollohong.github.io/images/surfing1.jpg">
 </div>
 <br>
 
