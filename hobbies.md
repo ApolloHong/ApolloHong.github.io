@@ -36,7 +36,7 @@ I previously enjoyed making speaches(not meaning that I have give up this hobby)
 This is my love. Her name is Qbo (Q宝).
 
 <div>
-<img src="https://apollohong.github.io/images/cat.JPG">
+<img src="https://apollohong.github.io/images/cat.jpg">
 </div>
 <br>
 
