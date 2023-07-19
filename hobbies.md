@@ -13,7 +13,7 @@ title: Hobbies
 <img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="100">
 <img src="https://apollohong.github.io/images/18岁入学军训侧面照.jpg" width="360" height="300">
 </div>
-<br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
+<br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. And the pics above shows the condition of my 18 years old, cool right? Many people are so confused of why I love this  I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
 
 
 ## musics & movies
@@ -23,7 +23,7 @@ title: Hobbies
 <img src="https://apollohong.github.io/images/swimming.jpg">
 <img src="https://apollohong.github.io/images/surfing1.jpg">
 </div>
-<br>
+<br>You can find my liked musics via the kugo app[ApolloHong kugo page](https://activity.kugou.com/share/v-c7b4da67/index.html?id=38b5db59c509bc9cb5d927f4951db677). I am a big fan of [Eddie Vedder](https://en.wikipedia.org/wiki/Eddie_Vedder), and I have watched the movie [Into the Wild](https://en.wikipedia.org/wiki/Into_the_Wild_(film)) for more than 10 times, thowing me thoughts of what kind of life I am longing for. I also enjoy old nastalgia films like those of Giuseppe Tornatore, his films like [Cinema Paradiso](https://en.wikipedia.org/wiki/Cinema_Paradiso) and [Malèna](https://en.wikipedia.org/wiki/Mal%C3%A8na) are my favorite. I also enjoy watching movies about bodybuilding, like [Pumping Iron](https://en.wikipedia.org/wiki/Pumping_Iron) and [Generation Iron](https://en.wikipedia.org/wiki/Generation_Iron).
 
 ## Past Hobbies
 
