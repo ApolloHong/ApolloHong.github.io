@@ -33,6 +33,7 @@ P.S., click the hyperlink title to access the source.
 
 #### [巴院健身健美院队手册](https://apollohong.github.io/file/健身健美院队计划书.pdf)
 
+---
 
 # **Reference**
 [1]Gong, H.; Cheng, S. (共一); Chen, Z. & Li, Q*. Data-Enabled Physics-Informed Machine Learning for Reduced-Order Modeling Digital Twin: Application to Nuclear Reactor Physics. Nuclear Science and Engineering, Taylor & Francis, 2022, 196, 668-693.[SCI]
