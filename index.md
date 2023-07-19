@@ -4,11 +4,11 @@ layout: page
 
 # About Me
 
-<img src="https://ApolloHong.github.io/images/LizhanHongcasual.jpg" class="floatpic" width="360" height="480">
+<img src="https://apollohong.github.io/images/LizhanHongcasual.jpg" class="floatpic" width="360" height="480">
 
-Here is **Lizhan Hong (Apollo, [洪历展](https://caihanlin.com/file/洪历展简历.pdf))**.
+Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/洪历展简历.pdf))**.
 
-I am a bachelor majoring in **French and Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://caihanlin.com/file/Resume-HanlinCAI.pdf).
+I am a bachelor majoring in **French and Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf).
 
 <br>
 
@@ -18,7 +18,7 @@ I am a bachelor majoring in **French and Information Engineering** at Shanghai J
 **And here is our present demo.**
 <br>
 
-<img src="https://ApolloHong.github.io/images/RODTdemo1.jpg" width="360" height="480">
+<img src="https://apollohong.github.io/images/RODTdemo1.jpg" width="360" height="480">
 
 <br>
 ---
