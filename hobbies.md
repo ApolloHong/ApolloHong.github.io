@@ -9,9 +9,9 @@ title: Hobbies
 ## Fitness & Bodybuilding
 
 <div class="third">
-<img src="https://apollohong.github.io/images/18岁背面照.jpg">
-<img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="480">
-<img src="https://apollohong.github.io/images/18岁入学军训侧面.jpg">
+<img src="https://apollohong.github.io/images/18岁背面照.jpg" width="360" height="300">
+<img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="100">
+<img src="https://apollohong.github.io/images/18岁入学军训侧面.jpg" width="360" height="300">
 </div>
 <br>Fitness and bodybuilding removes my worries, refreshes my body, and brings me courage to address any challenges. I extremely enjoy the feeling of being sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
 
