@@ -13,7 +13,7 @@ title: Hobbies
 <img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="100">
 <img src="https://apollohong.github.io/images/18岁入学军训侧面照.jpg" width="360" height="300">
 </div>
-<br>Fitness and bodybuilding ease my worries, refreshes my body, and helps me take up the courage to address any challenges. The pics above shows the condition of my 18 years old, cool right? Many people are so confused about why I love this kind of 'kinky' sport. I extremely enjoy the feeling of sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
+<br>Fitness and bodybuilding ease my worries, refresh my body, and help me take up the courage to address any challenge. The pics above show the condition of my 18 years old, cool right? Many people are so confused about why I love this kind of 'kinky' sport. I extremely enjoy the feeling of sweating in the gym and have a nutritious meal afterwards. Besides, I am the co-leader of 'Shanghai Jiao Tong University Calisthenics Association', where I meet many sincere friends, and recently I have founded [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg), come and join us. 
 
 
 ## musics & movies
