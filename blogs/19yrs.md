@@ -4,7 +4,7 @@ permalink: /blogs/19yrs/index.html
 title: 19yrs
 ---
 
-## 19岁，山高路亦远
+## 19岁，道阻且长, 我行将至
 
 
 
