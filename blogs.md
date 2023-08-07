@@ -14,7 +14,7 @@ title: Blogs
 ### 2023
 
 - [19岁, 道阻且长, 我行将至]()
-- [Icarus](https://caihanlin.com/blogs/Icarus)
+- [Icarus](https://apollohong.github.io/blogs/Icarus)
 - [Synthwave现代山顶洞人]()
 
 
