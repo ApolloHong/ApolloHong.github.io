@@ -6,7 +6,7 @@ title: Blogs
 
 ## My Blogs
 
-<img src="https://apollohong.github.io/images/进化举重图片.png" width="360" height="300">
+<img src="https://apollohong.github.io/images/进化举重图片.png" width="720" height="400">
 
 
 ### 2022
