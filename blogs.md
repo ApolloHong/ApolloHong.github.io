@@ -6,10 +6,16 @@ title: Blogs
 
 ## My Blogs
 
+
+### 2022
+
+- [18岁，缓慢受锤的黄金年代](http://apollohong.github.io/blogs/18yrs)
+
 ### 2023
 
-- [19岁的路]()
-- [Icarus](https://caihanlin.com/blogs/web)
+- [19岁, 道阻且长, 我行将至]()
+- [Icarus](https://caihanlin.com/blogs/Icarus)
+- [Synthwave现代山顶洞人]()
 
 
 <br>
