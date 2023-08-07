@@ -13,7 +13,8 @@ title: Hobbies
 <img src="https://apollohong.github.io/images/18岁侧面照.jpg" width="360" height="100">
 <img src="https://apollohong.github.io/images/18岁入学军训侧面照.jpg" width="360" height="300">
 </div>
-<br>Fitness and bodybuilding bring ease to my mind, rejuvenate my body, and empower me to face any challenge with courage. The pictures above showcase my progress at the age of 18 – pretty cool, right? Some may find it surprising why I am so passionate about this 'kinky' sport, but for me, it's an invigorating experience to sweat it out at the gym and indulge in a nutritious post-workout meal. This dedicated time in my 'lifespace' allows me to focus on myself, connecting with my body and mind.
+<br>
+Fitness and bodybuilding bring ease to my mind, rejuvenate my body, and empower me to face any challenge with courage. The pictures above showcase my progress at the age of 18 – pretty cool, right? Some may find it surprising why I am so passionate about this 'kinky' sport, but for me, it's an invigorating experience to sweat it out at the gym and indulge in a nutritious post-workout meal. This dedicated time in my 'lifespace' allows me to focus on myself, connecting with my body and mind.
 
 Moreover, I am proud to be the co-leader of the 'Shanghai Jiao Tong University Calisthenics Association', where I have had the pleasure of meeting genuine friends who share the same interests. Recently, I have also founded the [SPEIT-Fitness](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg) team. Feel free to join us on this exciting journey!
 
