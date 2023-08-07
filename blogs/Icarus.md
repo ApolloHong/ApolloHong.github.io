@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /blogs/web/index.html
-title: web
+title: Icarus
 ---
 
 ## 建站完全指南
