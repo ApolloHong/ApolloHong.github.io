@@ -14,8 +14,8 @@ title: Blogs
 ### 2023
 
 - [19岁, 道阻且长, 我行将至](http://apollohong.github.io/blogs/19yrs)
-- [Icarus](https://apollohong.github.io/blogs/Icarus)
-- [Synthwave现代山顶洞人](https://apollohong.github.io/blogs/Synthwave)
+- [Icarus--竞技健美, 追逐太阳的人](https://apollohong.github.io/blogs/Icarus)
+- [Synthwave合成器时代--现代性与原始人类](https://apollohong.github.io/blogs/Synthwave)
 
 
 <br>
