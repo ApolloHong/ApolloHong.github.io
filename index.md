@@ -14,7 +14,7 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 ## Academic Background
 
 **<font color='red'>[Highlight]</font> As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [工业互联网](https://www.cii-contest.cn) **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong), or contact me via wechat: Hong18860376438.
-**And here is our present demo.** 
+**And here is our concept demo(rough).** 
 <br>
 
 <img src="https://apollohong.github.io/images/RODTdemo1.png" width="360" height="480">
