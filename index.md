@@ -43,9 +43,10 @@ My current research focuses on practical problems that artificial intelligence f
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end stand out.
-<div class="centered-image">
+
+<center>
   <img src="https://ApolloHong.github.io/images/brokenback.jpg" width="300" height="200">
-</div>
+</center>
 
 
 
