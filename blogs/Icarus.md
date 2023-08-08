@@ -1,7 +1,7 @@
 ---
 layout: page
-permalink: /blogs/web/index.html
-title: Icarus
+permalink: /blogs/icarus/index.html
+title: icarus
 ---
 
 # Icarus(Ἴκαρος)--Competitive Bodybuilding, Chasing the Sun
