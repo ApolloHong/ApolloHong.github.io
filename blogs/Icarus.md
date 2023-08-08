@@ -14,8 +14,6 @@ title: icarus
 </center>
 
 
-## 写在前面, 伊卡洛斯的故事
-
 - Icarus and his father Daedalus were prisoners of King Minos, the tyrant of Crete. Minos had hired Daedalus to build a labyrinth to confine the Minotaur, a hybrid of man and bull. Daedalus and Icarus were also locked in the labyrinth, with no way out from the maze or the island.
 <center>
 <img src = "http://apollohong.github.io/images/icarus.png">
