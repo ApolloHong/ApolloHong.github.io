@@ -22,7 +22,7 @@ title: Blogs
 
 
 ### 影评
-- [Into the wild--影评]()
+- [Into the wild--影评](http://apollohong.github.io/blogs/diversity)
 
 
 <br>
