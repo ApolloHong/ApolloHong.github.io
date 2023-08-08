@@ -4,11 +4,13 @@ permalink: /blogs/diversity/index.html
 title: Diversity
 ---
 
-## Into the wild 影评
+# Into the wild 影评
 
 <center>
 <img src="https://apollohong.github.io/images/into_the_wild.jpg">
 </center>
+
+<br>
 
 这是一部融合了浮士德、野性的呼唤、在路上的作品，感觉在这部电影慢节奏(j'aime bcp ce type)和多用广角高位视野拍摄的外壳下，隐藏着众多对人生终极问题的思考和对许多文学哲学经典的隐喻。
 
@@ -35,12 +37,18 @@ title: Diversity
 
 然而，当Christ的泪水滑落，费劲全力写出“Happiness only real when shared”——“只有分享才是真正的幸福”时，他真正认识了自我，意识到自己的自私是所有事态的根源。幸福一定来源于自知。而自知应该来自分享，在和他人分享生命中的喜悦、悲伤、痛苦与快乐，就像亲情、友情、爱情一样，离群索居本质上只是一种逃避方式。他不再需要逃避，不再是那个深恶文明社会的极端主义者，他开始理解了“to call each thing by its right name”万物都有自己的名字和宿命，他的遗书落款终于变成“Christopher Johnson McCandless”，而不是他所憧憬的“Alexander Supertramp”——那个看似冲破牢笼找寻自由的“超级流浪者”。回到父母的怀抱，成为了他遥不可及的向往。“What if I were smiling, and running into your arms, would you see then, what I see now ?”“如果我能微笑着，拥入你们的怀抱，你们是否会看见，我此刻的所见。
 
+<br>
+
 > Toutes choses sont sorties du néant et portées jusqu’ à l’infini.
+
+<br>
 
 我们往往回在两个对立的真理之间反复横跳，最终落脚到自己年轻时厌恶的真理。
 
 
 做皮革的老汉和Christ谈话时曾经说过，大意是说“你应该知道上帝的存在，当然你也许不会这么来称谓他”，在濒死的时候，他爬到最接近天空的位置，望着天空，他终于找到的了他的上帝。就像他遗书中所写的一样，上帝最终拯救了他，以死亡的方式，天空刺眼的光之中，他意志模糊回到了父母的身边，拥抱父母，在父母的肩膀上，他目视前方，理解了世界，结束了。
+
+<br>
 
 
 **链接: https://pan.baidu.com/s/1hCKQT4j6leNDZqG38SitQw?pwd=2048 提取码: 2048** (生肉)
