@@ -8,6 +8,8 @@ title: Blogs
 
 <img src="https://apollohong.github.io/images/进化举重图片.png" width="720" height="400">
 
+> Dès maintenant, je choisirai soigneusement ma vie et ne me laisserai pas facilement perdre dans diverses tentations. J’ai déjà entendu l’appel de loin et je n’ai plus besoin de regarder en arrière et de me soucier de toutes sortes de bien et de mal et de commentaires derrière moi. Je n’ai pas le temps de m’occuper du passé, je veux avancer.
+
 ### 2022
 
 - [18岁，缓慢受锤的黄金年代](http://apollohong.github.io/blogs/18yrs)
