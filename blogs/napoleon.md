@@ -38,4 +38,4 @@ It was called the Charge of the Light Brigade not the defence of the Light Briga
 
 In the past, it always came down to that choice of defend or attack. I think these days, that choice has gone.
 
-Share this:
+
