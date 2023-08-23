@@ -4,7 +4,8 @@ permalink: /blogs/napoleon/index.html
 title: napoleon
 ---
 
-## Glory is fleeting, but obscurity is forever--Napoleon Bonaparte
+> Glory is fleeting, but obscurity is forever
+                             --Napoleon Bonaparte
 
 <img src="https://apollohong.github.io/images/napoleon.jpg" width="360" height="480">
 
