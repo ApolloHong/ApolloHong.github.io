@@ -24,7 +24,7 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 
 ## Current Program
 
-**<font color='red'>[Highlight]</font> As a part of the 'XR' Fitness coach team, we are recruiting for friends who are into or excel in these fields:**
+**<font color='red'>[Highlight]</font> As a part of the 'XR Fitness coach' team, we are recruiting for friends who are into or excel in these fields:**
 
 + Digital Character Modeling Technology
 + Camera Array Modeling Technology
