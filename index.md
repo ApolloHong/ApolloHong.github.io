@@ -13,7 +13,7 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 
 ## Academic Background
 
-**<font color='red'>[Highlight]</font> As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [工业互联网](https://www.cii-contest.cn) **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong), or contact me via wechat: Hong18860376438.
+**<font color='red'>[Highlight]</font> As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [工业互联网](https://www.cii-contest.cn) **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
 **And here is our concept demo(rough).** 
 <br>
 
@@ -24,14 +24,14 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 
 ## Current Program
 
-**<font color='red'>[Highlight]</font> As a part of the 'XR' Fitness coach team, we are recruiting for friends who are into or excel in these fields:
+**<font color='red'>[Highlight]</font> As a part of the 'XR' Fitness coach team, we are recruiting for friends who are into or excel in these fields:**
 + Digital Character Modeling Technology
 + Camera Array Modeling Technology
 + LLM-driven Digital Human Interaction System
 + Digital Fitness 
 + Wearable VR Fitness Gear
 
-Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong), or contact me via wechat: Hong18860376438.
+**Contact me if you have any leads!**  [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
 **And here is the prizes we have won and competitions participated:** 
 <br>
 
