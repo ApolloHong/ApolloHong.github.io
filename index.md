@@ -22,6 +22,24 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 <br>
 ---
 
+## Current Program
+
+**<font color='red'>[Highlight]</font> As a part of the 'XR' Fitness coach team, we are recruiting for friends who are into or excel in these fields:
++ Digital Character Modeling Technology
++ Camera Array Modeling Technology
++ LLM-driven Digital Human Interaction System
++ Digital Fitness 
++ Wearable VR Fitness Gear
+
+Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong), or contact me via wechat: Hong18860376438.
+**And here is the prizes we have won and competitions participated:** 
+<br>
+
+<img src="https://apollohong.github.io/images/xuanhuaibei.jpg" width="360" height="480">
+
+<br>
+---
+
 ## Research Interests
 
 - Industrial digital twins
