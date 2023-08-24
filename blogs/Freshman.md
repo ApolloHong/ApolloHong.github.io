@@ -12,7 +12,10 @@ In times of crisis, it's important to come together as a community and support o
 
 The floods in Zhengzhou have been a tragedy, but they have also been an opportunity for us to reflect on our own lives and our own communities. We must take steps to prepare ourselves for the unexpected and to support one another in times of crisis.
 
-<video src="https://apollohong.github.io/images/nightcall.mp4">
+<video width="320" height="240" controls>
+  <source src="https://apollohong.github.io/images/nightcall.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 Synthwave is a genre of electronic music that emerged in the mid-to-late 20s and is characterized by its nostalgic and retro-futuristic sound. It is influenced by music and film soundtracks from the 1980s and is often associated with action, science-fiction, and horror film soundtracks of the 1980s.
 
