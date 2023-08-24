@@ -1,7 +1,7 @@
 ---
 layout: page
-permalink: /blogs/diversity/index.html
-title: Diversity
+permalink: /blogs/movie1/index.html
+title: movie1
 ---
 
 # Into the wild 影评

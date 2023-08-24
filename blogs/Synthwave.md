@@ -1,7 +1,7 @@
 ---
 layout: page
-permalink: /blogs/freshman/index.html
-title: Freshman
+permalink: /blogs/Synthwave/index.html
+title: Synthwave
 ---
 
 ### The Forest of Concrete and Iron Bars - Reflections on the Zhengzhou Floods and the Synthesizer Era
