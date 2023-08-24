@@ -12,7 +12,7 @@ In times of crisis, it's important to come together as a community and support o
 
 The floods in Zhengzhou have been a tragedy, but they have also been an opportunity for us to reflect on our own lives and our own communities. We must take steps to prepare ourselves for the unexpected and to support one another in times of crisis.
 
-<video width="320" height="240" controls>
+<video width="600" height="400" controls>
   <source src="https://apollohong.github.io/images/nightcall.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
