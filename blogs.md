@@ -12,6 +12,7 @@ title: Blogs
 
 ### 2022
 
+- [Synthwave合成器时代--现代性与原始人类](https://apollohong.github.io/blogs/freshman)
 - [18岁，缓慢受锤的黄金年代](http://apollohong.github.io/blogs/18yrs)
 
 ### 2023
@@ -20,7 +21,6 @@ title: Blogs
 - [Icarus--竞技健美, 追逐太阳的人](https://apollohong.github.io/blogs/icarus)
 - [Glory is fleeting, but obscurity is forever--Napoleon Bonaparte](https://apollohong.github.io/blogs/napoleon)
 - [Triangle_impossible--生活中的不可能三角](https://apollohong.github.io/blogs/triangle)
-- [Synthwave合成器时代--现代性与原始人类](https://apollohong.github.io/blogs/freshman)
 
 
 ### 影评
