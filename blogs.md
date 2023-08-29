@@ -12,7 +12,7 @@ title: Blogs
 
 ### 2022
 
-- [Synthwave合成器时代--现代性与原始人类](https://apollohong.github.io/blogs/freshman)
+- [Synthwave合成器时代--现代性与原始人类](https://apollohong.github.io/blogs/Synthwave)
 - [18岁，缓慢受锤的黄金年代](http://apollohong.github.io/blogs/18yrs)
 
 ### 2023
@@ -24,7 +24,7 @@ title: Blogs
 
 
 ### 影评
-- [Into the wild--影评](http://apollohong.github.io/blogs/diversity)
+- [Into the wild--影评](http://apollohong.github.io/blogs/movie1)
 
 
 <br>
