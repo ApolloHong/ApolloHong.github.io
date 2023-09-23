@@ -8,6 +8,10 @@ title: Oppenheimer
 
 > कालो sस्मि लोकक्षयकृत्प्रवृद्धो  -- Vishnu
 
+<center>
+<img src = "http://apollohong.github.io/images/oppenheimer.png">
+</center>
+
 J. Robert Oppenheimer may be one of the most important scientists in history, but the man was interested in more than theoretical physics and mathematical equations. He was also fascinated by things like horseback riding, womanizing, smoking, politics ... and mythology.
 
 In a spine-chilling recording, Oppenheimer himself famously cited an ancient myth in reference to the Trinity Test (the testing of the first atom bomb in Los Alamos, New Mexico), saying, "We knew the world would not be the same. A few people laughed, a few people cried, most people were silent." After this, he pensively goes all the way back to ancient Hindu mythology, saying, "I remembered the line from the Hindu scripture, the Bhagavad Gita. Vishnu is trying to persuade the Prince that he should do his duty and to impress him takes on his multi-armed form and says, 'Now, I am become Death, the destroyer of worlds.' I suppose we all thought that one way or another."
