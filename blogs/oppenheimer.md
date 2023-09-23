@@ -38,6 +38,9 @@ Along with the specific "Now, I am become Death, the destroyer of worlds" quote,
 The connection to the Gita is fascinating for Western audiences — and most global viewers, for that matter. But it did stir up anger in one area of the world: India. Despite the film's relative success in certain areas of the nation, members of the Bharatiya Janata Party censured the movie. Many considered the casual inclusion of sacred Hindu scripts mid-coitus a distributing attack on their beliefs, an interpretation that is difficult to see Nolan and company predicting when they penned the scene.
 
 As far as Oppenheimer is concerned, the man's mind clearly waxed eloquent in the face of ultimate power. For instance, he also wrote about the Trinity Test experience by referring to the legendary Prometheus, who gave men fire and was afterward punished by Zeus by being nailed to a mountain where an eagle perpetually ate his immortal liver. The myth is a perfect balance of awe-inspiring power and horrifying consequences. It even inspired the name of the autobiography of the scientists, which served as Christopher Nolan's template for the film: "American Prometheus."
+<center>
+<img src = "http://apollohong.github.io/images/prometheus.png">
+</center>
 
 While not a myth, there's another historical comparison worth noting here. Oppie was also known for briefly referencing Alfred Nobel, who was the creator of the Nobel Prize ...and the inventor of dynamite several decades before the Trinity Test. The atomic scientist compared his own experience to Nobel's fruitless hope that the then-catastrophic power of dynamite might end wars. In the end, though, it just became another tool in the hands of mischievous mankind.
 
