@@ -4,6 +4,10 @@ permalink: /blogs/oppenheimer/index.html
 title: Oppenheimer
 ---
 
+# Now, I am become Death, the destroyer of worlds.
+
+> कालो sस्मि लोकक्षयकृत्प्रवृद्धो  -- Vishnu
+
 J. Robert Oppenheimer may be one of the most important scientists in history, but the man was interested in more than theoretical physics and mathematical equations. He was also fascinated by things like horseback riding, womanizing, smoking, politics ... and mythology.
 
 In a spine-chilling recording, Oppenheimer himself famously cited an ancient myth in reference to the Trinity Test (the testing of the first atom bomb in Los Alamos, New Mexico), saying, "We knew the world would not be the same. A few people laughed, a few people cried, most people were silent." After this, he pensively goes all the way back to ancient Hindu mythology, saying, "I remembered the line from the Hindu scripture, the Bhagavad Gita. Vishnu is trying to persuade the Prince that he should do his duty and to impress him takes on his multi-armed form and says, 'Now, I am become Death, the destroyer of worlds.' I suppose we all thought that one way or another."
@@ -24,6 +28,8 @@ Arjuna is struggling with the ethical consequences of a war brewing within his f
 For our purposes, though, the big moment comes when Arjuna asks his immortal companion to show his true self. This leads to a catastrophic multi-armed revelation that is as cataclysmic as, well, an atomic bomb. Arjuna ends up begging Krishna to end the carnage, leaving us with some serious parallels to draw between the ancient hero and his 20th-century counterpart.
 
 Along with the specific "Now, I am become Death, the destroyer of worlds" quote, the entire story arc of Arjuna and Krishna closely follows that of Oppenheimer and his science — in a meta sort of way. Oppie is inordinately close to his science until it turns on him and reveals its incredible power. The scientist's ongoing struggles with the ethical qualms associated with his work also mirror that of Arjuna's pre-battle hesitations, and his prominent role in combatting the use of atomic weapons after World War II also lines up with Arjuna's role in stopping Vishnu's destructive form.
+
+# Arjuna, Prometheus and Alfred Nobel.
 
 The connection to the Gita is fascinating for Western audiences — and most global viewers, for that matter. But it did stir up anger in one area of the world: India. Despite the film's relative success in certain areas of the nation, members of the Bharatiya Janata Party censured the movie. Many considered the casual inclusion of sacred Hindu scripts mid-coitus a distributing attack on their beliefs, an interpretation that is difficult to see Nolan and company predicting when they penned the scene.
 
