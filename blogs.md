@@ -21,11 +21,11 @@ title: Blogs
 - [Icarus--竞技健美, 追逐太阳的人](https://apollohong.github.io/blogs/icarus)
 - [Glory is fleeting, but obscurity is forever--Napoleon Bonaparte](https://apollohong.github.io/blogs/napoleon)
 - [Triangle_impossible--生活中的不可能三角](https://apollohong.github.io/blogs/triangle)
-- [Oppenheimer--Now I am become Death, the destroyer of worlds](https://apollohong.github.io/blogs/oppenheimer)
 
 
 ### 影评
 - [Into the wild--影评](http://apollohong.github.io/blogs/movie1)
+- [Oppenheimer--Now I am become Death, the destroyer of worlds](https://apollohong.github.io/blogs/oppenheimer)
 
 
 <br>
