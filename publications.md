@@ -14,5 +14,7 @@ title: Publications
 <br>Mathematical Contest In Modeling (COMAP 2023)<br>
 
 
+<img src="https://apollohong.github.io/images/liuchengtuCUMCM.png" width="720" height="400">
+
 - [An heliostat field optimization strategy based on polar coordinate Centroid Voronoi Tessellation](https://apollohong.github.io/mypaper/modeling/2023CUMCM.pdf)<br>**Lizhan Hong**, Yijia Shan, Qiang Gong
 <br>China Undergraduate Mathematical Contest in Modeling (CUMCM 2023)<br>
