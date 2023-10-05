@@ -26,7 +26,13 @@ Moreover, I am proud to be the co-leader of the 'Shanghai Jiao Tong University C
 <img src="https://apollohong.github.io/images/into_the_wild.jpg">
 <img src="https://apollohong.github.io/images/daft_punk.png">
 </div>
-<br>You can find my liked musics list via kugou app [ My kugou page](https://activity.kugou.com/share/v-c7b4da67/index.html?id=38b5db59c509bc9cb5d927f4951db677). I am a big fan of [Daft Punk](https://en.wikipedia.org/wiki/Daft_Punk). As for movies, I have watched the movie [Into the Wild](https://en.wikipedia.org/wiki/Into_the_Wild_(film)) for more than 10 times, thowing me thoughts of what kind of life I am longing for. I also enjoy old nastalgia films like those of Giuseppe Tornatore, his films Space Trilogy, [Cinema Paradiso](https://en.wikipedia.org/wiki/Cinema_Paradiso), [Malèna](https://en.wikipedia.org/wiki/Mal%C3%A8na_(film)) and [The legend of 1900](https://en.wikipedia.org/wiki/The_Legend_of_1900) are my favorite.I also enjoy watching movies about bodybuilding, like [Pumping Iron](https://en.wikipedia.org/wiki/Pumping_Iron) and [Generation Iron](https://en.wikipedia.org/wiki/Generation_Iron).
+<br>
+- You can find my liked musics list via kugou app [ My kugou page](https://activity.kugou.com/share/v-c7b4da67/index.html?id=38b5db59c509bc9cb5d927f4951db677). I am a big fan of french band [Daft Punk](https://en.wikipedia.org/wiki/Daft_Punk) and the french gay DJ Snake who I have met in a club in Shanghai, here is the link of the party through [Bilibili](https://www.bilibili.com/video/BV1Sh4y1h7Qk/?spm_id_from=333.999.0.0&vd_source=052cbd1795348feadc63934ff61bfd5c), his reggae-style musics are really fanscinating.
+
+
+- As for movies, I have watched the movie [Into the Wild](https://en.wikipedia.org/wiki/Into_the_Wild_(film)) for more than 10 times, thowing me thoughts of what kind of life I am longing for. I also enjoy old nastalgia films like those of Giuseppe Tornatore, his films Space Trilogy, [Cinema Paradiso](https://en.wikipedia.org/wiki/Cinema_Paradiso), [Malèna](https://en.wikipedia.org/wiki/Mal%C3%A8na_(film)) and [The legend of 1900](https://en.wikipedia.org/wiki/The_Legend_of_1900) are my favorite.
+
+- I also enjoy watching movies about bodybuilding, like [Pumping Iron](https://en.wikipedia.org/wiki/Pumping_Iron) and [Generation Iron](https://en.wikipedia.org/wiki/Generation_Iron).
 
 ## Past Hobbies
 I previously enjoyed making speaches(not meaning that I have give up this hobby), and fortunately before graduating from [ZZFLS](http://www.zzfls.com.cn/), I made a presnetation on 'Why we should learn foreign languages' in the [Opening ceremony of the Foreign Language Culture and Art Festival], running, swimming and playing badminton with my mates in junior high.  
