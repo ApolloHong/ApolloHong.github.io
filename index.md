@@ -57,7 +57,7 @@ My current research focuses on practical problems that artificial intelligence f
 
 <div class="third">
   <img src="https://ApolloHong.github.io/images/calisthenics.jpg" width="300" height="200">
-  <img src="https://ApolloHong.github.io/images/xuefu.jpg" width="200" height="150">
+  <img src="https://ApolloHong.github.io/images/2023年秋季第一次致远健身房.jpg" width="200" height="150">
   <img src="https://ApolloHong.github.io/images/kechuang.jpg" width="250" height="200">
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
