@@ -6,6 +6,12 @@ title: Publications
 
 # Publications
 
+## Scientific Paper
+
+<img src="https://apollohong.github.io/images/2023paper01.png" width="720" height="400">
+
+**About to come**
+
 ## Competition Paper
 
 <img src="https://apollohong.github.io/images/comapMCM.png" width="720" height="400">
