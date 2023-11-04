@@ -10,6 +10,9 @@ title: Publications
 
 <img src="https://apollohong.github.io/images/2023paper01.png" width="720" height="400">
 
+- [On the Accuracy and Efficiency of the Reactor Operation Digital Twin for Parameter Identification and State Estimation](https://www.researchgate.net/publication/374917868_On_the_Accuracy_and_Efficiency_of_the_Reactor_Operation_Digital_Twin_for_Parameter_Identification_and_State_Estimation)<br>**Lizhan Hong**, Helin Gong, Hongjun Ji, Han Li, Qing Li
+<br>Preprint<br>
+
 **About to come**
 
 ## Competition Paper
