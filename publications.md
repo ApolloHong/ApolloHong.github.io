@@ -6,7 +6,7 @@ title: Publications
 
 # Publications
 
-## Research Paper
+## Journal Paper
 
 <img src="https://apollohong.github.io/images/2023paper01.png" width="720" height="400">
 
