@@ -8,7 +8,7 @@ layout: page
 
 Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/洪历展简历.pdf))**.
 
-I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2) and [Prof. Tailin Wu](https://tailin.org). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf)
+I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf)
 <br>
 
 ## Academic Background
@@ -61,8 +61,12 @@ My current research focuses on practical problems that artificial intelligence f
   <img src="https://ApolloHong.github.io/images/kechuang.jpg" width="250" height="200">
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
-- Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end stand out.
-
+- Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
+<div class="third">
+  <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="300" height="200">
+  <img src="https://ApolloHong.github.io/images/brokenback.jpg" width="200" height="150">
+  <img src="https://ApolloHong.github.io/images/bodybuilding3.jpg" width="250" height="200">
+</div>
 <center>
   <img src="https://ApolloHong.github.io/images/brokenback.jpg" width="300" height="200">
 </center>
