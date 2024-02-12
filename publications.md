@@ -29,5 +29,5 @@ title: Publications
 
 <img src="https://apollohong.github.io/images/comapMCM2024.png" width="720" height="400">
 
-- [Metamorphic Marvel: Unraveling Lamprey Sex Dynamics and Ecosystem Implications](https://apollohong.github.io/mypaper/modeling/2024COMAP2308434.pdf)<br>**Lizhan Hong**, Yijia Shan, Qiang Gong
+- [Metamorphic Marvel: Unraveling Lamprey Sex Dynamics and Ecosystem Implications](https://apollohong.github.io/mypaper/modeling/2024COMAP2408936.pdf)<br>**Lizhan Hong**, Yijia Shan, Qiang Gong
 <br>Mathematical Contest In Modeling (COMAP 2024)<br>
