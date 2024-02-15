@@ -19,7 +19,7 @@ title: Blogs
 
 - [19岁, 道阻且长, 我行将至](http://apollohong.github.io/blogs/19yrs)
 - [Icarus--竞技健美, 追逐太阳的人](https://apollohong.github.io/blogs/icarus)
-- [Glory is fleeting, but obscurity is forever--Napoleon Bonaparte](https://apollohong.github.io/blogs/napoleon)
+<!-- - [Glory is fleeting, but obscurity is forever--Napoleon Bonaparte](https://apollohong.github.io/blogs/napoleon) -->
 - [Triangle_impossible--生活中的不可能三角](https://apollohong.github.io/blogs/triangle)
 - [Beyond Irons: Embracing the Journey through the Narrow Gate](https://apollohong.github.io/blogs/20231001)
 
