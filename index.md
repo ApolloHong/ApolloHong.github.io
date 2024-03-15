@@ -13,7 +13,11 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 
 ## Academic Background & Current Program
 
-**<font color='red'>[Highlight]</font> As a part of the '' team, we are recruiting for friends who are into or excel in these fields:**
+**<font color='red'>[Highlight]</font> As a part of the 'AISEA' team, we are recruiting for friends who are into or excel in these fields:**
+
++ **Machine Learning**
++ **Digital Twin**
++ **AI for Science**
 
 **Contact me if you have any leads!**  [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438. 
 
