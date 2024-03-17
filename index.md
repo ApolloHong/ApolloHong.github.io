@@ -11,7 +11,7 @@ Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/洪
 I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf)
 <br>
 
-## Academic Background & Current Program
+## Current Program
 
 **<font color='red'>[Highlight]</font> As a part of the 'AISEA' team, we are recruiting for friends who are into or excel in these fields:**
 
@@ -19,9 +19,7 @@ I am studying for a bachelor degree in **French & Information Engineering** at S
 + **Digital Twin**
 + **AI for Science**
 
-**Contact me if you have any leads!**  [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438. 
-
-**<font color='red'>[Highlight]</font> As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [互联网加] **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
+As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [互联网+] **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
 **And here is our concept demo(rough).** 
 <br>
 
