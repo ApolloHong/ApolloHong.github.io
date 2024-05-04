@@ -23,6 +23,10 @@ title: Blogs
 - [Triangle_impossible--生活中的不可能三角](https://apollohong.github.io/blogs/triangle)
 - [Beyond Irons: Embracing the Journey through the Narrow Gate](https://apollohong.github.io/blogs/20231001)
 
+### 2024
+
+- [夜游灵隐得东坡诗复用前韵](https://apollohong.github.io/blogs/lingyin)
+
 
 ### 影评
 - [Into the wild--影评](http://apollohong.github.io/blogs/movie1)
