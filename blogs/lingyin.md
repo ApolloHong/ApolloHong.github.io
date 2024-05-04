@@ -17,7 +17,7 @@ title: lingyin
 
 
 <center>
-<img src = "http://apollohong.github.io/images/lingyin1.jpg">
+<img src = "http://apollohong.github.io/images/lingyin3.jpg">
 </center>
 
 
@@ -33,7 +33,7 @@ title: lingyin
 
 
 <div class="second">
-  <img src="http://apollohong.github.io/images/lingyin3.jpg" width="300" height="200">
+  <img src="http://apollohong.github.io/images/lingyin1.jpg" width="300" height="200">
   <img src="http://apollohong.github.io/images/lingyin2.jpg" width="300" height="200">
 </div>
 
