@@ -8,7 +8,7 @@ layout: page
 
 Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf))**.
 
-I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume](https://apollohong.github.io/file/洪历展简历.pdf)
+I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume](https://apollohong.github.io/file/洪历展中文简历.pdf)
 <br>
 
 ## Current Program
