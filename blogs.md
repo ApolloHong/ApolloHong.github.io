@@ -26,6 +26,7 @@ title: Blogs
 ### 2024
 
 - [夜游灵隐得东坡诗复用前韵](https://apollohong.github.io/blogs/lingyin)
+- [2024 in Retrospect: Venturing Beyond Borders](https://apollohong.github.io/blogs/24to25)
 
 
 ### 影评
