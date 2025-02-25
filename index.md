@@ -25,7 +25,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 **And here is our concept demo(rough).** 
 <br>
 
-<img src="https://apollohong.github.io/images/宣怀杯24动图.gif" width="360" height="480">
+<img src="https://apollohong.github.io/images/宣怀杯24动图.mov" width="360" height="480">
 
 <br>
 ---
