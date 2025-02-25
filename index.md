@@ -69,7 +69,7 @@ My current research focuses on practical problems that artificial intelligence f
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
 <div class="second">
   <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="400" height="300">
-  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="300" height="300">
+  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="400" height="400">
 </div>
   <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
 
