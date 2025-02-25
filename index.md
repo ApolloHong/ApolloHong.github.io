@@ -21,7 +21,7 @@ I am studying for a **Bachelor Degree** in **French & Information Engineering** 
 + **Digital Twin**
 + **AI for Science**
 
-As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the** [互联网+] **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
+As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the[互联网+] **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
 **And here is our concept demo(rough).** 
 <br>
 
@@ -41,7 +41,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 **And here is the prizes we have won and competitions participated:** 
 <br>
 
-<img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="360" height="480">
+<img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="720" height="960">
 
 <br>
 ---
