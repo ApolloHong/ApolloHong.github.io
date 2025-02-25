@@ -8,10 +8,12 @@ layout: page
 
 Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf))**.
 
-I am studying for a bachelor degree in **French & Information Engineering** at Shanghai Jiao Tong University. I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume in Chinese](https://apollohong.github.io/file/洪历展中文简历.pdf) and [in English](https://apollohong.github.io/file/Resume-LizhanHong.pdf)
+I am studying for a Bachelor Degree in **French & Information Engineering** at [Shanghai Jiao Tong University](https://www.sjtu.edu.cn/) and an Engineering Degree in **Applied Mathematics** at [École Polytechnique](https://www.polytechnique.edu/en). I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume in Chinese](https://apollohong.github.io/file/洪历展中文简历.pdf) [in English](https://apollohong.github.io/file/Resume-LizhanHong.pdf) and [in French](https://apollohong.github.io/file/Lizhan_Hong_CV__French_.pdf)
 <br>
 
-## Current Program
+<!-- ## Current Program -->
+
+## Past Program
 
 **<font color='red'>[Highlight]</font> As a part of the 'AISEA' team, we are recruiting for friends who are into or excel in these fields:**
 
@@ -27,8 +29,6 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 
 <br>
 ---
-
-## Past Program
 
 **We mainly focus on the following topics:**
 
@@ -67,11 +67,11 @@ My current research focuses on practical problems that artificial intelligence f
 </div>
 - Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
-<div class="third">
+<div class="second">
   <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="300" height="200">
-  <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="200" height="150">
-  <img src="https://ApolloHong.github.io/images/bodybuilding3.jpg" width="250" height="200">
+  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="250" height="200">
 </div>
+  <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="400" height="300">
 
 
 <br>
