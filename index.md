@@ -25,7 +25,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 **And here is our concept demo(rough).** 
 <br>
 
-<img src="https://apollohong.github.io/images/宣怀杯24动图.mov" width="360" height="480">
+<img src="https://apollohong.github.io/images/宣怀杯24动图.gif" width="360" height="480">
 
 <br>
 ---
@@ -69,7 +69,7 @@ My current research focuses on practical problems that artificial intelligence f
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
 <div class="second">
   <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="360" height="300">
-  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="361" height="361">
+  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="362" height="361">
 </div>
   <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
 
