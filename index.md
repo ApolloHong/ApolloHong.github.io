@@ -41,7 +41,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 **And here is the prizes we have won and competitions participated:** 
 <br>
 
-<img src="https://apollohong.github.io/images/xuanhuaibei.jpg" width="360" height="480">
+<img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="360" height="480">
 
 <br>
 ---
