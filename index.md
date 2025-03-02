@@ -30,7 +30,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 <br>
 ---
 
-**We mainly focus on the following topics:**
+**Here is another one of my project and we mainly focus on the following topics:**
 
 + Digital Character Modeling Technology
 + Camera Array Modeling Technology
@@ -38,7 +38,7 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 + Digital Fitness 
 + Wearable VR Fitness Gear
 
-**And here is the prizes we have won and competitions participated:** 
+**And here is the demo that apply our project to the gym environment:** 
 <br>
 
 <img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="720" height="960">
@@ -48,9 +48,9 @@ As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.resear
 
 ## Research Interests
 
-- Industrial digital twins
-- Applied Machine Learning
-- Kinesiology
+- Applied Mathematics
+- Machine Learning
+- LLMs
 
 My current research focuses on practical problems that artificial intelligence faces in real life. My interests are on the **Machine Learning** and its applications in **Industrial Nuclear Reactor**, and **Data Learning applied to Kinesiology**. In a word, advanced technologies like ML positively influence the life of everybody.  I wish to devote my talent to this meaningful cause and bring well-being to society.
 
@@ -69,7 +69,7 @@ My current research focuses on practical problems that artificial intelligence f
 - Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
 <div class="second">
   <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="360" height="300">
-  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="362" height="361">
+  <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="362.5" height="361.3">
 </div>
   <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
 
