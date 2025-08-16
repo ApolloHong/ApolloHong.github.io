@@ -39,36 +39,36 @@ title: lingyin
 
 > 花开不问来时路，携手行吟共天长。
 
-<br>
-Nuit au monastère de Lingyin, en écho aux rimes de Su Dongpo
 
-Ne vois-tu pas, au monastère de Lingyin,
+## Nuit au monastère de Lingyin, en écho aux rimes de Su Dongpo
+
+> Ne vois-tu pas, au monastère de Lingyin,
 dans l’ombre des monts de jade, la voix du Bouddha se fait lointaine.
 
-Sous la lune, des silhouettes dansent en clartés mouvantes,
+> Sous la lune, des silhouettes dansent en clartés mouvantes,
 l’âme s’abandonne au flot des eaux, vers le silence du Chan.
 
-Telle une statue dressée sur l’onde immobile,
+> Telle une statue dressée sur l’onde immobile,
 l’esprit s’élève, franchissant les nuages jusqu’au ciel limpide.
 
-À Lingfeng, la quête du Dao demeure inassouvie,
+> À Lingfeng, la quête du Dao demeure inassouvie,
 les clochettes des antiques pagodes murmurent des secrets voilés.
 
-Parmi les pins au couchant, tout s’apaise, sans poussière,
+> Parmi les pins au couchant, tout s’apaise, sans poussière,
 un cœur vaste attend la tiédeur du printemps.
 
-Aux rives du pont, les jeunes saules s’inclinent,
+> Aux rives du pont, les jeunes saules s’inclinent,
 un esprit clair se reflète dans l’aurore naissante.
 
-Puisse ne jamais se perdre cette paix intérieure,
+> Puisse ne jamais se perdre cette paix intérieure,
 que les cloches de Lingyin résonnent souvent dans mes songes.
 
-La vie passagère, tel un vin nouveau, doit être savourée,
+> La vie passagère, tel un vin nouveau, doit être savourée,
 dans la quiétude, contemplant les lueurs printanières.
 
-Que la fleur s’ouvre sans demander le chemin d’où l’on vient,
+> Que la fleur s’ouvre sans demander le chemin d’où l’on vient,
 main dans la main, chantons et marchons vers l’éternité.
-<br>
+
 
 
 <div class="second">
