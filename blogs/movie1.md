@@ -4,7 +4,7 @@ permalink: /blogs/movie1/index.html
 title: movie1
 ---
 
-# Into the wild
+# Into the wild -- From Beat Dreams to Mortal Truths
 
 <center>
 <img src="https://apollohong.github.io/images/into_the_wild.jpg">

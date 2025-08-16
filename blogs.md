@@ -29,8 +29,8 @@ title: Blogs
 - [2024 in Retrospect: Venturing Beyond Borders](https://apollohong.github.io/blogs/24to25)
 
 
-### 影评
-- [Into the wild--影评](http://apollohong.github.io/blogs/movie1)
+### Critiques
+- [Into the wild--From Beat Dreams to Mortal Truths](http://apollohong.github.io/blogs/movie1)
 - [Oppenheimer--Now I am become Death, the destroyer of worlds](https://apollohong.github.io/blogs/oppenheimer)
 
 
