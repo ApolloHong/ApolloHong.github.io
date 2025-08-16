@@ -4,38 +4,36 @@ permalink: /blogs/movie1/index.html
 title: movie1
 ---
 
-# Into the wild 影评
+# Into the wild
 
 <center>
 <img src="https://apollohong.github.io/images/into_the_wild.jpg">
 </center>
 
 <br>
+This film feels like a strange fusion of Faust, The Call of the Wild, and On the Road. Beneath its slow tempo (j’aime bcp ce type) and frequent wide, high-angle shots, it hides countless reflections on the ultimate questions of life, as well as metaphors drawn from literary and philosophical classics.
 
-  这是一部融合了浮士德、野性的呼唤、在路上的作品，感觉在这部电影慢节奏(j'aime bcp ce type)和多用广角高位视野拍摄的外壳下，隐藏着众多对人生终极问题的思考和对许多文学哲学经典的隐喻。
+The depiction of death is particularly striking. Watching Chris’s final moments—the fragile, erratic heartbeat, the overwhelming flood of light perception, the blurred will, the hallucinations, the helpless incompleteness—was deeply shocking. It was eerily close to what I’ve always imagined death to be.
 
-  死亡的表达非常出众，在看到Christ濒死的那些镜头时还是被深深震撼了。这和我想像中的死亡非常接近：脆弱和紊乱的心跳、被放大的无数倍的光感知力，模糊的意志，幻象和无奈的缺憾。
+Every young person despises chains, worships freedom, and dreams of detachment. But what exactly are the boundaries of chains? How do we define freedom? And what supports detachment? The film weaves lyrical techniques—Western folk guitar, a chapter-like structure, quotations ranging from Jack London’s The Call of the Wild to Thoreau’s “Rather than love, than money, than faith, than fame, than fairness, give me the truth.” But what “truth” is Chris really seeking?
 
-  每个年轻人都讨厌束缚，崇尚自由，超然物外，但是束缚的边界是什么，自由的定义又是什么？超然物外需要怎样的支撑？电影采用了许多抒情的手法，西部民谣吉他配乐，章回式结构，引文从杰克伦敦《野性的呼唤》到梭罗的“Rather than love, than money, than faith, than fame, than fairness, give me the truth.”，然而男主Christ想要探寻的“truth”究竟是什么呢？
+He believed that by breaking rules and fleeing human civilization, he could find the essence of life. He gave himself endless psychological cues, dressing up his escape as a pursuit of some higher essence, rather than what it really was: running away.
 
+In reality, he may have been just a spoiled child, disillusioned with his parents, rejecting his family and society—the archetypal beat generation drifter. He never seriously calculated the cost of his choices.
 
-  他以为自己打破了规矩，远离了人类文明就可以找到生命的真谛，他给了自己无数的心理暗示来美化自己的追求是对某种本质的追求，而不是逃避。
+Gifted and privileged, he never truly faced hardship. He scorned the rules of society not out of moral clarity, but because he had never truly confronted his own inner self. He deliberately dodged every question about his parents. He fled from the trust of the farm owner, from the friendship offered by the drifter couple Jane and Rainey, from the love of the guitar girl, from the fatherly affection of the old leather worker. He created for himself an absolute existence, convinced that Alaska was his final Eden, the ultimate form of self, a utopia unsullied by human noise.
 
+That’s why Chris is far from a purely “realistic” character—every person he meets has symbolic weight. (The young couple in the Grand Canyon, then Jane and Rainey, and later the way he recalls his parents, hinting at an evolving view of love and marriage, mirrored again in his interaction with the young girl played by Stewart.) To me, it almost has a religious undertone, reminiscent of The Alchemist: every coincidence feels guided by a God plan.
 
-  但其实他可能只是一个不谙世事、被宠坏的孩子，只是个对父母不满、厌恶原生家庭和society的典型beat generation（垮掉一代）。他从未认真考虑过选择的成本。
+The irony is that the very authors Chris idolized—Thoreau, Tolstoy, London—spent their entire lives trying to flee the mundane world. Tolstoy embraced asceticism, lived most of his life on his estate, and at 50 suddenly fled, only to die miserably at a train station inn (like the protagonist of The Moon and Sixpence). Thoreau isolated himself at Walden Pond. London chased gold, did time, sailed, reported, traveled the world. Chris longed for their lifestyles but overlooked the one crucial element: the lived experience and survival skills underpinning them.
 
+When he butchered the moose poorly and panicked, when he failed to identify edible plants and poisoned himself, he finally realized he was just a naïve, incapable kid. The freedom he idealized wasn’t nearly as beautiful in practice as in his imagination. His romanticized vision blinded him to the practical necessities of survival.
 
-  他成绩优异而生活无忧，他不需要去面对世间的艰辛，他骄傲而不屑于社会规则，是因为他并未真正直面过自己的内心。他刻意地回避每个有关父母的问题。他甚至逃避了农场主曾经给予的信任，逃避了轮胎流浪者情侣jane给予的友情，逃避了吉他少女给予的爱情，逃避了皮艺老汉给予的亲情，他给了自己一个绝对化的自我存在，他以为阿拉斯加是他的理想生活终极，是真正的自我，是一个没有人世纷杂的世外桃源。所以Christ这个人物远非纪实，他遇见的每一个人都有其寓意（比如他在大峡谷遇见的年轻 couple，后来的jane情侣，再到追忆自己的父母表示其爱情婚姻观的转变，而这种转变在他处理与斯图尔特饰演的少女有所体现）在我看来，这其实有点宗教的意味，（如同牧羊少年的奇幻之旅）所有的巧合好像都受到了God plan 的指引。
+So this film serves as a mirror for every young dreamer who yearns to cry out “Give me liberty!”—and also for those suffocated daily by the routines of society, offering the kind of existential jolt one gets from The Catcher in the Rye. But in the end, the road is ours to choose. As one philosopher said, “The opposite of correct is error, but the opposite of truth is often another truth.” Freedom versus planning, self versus service, nature versus modernity—there is no single correct answer.
 
+And yet, when Chris’s tears fell, and he scrawled with his last strength: “Happiness only real when shared”—he finally faced himself. He realized that selfishness was the root of all his troubles. Happiness is born from self-knowledge, but self-knowledge requires sharing—sharing joy, pain, sorrow, and love with others. Family, friendship, romance: solitude was never transcendence, only escape. He no longer needed to flee, no longer the extremist who hated civilization. He began to understand that “to call each thing by its right name” was to see that every being has its place and destiny. His final signature—“Christopher Johnson McCandless”—was no longer “Alexander Supertramp,” the supposed hero who broke free of cages. His unreachable ideal had come full circle, back to the embrace of his parents.
 
->而Christ所推崇的无论是梭罗、托尔斯泰还是杰克伦敦，一辈子都在竭力逃脱世俗，托尔斯泰奉行“苦行主义”（犬儒主义），一辈子大部分时间都在自己的庄园中，最后五十多岁突然离家出走（如同月亮与六便士的男主），最后死在一个车站小旅馆里；梭罗离群索居在瓦登湖畔小屋生活；杰克伦敦则淘过金、入过监、当过水手、记者和环球旅行者。这是Christ梦寐以求的生活形式，他追求了这种生活形式，但却忽略了这种生活形式背后的生活阅历及生存能力支撑。
-
-
-  当他因为处理不好驼鹿肉暴躁不安时、当他因为无法判断有毒植物而误食时，他终于意识到自己其实是一个无知且无能的孩子。他所刻意追求的自由带给他的并不象他想像中美好。他的理想化色彩使他忽略了做好应对生存的必要准备。
-
-  所以说，这部作品给我们所有向往“若为自由故”的青年以启发和反思，给所有日日被society 中routine束缚的人以《麦田里的守望者》那种经典的人到三十五酒馆灵魂一问的点醒。但最终，路还是有我们自己决定，记得有位哲人说“正确的对立面是错误，而真理的对立面往往是另一个真理”。所以要自由还是计划，偏重自我还是奉献他人，回归自然还是拥抱现代化，这其中没有孰对孰错。
-
-  然而，当Christ的泪水滑落，费劲全力写出“Happiness only real when shared”——“只有分享才是真正的幸福”时，他真正认识了自我，意识到自己的自私是所有事态的根源。幸福一定来源于自知。而自知应该来自分享，在和他人分享生命中的喜悦、悲伤、痛苦与快乐，就像亲情、友情、爱情一样，离群索居本质上只是一种逃避方式。他不再需要逃避，不再是那个深恶文明社会的极端主义者，他开始理解了“to call each thing by its right name”万物都有自己的名字和宿命，他的遗书落款终于变成“Christopher Johnson McCandless”，而不是他所憧憬的“Alexander Supertramp”——那个看似冲破牢笼找寻自由的“超级流浪者”。回到父母的怀抱，成为了他遥不可及的向往。“What if I were smiling, and running into your arms, would you see then, what I see now ?”“如果我能微笑着，拥入你们的怀抱，你们是否会看见，我此刻的所见。
+“What if I were smiling, and running into your arms, would you see then, what I see now?”
 
 <br>
 
@@ -43,10 +41,9 @@ title: movie1
 
 <br>
 
-  我们往往回在两个对立的真理之间反复横跳，最终落脚到自己年轻时厌恶的真理。
+We often oscillate endlessly between two opposing truths, only to end up in the very truth we despised in our youth.
 
-
-  做皮革的老汉和Christ谈话时曾经说过，大意是说“你应该知道上帝的存在，当然你也许不会这么来称谓他”，在濒死的时候，他爬到最接近天空的位置，望着天空，他终于找到的了他的上帝。就像他遗书中所写的一样，上帝最终拯救了他，以死亡的方式，天空刺眼的光之中，他意志模糊回到了父母的身边，拥抱父母，在父母的肩膀上，他目视前方，理解了世界，结束了。
+The old leather worker once told Chris something along the lines of, “You should know God exists—though perhaps you wouldn’t call Him that.” And in his dying moments, crawling to the highest place he could reach, gazing at the sky, Chris finally found his God. Just as he wrote in his farewell, God saved him—not by life, but by death. In that blinding light of the sky, his will fading, he returned to his parents’ embrace. Resting on their shoulders, he looked ahead, understood the world, and was finished.
 
 <br>
 
