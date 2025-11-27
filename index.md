@@ -4,7 +4,7 @@ layout: page
 
 # About Me
 
-<img src="https://apollohong.github.io/images/LizhanHongcasual.jpg" class="floatpic" width="360" height="480">
+<img src="https://apollohong.github.io/images/LizhanHongsuite.jpg" class="floatpic" width="360" height="480">
 
 **Hello, I am Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf)).**
 
