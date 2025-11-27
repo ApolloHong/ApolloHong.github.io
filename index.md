@@ -38,7 +38,7 @@ My research focuses on **Quantitative Finance**, **Machine Learning**, and **Dig
 I developed and backtested robust multi-factor equity strategies targeting the CSI 300 universe.
 *   **Methodology:** Integrated traditional financial indicators (MACD) with advanced Machine Learning models (**LSTM**) and statistical techniques (**Ledoit-Wolf covariance shrinkage**).
 *   **Performance:**
-    *   Achieved a **Sharpe Ratio of 5.0** and **>100% 3-year return**.
+    *   Achieved a **Sharpe Ratio of 1.5** and **>100% 3-year return**.
     *   Controlled Max Drawdown within **10%** (CSI 300 daily).
 *   **Risk Control:** Mitigated overfitting and ensured stable out-of-sample performance using L1/L2 regularization and strict turnover control (considering 0.1% commission).
 
