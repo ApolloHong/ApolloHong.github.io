@@ -32,14 +32,25 @@ My research focuses on **Quantitative Finance**, **Machine Learning**, and **Dig
 
 ## Selected Experience & Projects
 
-### 1. Quantitative Research & Financial Modeling
-**École Polytechnique | Shanghai Advanced Institute of Finance**
-*   **Schrödinger Bridges:** Conducted theoretical research on discrete Schrödinger bridges and implemented Sinkhorn and IPF algorithms for financial time series simulations.
-*   **Multi-Factor Strategy:** Developed equities strategies utilizing MACD, Ledoit-Wolf covariance shrinkage, and LSTM.
-    *   *Performance:* Achieved a **Sharpe ratio of 5.0**, >100% 3-year return, and kept max drawdown within 10% on CSI 300.
-    *   Implemented strict turnover control (0.1% commission) and regularization to ensure stable out-of-sample performance.
+### 1. Quantitative Trading Strategy (Alpha Generation)
+**Shanghai Advanced Institute of Finance (SAIF)**
 
-### 2. Digital Twin & AI for Engineering (Past Program)
+I developed and backtested robust multi-factor equity strategies targeting the CSI 300 universe.
+*   **Methodology:** Integrated traditional financial indicators (MACD) with advanced Machine Learning models (**LSTM**) and statistical techniques (**Ledoit-Wolf covariance shrinkage**).
+*   **Performance:**
+    *   Achieved a **Sharpe Ratio of 5.0** and **>100% 3-year return**.
+    *   Controlled Max Drawdown within **10%** (CSI 300 daily).
+*   **Risk Control:** Mitigated overfitting and ensured stable out-of-sample performance using L1/L2 regularization and strict turnover control (considering 0.1% commission).
+
+### 2. Generative Financial Modeling (Stochastic Processes)
+**École Polytechnique**
+
+This project focuses on the theoretical derivation and simulation of **Schrödinger Bridge Diffusion Models** for financial time series.
+*   **Theory:** Conducted research on the derivation and Markovian properties of discrete Schrödinger bridges.
+*   **Implementation:** Implemented **Sinkhorn Algorithm**, **Iterative Proportional Fitting (IPF)**, and Schrödinger Bridges Diffusion.
+*   **Application:** Applied these models for high-fidelity financial time series simulations and risk management scenarios.
+
+### 3. Digital Twin & AI for Engineering (Past Program)
 **AISEA Laboratory | SJTU Incubator**
 
 As a Project Leader and Research Assistant, I led the development of operational digital-twin platforms.
@@ -98,4 +109,4 @@ Outside of the lab and library, I am dedicated to physical excellence and leader
 </div>
 <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
 
-<br> 
+<br>
