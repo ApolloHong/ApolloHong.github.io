@@ -6,72 +6,96 @@ layout: page
 
 <img src="https://apollohong.github.io/images/LizhanHongcasual.jpg" class="floatpic" width="360" height="480">
 
-Here is **Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf))**.
+**Hello, I am Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf)).**
 
-I am studying for a **Bachelor Degree** in **French & Information Engineering** at [Shanghai Jiao Tong University](https://www.sjtu.edu.cn/) and an **Engineering Degree** in **Applied Mathematics** at [École Polytechnique](https://www.polytechnique.edu/en). I am extremely fortunate to be advised by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2). And I am currently working in the [lab](https://aisea.readthedocs.io/en/latest/). Here is [my Resume in Chinese](https://apollohong.github.io/file/洪历展中文简历.pdf) [in English](https://apollohong.github.io/file/Resume-LizhanHong.pdf) and [in French](https://apollohong.github.io/file/Lizhan_Hong_CV__French_.pdf)
-<br>
+I am currently an **Engineering Student (M.Sc. Level)** in **Applied Mathematics** at [École Polytechnique](https://www.polytechnique.edu/en) (Paris, France), and a **B.S. candidate** in **Computer Science & French** at [Shanghai Jiao Tong University](https://www.sjtu.edu.cn/).
 
-<!-- ## Current Program -->
+My academic journey is a blend of rigorous mathematical theory and practical engineering application. I am passionate about bridging the gap between theoretical models and real-world financial or industrial systems.
 
-## Past Program
+**[News] I am actively seeking a Summer Internship (June–September 2026) in Quantitative Finance or Data Science.**
 
-**<font color='red'>[Highlight]</font> As a part of the 'AISEA' team, we are recruiting for friends who are into or excel in these fields:**
-
-+ **Machine Learning**
-+ **Digital Twin**
-+ **AI for Science**
-
-As a part of the HELIN GONG's team lead by [Prof. Helin Gong](https://www.researchgate.net/profile/Helin-Gong-2), we are looking for partners for the[互联网+] **. Contact me if you have any leads!** [talk with me](https://calendly.com/apollohong) , or contact me via wechat: Hong18860376438.
-**And here is our concept demo(rough).** 
-<br>
-
-<img src="https://apollohong.github.io/images/宣怀杯24动图.gif" width="360" height="480">
+Here is [my Resume in Chinese](https://apollohong.github.io/file/洪历展中文简历.pdf), [in English](https://apollohong.github.io/file/Resume-LizhanHong.pdf), and [in French](https://apollohong.github.io/file/Lizhan_Hong_CV__French_.pdf).
 
 <br>
----
 
-**Here is another one of my project and we mainly focus on the following topics:**
-
-+ Digital Character Modeling Technology
-+ Camera Array Modeling Technology
-+ LLM-driven Digital Human Interaction System
-+ Digital Fitness 
-+ Wearable VR Fitness Gear
-
-**And here is the demo that apply our project to the gym environment:** 
-<br>
-
-<img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="720" height="960">
-
-<br>
 ---
 
 ## Research Interests
 
-- Applied Mathematics
-- Machine Learning
-- LLMs
+My research focuses on **Quantitative Finance**, **Machine Learning**, and **Digital Twins**. I am particularly interested in:
 
-My current research focuses on practical problems that artificial intelligence faces in real life. My interests are on the **Machine Learning** and its applications in **Industrial Nuclear Reactor**, and **Data Learning applied to Kinesiology**. In a word, advanced technologies like ML positively influence the life of everybody.  I wish to devote my talent to this meaningful cause and bring well-being to society.
+- **Schrödinger Bridge Diffusion Models** & Markovian properties.
+- **Quantitative Trading Strategies** (Multi-factor models, LSTM, Covariance shrinkage).
+- **AI for Science** (Nuclear Reactor Digital Twins, Metaheuristic algorithms).
 
 ---
 
-## Personal Specialty
+## Selected Experience & Projects
 
-- Leadership: I have been assigned as the leader of the Calisthenics association this year and elected as the co-leader of the Science and Innovation Center, also glad to be the captain of the [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg).
+### 1. Quantitative Research & Financial Modeling
+**École Polytechnique | Shanghai Advanced Institute of Finance**
+*   **Schrödinger Bridges:** Conducted theoretical research on discrete Schrödinger bridges and implemented Sinkhorn and IPF algorithms for financial time series simulations.
+*   **Multi-Factor Strategy:** Developed equities strategies utilizing MACD, Ledoit-Wolf covariance shrinkage, and LSTM.
+    *   *Performance:* Achieved a **Sharpe ratio of 5.0**, >100% 3-year return, and kept max drawdown within 10% on CSI 300.
+    *   Implemented strict turnover control (0.1% commission) and regularization to ensure stable out-of-sample performance.
+
+### 2. Digital Twin & AI for Engineering (Past Program)
+**AISEA Laboratory | SJTU Incubator**
+
+As a Project Leader and Research Assistant, I led the development of operational digital-twin platforms.
+*   **Algorithms:** Designed a novel hybrid **KNNLHS algorithm** (latency <0.1s) and utilized **SVD-Autoencoder** for Model Order Reduction.
+*   **Application:** Developed a modular Reactor Operation Digital Twin using metaheuristic algorithms (Fast Simulated Annealing, Cuckoo Search).
+
+**Concept Demo (Sheng Xuanhuai Innovation Contest Silver Award):**
+<img src="https://apollohong.github.io/images/宣怀杯24动图.gif" width="360" height="480">
+
+**Digital Fitness & Interaction System:**
+We applied our digital character modeling and LLM-driven interaction technology to gym environments.
+<br>
+<img src="https://apollohong.github.io/images/unity宣怀杯ai健身助手.gif" width="720" height="960">
+
+---
+
+## Publications
+
+1.  **Decision tree based parameter identification and state estimation: Application to Reactor Operation Digital Twin.**
+    *   *Nuclear Engineering and Techniques* • 2025 • Hong, L. et al
+2.  **Optimizing near-carbon-free nuclear energy systems: advances in reactor operation digital twin through hybrid machine learning algorithms.**
+    *   *Nuclear Science and Techniques* • 2024 • Hong, L. et al
+3.  **A Noise and Vibration Tolerant Resnet for Field Reconstruction with Sparse Sensors.**
+    *   *Communications in Computational Physics* • 2024 • Hong, L. et al
+
+---
+
+## Skills
+
+*   **Programming:** Python, HTML, SQL, MATLAB, C, Java
+*   **Deep Learning:** Tensorflow, PyTorch, Keras
+*   **Tools:** NumPy, Pandas, pyMOR, Scikit-learn, Git
+*   **Languages:** Mandarin (Native), English (Fluent), French (Fluent)
+
+---
+
+## Personal Specialty & Hobbies
+
+Outside of the lab and library, I am dedicated to physical excellence and leadership.
+
+*   **Sports:** CrossFit, Hyrox, Rugby, American Football.
+*   **Bodybuilding:** I am the **Champion of the 2023 Shanghai Intercollegiate Cup**.
+*   **Leadership:** I have served as the leader of the Calisthenics association and captain of the [SPEIT-Fitness team](https://mp.weixin.qq.com/s/srSFn8PO7wmdxWodJL9YHg).
+
+**"Grit: Back broken from a gym injury, but I reinforced my core and trained harder."**
 
 <div class="third">
   <img src="https://ApolloHong.github.io/images/calisthenics.jpg" width="300" height="200">
   <img src="https://ApolloHong.github.io/images/2023年秋季第一次致远健身房.jpg" width="200" height="150">
   <img src="https://ApolloHong.github.io/images/kechuang.jpg" width="250" height="200">
 </div>
-- Self-discipline: I have spent thousands of hours in the gym and paid careful attention to my diet.
-- Grit: Back broken from a gym injury, but I reinforce my core and train harder for the bodybuilding competition and in the end won the Shanghai Champion.
+<br>
 <div class="second">
   <img src="https://ApolloHong.github.io/images/bodybuilding1.jpg" width="360" height="300">
   <img src="https://ApolloHong.github.io/images/正展肱二头肌最好.jpg" width="362.5" height="361.3">
 </div>
-  <img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
+<img src="https://ApolloHong.github.io/images/competitionBody2.jpg" width="800" height="600">
 
-
-<br>
+<br> 
