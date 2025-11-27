@@ -6,7 +6,7 @@ layout: page
 
 <img src="https://apollohong.github.io/images/LizhanHongsuite.png" class="floatpic" width="360" height="480">
 
-**Hello, I am Lizhan Hong (Apollo, [洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf)).**
+**Hi, I am Lizhan Hong (Apollo[洪历展](https://apollohong.github.io/file/Resume-LizhanHong.pdf)).**
 
 I am currently an **Engineering Student (M.Sc. Level)** in **Applied Mathematics** at [École Polytechnique](https://www.polytechnique.edu/en) (Paris, France), and a **B.S. candidate** in **Computer Science & French** at [Shanghai Jiao Tong University](https://www.sjtu.edu.cn/).
 
