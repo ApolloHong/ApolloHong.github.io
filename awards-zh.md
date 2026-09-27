@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /awards-zh/index.html
-title: Awards-zh
+title: 奖项与荣誉
 ---
 
 ## 奖学金

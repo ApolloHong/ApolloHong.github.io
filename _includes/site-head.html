@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // set the theme before first paint: saved choice, else the OS preference
+  (function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}Lizhan Hong (Apollo, 洪历展) — applied mathematics at École Polytechnique. Quantitative research, stochastic modelling and machine learning.{% endif %}">
+<meta name="theme-color" content="#07090d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f4ef" media="(prefers-color-scheme: light)">
+<link rel="canonical" href="{{ site.url }}{{ page.url | remove: 'index.html' }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url | remove: 'index.html' }}">
+<meta property="og:image" content="https://apollohong.github.io/images/LizhanHongsuite.png">
+<link rel="icon" href="/fav.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script src="https://cdn.counter.dev/script.js" data-id="4c8f7caa-2b55-46cd-a995-2c4633303773" data-utcoffset="8"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5N5JY1E21"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-T5N5JY1E21');
+</script>

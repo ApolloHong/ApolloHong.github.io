@@ -1,10 +1,9 @@
 ---
 layout: page
 permalink: /blogs/index.html
-title: Blogs
+title: Writing
 ---
 
-## My Blogs
 
 <img src="https://apollohong.github.io/images/进化举重图片.png" width="720" height="400">
 

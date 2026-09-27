@@ -23,14 +23,18 @@
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   };
   const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
-  const C = {
-    grid: hex(css('--grid', '#161c26')),
-    muted: hex(css('--muted', '#7a8394')),
-    ink: hex(css('--ink', '#e8ebf0')),
-    signal: hex(css('--signal', '#f2b441')),
-    bid: hex(css('--bid', '#3cc6a8')),
-    ask: hex(css('--ask', '#ff6b5e')),
+  let C;
+  const readColors = () => {
+    C = {
+      grid: hex(css('--grid', '#161c26')),
+      muted: hex(css('--muted', '#7a8394')),
+      ink: hex(css('--ink', '#e8ebf0')),
+      signal: hex(css('--signal', '#f2b441')),
+      bid: hex(css('--bid', '#3cc6a8')),
+      ask: hex(css('--ask', '#ff6b5e')),
+    };
   };
+  readColors();
 
   // ---------- model ----------
   const SX = 0.008;      // latent volatility per tick
@@ -362,6 +366,7 @@
   resize(); draw(0, 0); updateHud(); start();
   window.addEventListener('resize', () => { resize(); draw(performance.now(), acc); });
   document.addEventListener('visibilitychange', start);
+  document.addEventListener('themechange', () => { readColors(); if (!raf) draw(performance.now(), acc); });
   reduce.addEventListener?.('change', start);
   new IntersectionObserver((e) => { visible = e[0].isIntersecting; start(); }).observe(canvas);
 })();

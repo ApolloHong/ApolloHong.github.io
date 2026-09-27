@@ -1,0 +1,21 @@
+{% capture here %}{{ page.url | remove: 'index.html' }}{% endcapture %}
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav{% if include.solid %} scrolled solid{% endif %}" id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark"></span>Lizhan Hong</a>
+    <ul>
+      <li><a href="/#lab">Lab</a></li>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/publications/"{% if here == '/publications/' %} aria-current="page"{% endif %}>Publications</a></li>
+      <li><a href="/blogs/"{% if here contains '/blogs/' %} aria-current="page"{% endif %}>Writing</a></li>
+      <li><a href="/#about">About</a></li>
+      <li class="keep">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch colour theme">
+          <svg class="i-sun" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 14.6A8.5 8.5 0 0 1 9.4 4a8.5 8.5 0 1 0 10.6 10.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+      </li>
+      <li class="keep"><a class="cv" href="/file/Resume-LizhanHong.pdf">CV ↗</a></li>
+    </ul>
+  </div>
+</nav>

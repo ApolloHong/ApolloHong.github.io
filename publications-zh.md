@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /publications-zh/index.html
-title: Publications-zh
+title: 论文与竞赛
 ---
 
 ## 数学建模竞赛论文

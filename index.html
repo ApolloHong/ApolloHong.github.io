@@ -1,24 +1,11 @@
 ---
 layout: null
+title: Applied Mathematics · Quantitative Finance
 ---
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lizhan Hong — Applied Mathematics · Quantitative Finance</title>
-<meta name="description" content="Lizhan Hong (Apollo, 洪历展) — applied mathematics at École Polytechnique. Quantitative research, stochastic modelling and machine learning for noisy, low signal-to-noise data.">
-<meta name="theme-color" content="#07090d">
-<link rel="canonical" href="https://apollohong.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lizhan Hong — Applied Mathematics · Quantitative Finance">
-<meta property="og:description" content="Stochastic modelling, Bayesian inference and machine learning for noisy markets.">
-<meta property="og:url" content="https://apollohong.github.io/">
-<meta property="og:image" content="https://apollohong.github.io/images/LizhanHongsuite.png">
-<link rel="icon" href="/fav.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{% include site-head.html %}
 <link rel="stylesheet" href="/assets/css/home.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Lizhan Hong","alternateName":["Apollo Hong","洪历展"],
@@ -27,31 +14,9 @@ layout: null
  "knowsAbout":["Quantitative finance","Stochastic processes","Bayesian inference","Machine learning","Market microstructure"],
  "sameAs":["https://github.com/ApolloHong","https://www.linkedin.com/in/honglizhan/","https://scholar.google.com/citations?user=R3KY9QUAAAAJ"]}
 </script>
-<script src="https://cdn.counter.dev/script.js" data-id="4c8f7caa-2b55-46cd-a995-2c4633303773" data-utcoffset="8"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5N5JY1E21"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T5N5JY1E21');
-</script>
 </head>
 <body>
-<a class="skip" href="#work">Skip to content</a>
-
-<nav class="nav" id="nav">
-  <div class="wrap">
-    <a class="brand" href="/"><span class="brand-mark"></span>Lizhan Hong</a>
-    <ul>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="/blogs/">Writing</a></li>
-      <li class="keep"><a class="cv" href="/file/Resume-LizhanHong.pdf">CV ↗</a></li>
-    </ul>
-  </div>
-</nav>
+{% include site-nav.html %}
 
 <header class="hero">
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
@@ -62,10 +27,10 @@ layout: null
         <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"sparse data.","mode":"sparse"},{"text":"order flow.","mode":"flow"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
         <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>. I build models for systems where the noise is loud and the signal is faint: <strong>stochastic processes, Bayesian inference and machine learning</strong>, applied to markets and to engineering systems. I only trust a result once I've seen it hold out of sample, after costs.</p>
         <div class="ctas">
-          <a class="btn primary" href="#work">Selected work →</a>
+          <a class="btn primary" href="#lab">Explore the lab →</a>
+          <a class="btn" href="#work">Selected work</a>
           <a class="btn" href="/file/Resume-LizhanHong.pdf">Résumé (EN)</a>
-          <a class="btn" href="mailto:lizhan.hong@polytechnique.edu">Get in touch</a>
-        </div>
+          </div>
       </div>
     </div>
   </div>
@@ -89,7 +54,7 @@ layout: null
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="block" style="border-top:0;padding-top:56px">
     <div class="wrap">
       <div class="creds reveal">
@@ -101,39 +66,7 @@ layout: null
     </div>
   </section>
 
-  <section class="block" id="approach">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sec-idx"><span>01</span> / Approach</div>
-        <div>
-          <h2>How I look at a problem</h2>
-          <p>Financial data has a low signal-to-noise ratio, is non-stationary, and pushes back once you trade on it. These are the rules I work by.</p>
-        </div>
-      </div>
-      <div class="principles reveal">
-        <div class="pr">
-          <div class="eq">p(θ | data) ∝ p(data | θ) · p(θ)</div>
-          <h3>Every estimate comes with its uncertainty</h3>
-          <p>A point forecast on its own is incomplete. Priors, shrinkage and posterior widths decide how hard to lean on a signal, and how much to size it.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">Σ̂ = δ·F + (1 − δ)·S</div>
-          <h3>Regularise before you optimise</h3>
-          <p>With few observations per parameter, raw sample estimates overfit. I use Ledoit–Wolf shrinkage and L1/L2 penalties, and I control turnover explicitly.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">SR<sub>net</sub> = E[r − c] / σ(r)</div>
-          <h3>Costs are part of the model</h3>
-          <p>A backtest that ignores commission, slippage and turnover is measuring something else. I evaluate strategies net of costs, and only out of sample.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">dX<sub>t</sub> = b(X<sub>t</sub>, t) dt + σ dW<sub>t</sub></div>
-          <h3>Understand the process, then learn it</h3>
-          <p>I work through the stochastic calculus and the Markov structure first (Schrödinger bridges, diffusions), so that the learned models behave sensibly outside the training range.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+{% include lab.html %}
 
   <section class="block" id="work">
     <div class="wrap">
@@ -227,10 +160,44 @@ layout: null
     </div>
   </section>
 
+  <section class="block" id="approach">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-idx"><span>03</span> / Approach</div>
+        <div>
+          <h2>How I look at a problem</h2>
+          <p>Financial data has a low signal-to-noise ratio, is non-stationary, and pushes back once you trade on it. These are the rules I work by.</p>
+        </div>
+      </div>
+      <div class="principles reveal">
+        <div class="pr">
+          <div class="eq">p(θ | data) ∝ p(data | θ) · p(θ)</div>
+          <h3>Every estimate comes with its uncertainty</h3>
+          <p>A point forecast on its own is incomplete. Priors, shrinkage and posterior widths decide how hard to lean on a signal, and how much to size it.</p>
+        </div>
+        <div class="pr">
+          <div class="eq">Σ̂ = δ·F + (1 − δ)·S</div>
+          <h3>Regularise before you optimise</h3>
+          <p>With few observations per parameter, raw sample estimates overfit. I use Ledoit–Wolf shrinkage and L1/L2 penalties, and I control turnover explicitly.</p>
+        </div>
+        <div class="pr">
+          <div class="eq">SR<sub>net</sub> = E[r − c] / σ(r)</div>
+          <h3>Costs are part of the model</h3>
+          <p>A backtest that ignores commission, slippage and turnover is measuring something else. I evaluate strategies net of costs, and only out of sample.</p>
+        </div>
+        <div class="pr">
+          <div class="eq">dX<sub>t</sub> = b(X<sub>t</sub>, t) dt + σ dW<sub>t</sub></div>
+          <h3>Understand the process, then learn it</h3>
+          <p>I work through the stochastic calculus and the Markov structure first (Schrödinger bridges, diffusions), so that the learned models behave sensibly outside the training range.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" id="publications">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>03</span> / Publications</div>
+        <div class="sec-idx"><span>04</span> / Publications</div>
         <div>
           <h2>Peer-reviewed</h2>
           <p>Hybrid machine learning for inverse problems and state estimation.</p>
@@ -250,7 +217,7 @@ layout: null
   <section class="block" id="stack">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>04</span> / Toolkit</div>
+        <div class="sec-idx"><span>05</span> / Toolkit</div>
         <div><h2>What I work with</h2></div>
       </div>
       <div class="stack reveal">
@@ -265,14 +232,14 @@ layout: null
   <section class="block" id="about">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>05</span> / About</div>
+        <div class="sec-idx"><span>06</span> / About</div>
         <div><h2>Outside the models</h2></div>
       </div>
       <div class="about">
         <div class="reveal">
           <p>I studied computer science and French at <strong>Shanghai Jiao Tong University</strong> before joining the engineering cycle at <strong>École Polytechnique</strong> in Paris. I've gone from nuclear-reactor digital twins to financial time series, and the question has stayed the same: <strong>what can you infer about a hidden state from noisy data, and how sure should you be?</strong></p>
           <p>Away from the desk I train seriously. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, led the calisthenics association, and compete in CrossFit and Hyrox. I've also played rugby and American football. Training has taught me to run long experiments, keep a log, and accept slow, noisy feedback.</p>
-          <p>I write essays in Chinese, English and French, on ambition, history and books. <a href="/blogs/" style="color:var(--signal)">Read them →</a></p>
+          <p>I write essays in Chinese, English and French, on ambition, history and books. <a href="/blogs/">Read them →</a></p>
           <blockquote>"I broke my back in the gym. I rebuilt my core and came back stronger."</blockquote>
           <div class="gallery">
             <img src="/images/calisthenics.jpg" alt="Calisthenics training" loading="lazy">
@@ -280,7 +247,7 @@ layout: null
             <img src="/images/competitionBody2.jpg" alt="On stage at the Shanghai Intercollegiate Cup" loading="lazy">
           </div>
         </div>
-        <figure class="portrait reveal" style="margin:0">
+        <figure class="portrait reveal">
           <img src="/images/LizhanHongsuite.png" alt="Portrait of Lizhan Hong">
           <figcaption>Paris · Palaiseau</figcaption>
         </figure>
@@ -290,7 +257,7 @@ layout: null
 
   <section class="block contact" id="contact">
     <div class="wrap reveal">
-      <div class="sec-idx" style="margin-bottom:20px"><span>06</span> / Contact</div>
+      <div class="sec-idx" style="margin-bottom:20px"><span>07</span> / Contact</div>
       <h2>Open to <span>quantitative research &amp; trading</span> roles.</h2>
       <div class="links">
         <a class="btn primary" href="mailto:lizhan.hong@polytechnique.edu">lizhan.hong@polytechnique.edu</a>
@@ -298,41 +265,17 @@ layout: null
         <a class="btn" href="https://github.com/ApolloHong">GitHub ↗</a>
         <a class="btn" href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Scholar ↗</a>
       </div>
-      <p style="margin-top:28px;color:var(--muted);font:13px/1.8 var(--mono)">
+      <p class="cvs">
         CV: <a href="/file/Resume-LizhanHong.pdf">English</a> · <a href="/file/Lizhan_Hong_CV__French_.pdf">Français</a> · <a href="/file/洪历展中文简历.pdf">中文</a>
       </p>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>© {{ site.time | date: '%Y' }} Lizhan Hong</span>
-    <span>The hero chart is a live simulation: a Kalman filter tracking a latent random walk through heavy noise, and an inventory-aware market maker quoting around the posterior mean.</span>
-  </div>
-</footer>
+{% include site-footer.html note="The hero chart is a live simulation: a Kalman filter tracks a latent random walk through heavy noise, and an inventory-aware market maker quotes around the posterior mean. The Lab models are computed in your browser from the equations shown." %}
 
+<script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/hero.js" defer></script>
-<script>
-  (function () {
-    var nav = document.getElementById('nav');
-    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 40); };
-    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-    var els = [].slice.call(document.querySelectorAll('.reveal'));
-    var show = function (el) { el.classList.add('in'); };
-    // reveal anything already on screen (e.g. after an #anchor jump), and never leave content hidden
-    var check = function () {
-      els.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) show(el); });
-    };
-    if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    els.forEach(function (el) { io.observe(el); });
-    window.addEventListener('load', check);
-    window.addEventListener('hashchange', check);
-    setTimeout(check, 400);
-  })();
-</script>
+<script src="/assets/js/lab.js" defer></script>
 </body>
 </html>

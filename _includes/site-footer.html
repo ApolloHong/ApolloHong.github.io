@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© {{ site.time | date: '%Y' }} Lizhan Hong · <a href="mailto:lizhan.hong@polytechnique.edu">lizhan.hong@polytechnique.edu</a></span>
+    <span class="f-links">
+      <a href="https://github.com/ApolloHong">GitHub</a>
+      <a href="https://www.linkedin.com/in/honglizhan/">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Scholar</a>
+      <a href="/file/Resume-LizhanHong.pdf">CV</a>
+    </span>
+    {% if include.note %}<span class="f-note">{{ include.note }}</span>{% endif %}
+  </div>
+</footer>
