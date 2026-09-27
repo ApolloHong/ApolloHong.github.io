@@ -3,8 +3,8 @@
       <div class="sec-head reveal">
         <div class="sec-idx"><span>01</span> / Lab</div>
         <div>
-          <h2>Live mathematics</h2>
-          <p>Four models, each computed in your browser from the equations shown beside it. Nothing is pre-recorded. Move a slider and the model is solved again.</p>
+          <h2>Interactive models</h2>
+          <p>Four small models, implemented in JavaScript and computed in the browser. Changing a parameter reruns the computation.</p>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         </div>
         <div class="lab-notes">
           <div class="eqn">\[w(k,\theta_T)=\frac{\theta_T}{2}\Big(1+\rho\,\varphi k+\sqrt{(\varphi k+\rho)^2+1-\rho^2}\,\Big)\]\[\varphi(\theta)=\frac{\eta}{\theta^{\gamma}(1+\theta)^{1-\gamma}},\qquad \gamma=\tfrac12\]\[\sigma_{\mathrm{imp}}(k,T)=\sqrt{w/T},\qquad \theta_T=\sigma_{\mathrm{ATM}}(T)^2\,T\]</div>
-          <div><p>This is Gatheral and Jacquier's surface SVI. The sliders set the skew, the curvature of the smile, and the term structure. The badges check the paper's sufficient no-arbitrage conditions each time the surface is recomputed. Push \(\eta\) or \(|\rho|\) far enough and a butterfly spread gets a negative price.</p>
+          <div><p>Surface SVI from Gatheral and Jacquier (2014). The sliders set the ATM term structure, the skew \(\rho\) and the curvature \(\eta\). The two badges test the paper's sufficient conditions for no butterfly and no calendar arbitrage; a large \(\eta\) or \(|\rho|\) breaks the first one.</p>
           <div class="refs">Gatheral &amp; Jacquier, <a href="https://arxiv.org/abs/1204.0646">Arbitrage-free SVI volatility surfaces</a>, Quant. Finance 2014.</div></div>
         </div>
         <div class="lab-side">
@@ -56,7 +56,7 @@
         </div>
         <div class="lab-notes">
           <div class="eqn">\[\partial_t u+\Delta u-\lambda\lVert\nabla u\rVert^2=0,\qquad x\in\mathbb{R}^d\]\[u(T,x)=\ln\frac{1+\lVert x\rVert^2}{2}\]\[Y_n=\mathbb{E}\Big[\,Y_{n+1}-\lambda\lVert\nabla u_{n+1}\rVert^2\,\Delta t\;\Big|\;X_n\Big]\]\[u(0,x)=-\frac{1}{\lambda}\ln\mathbb{E}\Big[e^{-\lambda\, g(x+\sqrt{2T}\,\xi)}\Big]\]</div>
-          <div><p>A grid in 100 dimensions is out of the question, so the equation is solved on simulated paths instead. The scheme simulates \(X=\sqrt{2}\,W\) forward, then steps backward in time, and at each step regresses the next value onto the current state. Huré, Pham and Warin use a neural network for that regression. Here a small feature basis takes its place so it runs instantly. The exact value comes from the Hopf–Cole transform.</p>
+          <div><p>In 100 dimensions a grid is not an option, so the PDE is solved on Monte Carlo paths: simulate \(X=\sqrt{2}\,W\) forward, then go backward in time and, at each step, regress the next value on the current state. Huré, Pham and Warin use a neural network for this regression. Here it is a small polynomial basis in \(\ln(1+\lVert x\rVert^2)\), which is enough for this equation. The reference value comes from the Hopf–Cole transform.</p>
           <div class="refs">Huré, Pham &amp; Warin, <a href="https://arxiv.org/abs/1902.01599">Deep backward schemes for high-dimensional nonlinear PDEs</a>, Math. Comp. 2020 · E, Han &amp; Jentzen, 2017.</div></div>
         </div>
         <div class="lab-side">
@@ -87,7 +87,7 @@
         </div>
         <div class="lab-notes">
           <div class="eqn">\[\pi^\star=\operatorname*{arg\,min}_{\pi\in\Pi(\mu,\nu)}\int\tfrac12\lVert x-y\rVert^2\,d\pi-\varepsilon H(\pi)\]\[f_i\leftarrow\varepsilon\ln a_i-\varepsilon\,\mathrm{LSE}_j\Big(\frac{g_j-C_{ij}}{\varepsilon}\Big)\]\[X_t=(1-t)\,x_0+t\,x_1+\sqrt{\varepsilon}\,\big(W_t-t\,W_1\big)\]</div>
-          <div><p>Among all diffusions that turn noise into data, the bridge picks the one closest to Brownian motion. The static problem is solved with log-domain Sinkhorn, the same iterative proportional fitting behind my research at the MathsFI lab, where I use Schrödinger bridges to generate SPY return paths under stochastic volatility and jumps. Pairs are then drawn from the coupling and joined with Brownian bridges. With small \(\varepsilon\) the paths approach straight optimal-transport lines. With large \(\varepsilon\) they become diffuse and the coupling loses its structure.</p>
+          <div><p>The Schrödinger bridge is the diffusion from the noise distribution to the data distribution that stays closest to Brownian motion in relative entropy. Its static version is entropic optimal transport, solved here with log-domain Sinkhorn (IPF). Pairs are then sampled from the coupling and joined by Brownian bridges. I use the same construction in my research at the MathsFI lab to generate SPY return paths. A small \(\varepsilon\) gives almost straight transport paths; a large one gives diffuse paths.</p>
           <div class="refs">De Bortoli et al., <a href="https://arxiv.org/abs/2106.01357">Diffusion Schrödinger Bridge</a>, NeurIPS 2021 · Cuturi, Sinkhorn distances, 2013.</div></div>
         </div>
         <div class="lab-side">
@@ -121,7 +121,7 @@
         </div>
         <div class="lab-notes">
           <div class="eqn">\[dX_t=\frac{v-P_t}{\lambda\,(1-t)}\,dt,\qquad dZ_t=\sigma_u\,dW_t\]\[dP_t=\lambda\,\big(dX_t+dZ_t\big),\qquad \lambda=\frac{\sigma_v}{\sigma_u}\]\[\Sigma_t=\operatorname{Var}(v\mid\mathcal{F}_t)=\sigma_v^2\,(1-t)\]</div>
-          <div><p>This is a game between an insider who knows the value \(v\), a crowd of noise traders, and a competitive market maker who sets the price \(P_t=\mathbb{E}[v\mid\text{order flow}]\). In equilibrium the insider trades gradually and hides inside the noise. The price becomes a Brownian bridge to \(v\). More noise trading gives a deeper market (smaller \(\lambda\)) and a larger insider profit, yet information still arrives at exactly the same linear rate.</p>
+          <div><p>An insider knows the asset value \(v\), noise traders trade at random, and a competitive market maker sets \(P_t=\mathbb{E}[v\mid\text{order flow}]\). In equilibrium the insider trades gradually, the price is a Brownian bridge to \(v\), and the posterior variance falls linearly in time. More noise trading lowers \(\lambda\) and raises the insider's expected profit, but does not change how fast information gets into the price.</p>
           <div class="refs">Kyle, Continuous auctions and insider trading, Econometrica 1985 · Back, Insider trading in continuous time, RFS 1992.</div></div>
         </div>
         <div class="lab-side">

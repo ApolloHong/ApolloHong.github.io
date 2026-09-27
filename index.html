@@ -26,7 +26,7 @@ math: true
       <div class="hero-copy">
         <p class="eyebrow">Applied Mathematics · École Polytechnique</p>
         <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"lead–lag.","mode":"leadlag"},{"text":"the cross-section.","mode":"cross"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
-        <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>, an applied-mathematics engineer at École Polytechnique. I do quantitative research on <strong>stochastic models, financial time series and systematic trading signals</strong>, and I only trust a result once it holds out of sample, after costs.</p>
+        <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>. I study applied mathematics at École Polytechnique and do quantitative research on <strong>stochastic models, financial time series and systematic trading signals</strong>.</p>
         <div class="ctas">
           <a class="btn primary" href="#lab">Explore the lab →</a>
           <a class="btn" href="#work">Selected work</a>
@@ -76,7 +76,7 @@ math: true
         <div class="sec-idx"><span>02</span> / Selected work</div>
         <div>
           <h2>Research, trading and forecasting</h2>
-          <p>Each card lists the method and how the result was measured. The numbers are the ones on my CV.</p>
+          <p>Research, internships and competitions. Figures are the same as on my CV.</p>
         </div>
       </div>
       <div class="chips reveal" role="group" aria-label="Filter projects">
@@ -110,7 +110,7 @@ math: true
           <p>Tested nonlinear temporal features against a simpler baseline, with rolling point-in-time out-of-sample validation.</p>
           <ul>
             <li>Turnover constraints, Ledoit–Wolf covariance shrinkage and trading costs in the evaluation</li>
-            <li>The IC gain was larger than the net-IR gain: part of the signal was redundant or too costly to trade</li>
+            <li>IC improved more than net IR did: part of the signal was redundant or too costly to trade</li>
           </ul>
           <div class="tags"><span class="tag">factor models</span><span class="tag">OOS validation</span><span class="tag">covariance shrinkage</span><span class="tag">transaction costs</span></div>
           <div class="metrics">
@@ -122,7 +122,7 @@ math: true
         <article class="card reveal" data-cats="quant">
           <div class="meta"><span>IMC · QRT · CSIAM</span><span>Competitions</span></div>
           <h3>Trading and forecasting competitions</h3>
-          <p>IMC Prosperity is an algorithmic trading competition; the QRT Data Challenge was asset-allocation performance forecasting.</p>
+          <p>IMC Prosperity is an algorithmic trading competition; the QRT Data Challenge was about forecasting asset-allocation performance.</p>
           <ul>
             <li>IMC Prosperity 2026: global rank 280 of 18,803 teams, top 8 in France</li>
             <li>QRT Data Challenge: ranked 1st on the public leaderboard</li>
@@ -145,7 +145,7 @@ math: true
         <article class="card reveal" data-cats="ml">
           <div class="meta"><span>Orange · Wholesale / Innovation</span><span>Forward deployed engineer · 2026–</span></div>
           <h3>Probabilistic forecasting of network traffic</h3>
-          <p>Forecasts built with the Cloud teams, tied to incident-resolution cost and SLA reliability. I also built a surrogate model and a rule-based root-cause system on a network digital twin, and fault hypotheses are checked by counterfactual replay.</p>
+          <p>Worked with the Cloud teams on traffic forecasts linked to incident-resolution cost and SLA reliability. Also built a surrogate model and a rule-based root-cause system on a network digital twin, with fault hypotheses checked by counterfactual replay.</p>
           <div class="tags"><span class="tag">probabilistic forecasting</span><span class="tag">CRPS</span><span class="tag">surrogate models</span><span class="tag">root cause</span></div>
           <div class="metrics">
             <div class="metric"><div class="n">1.68→0.48</div><div class="l">MASE vs seasonal baseline</div></div>
@@ -157,7 +157,7 @@ math: true
         <article class="card reveal" data-cats="sci ml">
           <div class="meta"><span>AISEA Lab · SJTU</span><span>Research assistant · 2022–24</span></div>
           <h3>Surrogate modelling for high-dimensional inverse problems</h3>
-          <p>Solved the inverse problem on a reduced latent state (SVD-autoencoder), using a kNN surrogate and Latin Hypercube Sampling. Gradients were unreliable on the flat, non-smooth calibration objective. I compared differential evolution, particle swarm and simulated annealing, then built a coarse-to-fine search.</p>
+          <p>Inverse problem on a reduced latent state (SVD-autoencoder), with a kNN surrogate and Latin Hypercube Sampling. Gradients were unreliable on the flat, non-smooth calibration objective, so I compared differential evolution, particle swarm and simulated annealing, then built a coarse-to-fine search.</p>
           <div class="tags"><span class="tag">inverse problems</span><span class="tag">reduced-order models</span><span class="tag">derivative-free optimisation</span></div>
           <div class="metrics">
             <div class="metric"><div class="n">~1%</div><div class="l">forward-model error</div></div>
@@ -175,30 +175,30 @@ math: true
       <div class="sec-head reveal">
         <div class="sec-idx"><span>03</span> / Approach</div>
         <div>
-          <h2>How I look at a problem</h2>
-          <p>Financial data has a low signal-to-noise ratio, is non-stationary, and pushes back once you trade on it. These are the rules I work by.</p>
+          <h2>Working habits</h2>
+          <p>Financial data is noisy and non-stationary, and signals decay once they are traded. These are the habits I try to keep because of that.</p>
         </div>
       </div>
       <div class="principles reveal">
         <div class="pr">
           <div class="eq">\[p(\theta \mid \mathcal{D}) \;\propto\; p(\mathcal{D} \mid \theta)\, p(\theta)\]</div>
-          <h3>Every estimate comes with its uncertainty</h3>
-          <p>A point forecast on its own is incomplete. Priors, shrinkage and posterior widths decide how hard to lean on a signal, and how much to size it.</p>
+          <h3>Report the uncertainty with the estimate</h3>
+          <p>A point forecast is not enough to size a position. Priors, shrinkage and posterior widths decide how much weight a signal gets.</p>
         </div>
         <div class="pr">
           <div class="eq">\[\hat{\Sigma} \;=\; \delta\, F + (1-\delta)\, S\]</div>
-          <h3>Regularise before you optimise</h3>
-          <p>With few observations per parameter, raw sample estimates overfit. I use Ledoit–Wolf shrinkage and penalties, and I control turnover explicitly.</p>
+          <h3>Regularise before optimising</h3>
+          <p>With few observations per parameter, sample estimates overfit, so I use Ledoit–Wolf shrinkage, penalties and explicit turnover limits.</p>
         </div>
         <div class="pr">
           <div class="eq">\[\mathrm{IR}_{\text{net}} \;=\; \frac{\mathbb{E}[\,r - c\,]}{\sigma(r - c)}\]</div>
-          <h3>Costs are part of the model</h3>
-          <p>At SAIF, new features lifted mean rank IC from 0.031 to 0.038. After turnover limits, shrinkage and costs, net IR only moved from 0.78 to 0.91. That second pair of numbers is the one I report.</p>
+          <h3>Evaluate net of costs</h3>
+          <p>At SAIF, new features raised mean rank IC from 0.031 to 0.038, but after turnover limits, shrinkage and costs, net IR only went from 0.78 to 0.91.</p>
         </div>
         <div class="pr">
           <div class="eq">\[dX_t \;=\; b(X_t, t)\,dt + \sigma(X_t)\,dW_t + dJ_t\]</div>
-          <h3>Understand the process, then learn it</h3>
-          <p>For the SPY Schrödinger bridge I derived the drift and jump-intensity adjustments under the change of measure before training anything. That derivation is how I found the discretisation bias in the simulated jump risk.</p>
+          <h3>Derive before fitting</h3>
+          <p>For the SPY Schrödinger bridge, working out the drift and jump-intensity adjustments under the change of measure is what led me to the discretisation bias in simulated jump risk.</p>
         </div>
       </div>
     </div>
@@ -210,7 +210,7 @@ math: true
         <div class="sec-idx"><span>04</span> / Publications</div>
         <div>
           <h2>Peer-reviewed</h2>
-          <p>Hybrid machine learning for reactor digital twins: inverse problems and state estimation.</p>
+          <p>Hybrid machine learning for reactor digital twins.</p>
         </div>
       </div>
       <ol class="pubs reveal">
@@ -227,7 +227,7 @@ math: true
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>05</span> / Toolkit</div>
-        <div><h2>What I work with</h2></div>
+        <div><h2>Skills</h2></div>
       </div>
       <div class="stack reveal">
         <div><h4>Quant research</h4><p>Alpha research · factor models<br>Backtesting · OOS validation<br>Market microstructure<br>Portfolio optimisation<br>Covariance estimation</p></div>
@@ -242,15 +242,15 @@ math: true
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>06</span> / About</div>
-        <div><h2>Outside the models</h2></div>
+        <div><h2>About me</h2></div>
       </div>
       <div class="about">
         <div class="reveal">
-          <p>I did my bachelor's in computer science at <strong>Shanghai Jiao Tong University</strong> and joined the engineering cycle at <strong>École Polytechnique</strong> on a dual-degree track. I've gone from nuclear-reactor digital twins to financial time series, and the question has stayed the same: <strong>what can you infer about a hidden state from noisy data, and how sure should you be?</strong></p>
-          <p>At Polytechnique I'm <strong>Head of Quant at X-Finance</strong>, the student finance association.</p>
-          <p>Away from the desk I train seriously. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, and compete in CrossFit and Hyrox. I've also played rugby and American football. Training has taught me to run long experiments, keep a log, and accept slow, noisy feedback.</p>
-          <p>I write essays in Chinese, English and French. <a href="/blogs/">Read them →</a></p>
-          <blockquote>"I broke my back in the gym. I rebuilt my core and came back stronger."</blockquote>
+          <p>I did my bachelor's in computer science at <strong>Shanghai Jiao Tong University</strong> and joined the engineering cycle at <strong>École Polytechnique</strong> through a dual-degree programme. My earlier research was on nuclear-reactor digital twins; now I work mostly on financial time series.</p>
+          <p>I'm <strong>Head of Quant at X-Finance</strong>, the student finance association of École Polytechnique.</p>
+          <p>Outside work I train a lot. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, and do CrossFit and Hyrox. I've also played rugby and American football.</p>
+          <p>I also write essays in Chinese, English and French: <a href="/blogs/">Writing →</a></p>
+          <blockquote>"Back broken from a gym injury, I reinforced my core and trained harder."</blockquote>
           <div class="gallery">
             <img src="/images/calisthenics.jpg" alt="Calisthenics training" loading="lazy">
             <img src="/images/bodybuilding1.jpg" alt="Bodybuilding competition" loading="lazy">
@@ -280,7 +280,7 @@ math: true
   </section>
 </main>
 
-{% include site-footer.html note="The hero is a live simulation. A GARCH leader with Student-t shocks drives 15 followers through hidden lags. Bayesian model averaging over the candidate lags produces each forecast, and a long/short book trades the ranking. The Lab models are computed in your browser from the equations shown." %}
+{% include site-footer.html note="Design by Lizhan Hong. All rights reserved." %}
 
 {% include mathjax.html %}
 <script src="/assets/js/site.js" defer></script>
