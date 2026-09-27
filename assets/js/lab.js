@@ -4,6 +4,8 @@
  *   dbdp    — deep backward dynamic programming for a d-dimensional HJB equation (Huré, Pham & Warin, 2020)
  *   sb      — Schrödinger bridge via log-domain Sinkhorn / IPF, sampled as Brownian bridges
  *   kyle    — continuous-time Kyle (1985) / Back (1992) insider-trading equilibrium
+ *   lob     — limit order book under toxic flow: Avellaneda–Stoikov spread plus adverse selection, liquidity shock waves
+ *   ac      — Almgren–Chriss optimal execution: strategy surface over risk aversion, risk envelope, efficient frontier
  */
 (function () {
   const root = document.documentElement;
@@ -822,8 +824,323 @@
     };
   }
 
+  // ---------- shared orbit camera for the 3-D demos ----------
+  function orbit(canvas, cam, onClick) {
+    let down = null, moved = 0;
+    canvas.classList.add('grab');
+    canvas.addEventListener('pointerdown', (e) => { down = { x: e.clientX, y: e.clientY }; moved = 0; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - down.x, dy = e.clientY - down.y;
+      moved += Math.abs(dx) + Math.abs(dy);
+      cam.yaw += dx * 0.007;
+      cam.pitch = clamp(cam.pitch + dy * 0.005, 0.1, 1.3);
+      down = { x: e.clientX, y: e.clientY };
+      cam.touched = performance.now();
+    });
+    canvas.addEventListener('pointerup', (e) => {
+      if (down && moved < 5 && onClick) { const r = canvas.getBoundingClientRect(); onClick(e.clientX - r.left, e.clientY - r.top); }
+      down = null;
+    });
+  }
+  function project(cam, S, x, y, z) {
+    const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw), cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+    const x1 = x * cy - y * sy, y1 = x * sy + y * cy;
+    const d = y1 * cp - z * sp, z2 = y1 * sp + z * cp;
+    const f = cam.dist / (cam.dist + d), sc = Math.min(S.W * cam.sc, S.H * cam.sc * 1.45);
+    return [S.W * cam.cx + x1 * sc * f, S.H * cam.cy - z2 * sc * f, d];
+  }
+  const pathOf = (ctx, pts) => { ctx.beginPath(); pts.forEach((p, k) => (k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); };
+
+  // =====================================================================
+  // 5. Limit order book under toxic flow
+  //    queue depths relax to a profile outside the quoted half-spread; the market maker's spread is
+  //    Avellaneda–Stoikov plus an adverse-selection term in the toxicity estimate π_t; an informed burst
+  //    removes liquidity as a wave travelling away from the touch, then the book refills (resilience)
+  // =====================================================================
+  function LobDemo(panel) {
+    const canvas = $(panel, 'canvas');
+    const L = 20, ROWS = 46, TPS = 12, K = 1.5;
+    const P = { alpha: 0.6, gamma: 0.3 };
+    const cam = { yaw: -0.42, pitch: 0.66, dist: 6, cx: 0.47, cy: 0.58, sc: 0.31, touched: 0 };
+    const st = { t: 0, sig2: 1, pi: 0.05, h: 1, mid: 0, midV: 0, bid: new Float64Array(L), ask: new Float64Array(L), waves: [], hist: [], idle: 0 };
+    let S, running = false, raf = 0, last = 0, acc = 0, hudT = 0;
+
+    const spread = () => P.gamma * st.sig2 * 2 + (2 / P.gamma) * Math.log(1 + P.gamma / K) + 8 * P.alpha * st.pi;
+    const profile = (d, h) => (d < h ? 0 : 10 * (1 - Math.exp(-(d - h + 0.6) / 3.2)) * (0.8 + 0.3 * Math.exp(-((d - h - 5) ** 2) / 24)));
+    for (let d = 0; d < L; d++) { st.bid[d] = profile(d + 1, 1); st.ask[d] = profile(d + 1, 1); }
+
+    function step() {
+      st.t++;
+      st.sig2 += (1 - st.sig2) * 0.025;
+      st.pi += (0.05 - st.pi) * 0.03;
+      st.h += (spread() / 2 - st.h) * 0.25;
+      st.mid += st.midV; st.midV *= 0.88;
+      const hits = { bid: new Float32Array(L), ask: new Float32Array(L) };
+      for (const side of ['bid', 'ask']) {
+        const q = st[side];
+        for (let d = 0; d < L; d++) {
+          const dd = d + 1;
+          let hit = 0;
+          for (const w of st.waves) {
+            const age = st.t - w.t0, front = st.h + age * 0.75;
+            hit += w.amp * (w.side === side ? 1 : 0.35) * Math.exp(-age / 26) * Math.exp(-((dd - front) ** 2) / 5);
+          }
+          hit = Math.min(0.95, hit);
+          hits[side][d] = hit;
+          q[d] += (profile(dd, st.h) * (1 - hit) - q[d]) * 0.12 + randn() * 0.25 * Math.sqrt(Math.max(q[d], 0.4));
+          if (q[d] < 0 || dd < st.h) q[d] = Math.max(0, q[d] * (dd < st.h ? 0.4 : 1));
+        }
+      }
+      // uninformed market orders nibble at the touch
+      if (Math.random() < 0.35) { const s = Math.random() < 0.5 ? 'bid' : 'ask'; const i = clamp(Math.ceil(st.h) - 1, 0, L - 1); st[s][i] *= 0.7; }
+      st.waves = st.waves.filter((w) => st.t - w.t0 < 90);
+      st.hist.push({ bid: Float32Array.from(st.bid), ask: Float32Array.from(st.ask), hb: hits.bid, ha: hits.ask, h: st.h });
+      if (st.hist.length > ROWS) st.hist.shift();
+      if (!reduce && ++st.idle > TPS * 7) toxic(Math.random() < 0.5 ? 'ask' : 'bid');
+    }
+    function toxic(side) { // side hit: informed buying lifts the asks, informed selling hits the bids
+      st.idle = 0;
+      st.waves.push({ t0: st.t, side, amp: 0.35 + 0.6 * P.alpha });
+      st.pi = Math.min(1, st.pi + 0.3 + 0.6 * P.alpha);
+      st.sig2 += 1.5 + 4 * P.alpha;
+      st.midV += (side === 'ask' ? 1 : -1) * (0.3 + 0.9 * P.alpha);
+    }
+    for (let i = 0; i < ROWS + 20; i++) { st.idle = 0; step(); }
+
+    function draw() {
+      const { ctx, W, H } = S;
+      ctx.clearRect(0, 0, W, H);
+      const Pj = (x, y, z) => project(cam, S, x, y, z);
+      const n = st.hist.length, Y = (r) => 1 - (2 * r) / (ROWS - 1), Z = (q) => (q / 14) * 0.55;
+      // floor
+      ctx.strokeStyle = rgba(C.grid, 1); ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let o = -L; o <= L; o += 5) { const a = Pj(o / L, 1, 0), b = Pj(o / L, -1, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      for (let r = 0; r < ROWS; r += 5) { const a = Pj(-1, Y(r), 0), b = Pj(1, Y(r), 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      ctx.stroke();
+      const mid0 = Pj(0, 1, 0), mid1 = Pj(0, -1.05, 0);
+      ctx.strokeStyle = rgba(C.signal, 0.35); ctx.setLineDash([3, 4]);
+      ctx.beginPath(); ctx.moveTo(mid0[0], mid0[1]); ctx.lineTo(mid1[0], mid1[1]); ctx.stroke(); ctx.setLineDash([]);
+
+      const order = [...Array(n).keys()].sort((a, b) => Pj(0, Y(b), 0)[2] - Pj(0, Y(a), 0)[2]);
+      for (const r of order) {
+        const row = st.hist[r], y = Y(r + ROWS - n), rec = 0.25 + 0.75 * (r / (n - 1));
+        for (const side of ['bid', 'ask']) {
+          const sgn = side === 'bid' ? -1 : 1, q = row[side], hits = side === 'bid' ? row.hb : row.ha, col = side === 'bid' ? C.bid : C.ask;
+          const pts = [];
+          for (let d = L - 1; d >= 0; d--) pts.push(Pj((sgn * (d + 1)) / L, y, Z(q[d])));
+          const base0 = Pj((sgn * L) / L, y, 0), base1 = Pj(sgn / L, y, 0);
+          ctx.fillStyle = rgba(C.bg, 0.9);
+          pathOf(ctx, [base0, ...pts, base1]); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = rgba(col, 0.05 + 0.2 * rec);
+          ctx.fill();
+          ctx.lineWidth = r === n - 1 ? 2 : 1.1;
+          for (let k = 1; k < pts.length; k++) {
+            const hit = hits[L - 1 - k];
+            ctx.strokeStyle = rgba(mix(col, C.signal, clamp(hit * 1.6, 0, 1)), (0.35 + 0.65 * rec) * (hit > 0.05 ? 1 : 0.85));
+            ctx.beginPath(); ctx.moveTo(pts[k - 1][0], pts[k - 1][1]); ctx.lineTo(pts[k][0], pts[k][1]); ctx.stroke();
+          }
+        }
+      }
+      // spread bracket on the newest row
+      const hNow = st.hist[n - 1].h, yF = Y(ROWS - 1) - 0.08;
+      const a = Pj(-hNow / L, yF, 0), b = Pj(hNow / L, yF, 0);
+      ctx.strokeStyle = rgba(C.signal, 0.95); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(a[0], a[1] - 5); ctx.lineTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(b[0], b[1] - 5); ctx.stroke();
+      ctx.font = `11px ${MONO}`; ctx.fillStyle = rgba(C.signal, 1); ctx.textAlign = 'center';
+      ctx.fillText(`spread ${(2 * hNow).toFixed(1)} ticks`, (a[0] + b[0]) / 2, Math.max(a[1], b[1]) + 26);
+      ctx.fillStyle = rgba(C.muted, 1);
+      const lb = Pj(-0.6, -1.15, 0), la = Pj(0.6, -1.15, 0);
+      ctx.fillText('bids', lb[0], lb[1] + 14); ctx.fillText('asks', la[0], la[1] + 14);
+      const lt = Pj(1.12, 0, 0); ctx.fillText('time ↑', lt[0], lt[1]);
+      ctx.textAlign = 'left';
+    }
+
+    function loop(now) {
+      const dt = Math.min(0.1, (now - (last || now)) / 1000); last = now;
+      acc += dt * TPS;
+      while (acc >= 1) { step(); acc -= 1; }
+      if (!cam.touched || now - cam.touched > 5000) cam.yaw = -0.42 + 0.12 * Math.sin(now / 7000);
+      draw();
+      if (now - hudT > 200) { hudT = now; hud(); }
+      raf = requestAnimationFrame(loop);
+    }
+    function hud() {
+      setOut(panel, 'spread', (2 * st.h).toFixed(2));
+      setOut(panel, 'pi', st.pi.toFixed(2));
+      setOut(panel, 'vol', Math.sqrt(st.sig2).toFixed(2));
+      setOut(panel, 'mid', (st.mid >= 0 ? '+' : '−') + Math.abs(st.mid).toFixed(1));
+    }
+
+    const fire = (side) => { toxic(side); if (!running || reduce) { for (let i = 0; i < 8; i++) step(); draw(); hud(); } };
+    orbit(canvas, cam, (x) => fire(x < S.W / 2 ? 'bid' : 'ask'));
+    panel.querySelectorAll('input[data-p]').forEach((inp) => {
+      inp.value = P[inp.dataset.p]; setOut(panel, inp.dataset.p, (+inp.value).toFixed(2));
+      inp.addEventListener('input', () => { P[inp.dataset.p] = +inp.value; setOut(panel, inp.dataset.p, (+inp.value).toFixed(2)); });
+    });
+    $(panel, '[data-act="buy"]').addEventListener('click', () => fire('ask'));
+    $(panel, '[data-act="sell"]').addEventListener('click', () => fire('bid'));
+
+    S = surface(canvas, () => draw());
+    return {
+      start() { if (running) return; running = true; hud(); if (reduce) { draw(); return; } last = 0; raf = requestAnimationFrame(loop); },
+      stop() { running = false; cancelAnimationFrame(raf); },
+      redraw() { draw(); },
+    };
+  }
+
+  // =====================================================================
+  // 6. Almgren–Chriss optimal execution (parameters from Almgren & Chriss, 2000)
+  //    x_k = X sinh(κ(T − t_k)) / sinh(κT),  cosh(κτ) = 1 + λσ²τ² / (2η̃),  η̃ = η − γτ/2
+  //    E[IS] = ½γX² + εX + (η̃/τ) Σ n_k²,   Var[IS] = σ²τ Σ x_k²
+  // =====================================================================
+  function AcDemo(panel) {
+    const canvas = $(panel, 'canvas'), mini = $(panel, 'canvas.mini');
+    const X = 1e6, S0 = 50, T = 5, N = 50, ETA = 2.5e-6, GAM = 2.5e-7, EPS = 0.0625;
+    const NL = 25, LMIN = -8, LMAX = -4.5, TSTEP = 2;
+    const P = { lam: -6, sigma: 0.95 };
+    const cam = { yaw: -0.55, pitch: 0.55, dist: 6, cx: 0.47, cy: 0.6, sc: 0.26, touched: 0 };
+    let S, M, running = false, raf = 0, phase = 0, last = 0, fam = [], cur = null, tgt = null, front = [];
+
+    function plan(lam, sigma) {
+      const tau = T / N, et = ETA - 0.5 * GAM * tau;
+      const a = (Math.pow(10, lam) * sigma * sigma * tau * tau) / (2 * et);
+      const kap = a < 1e-12 ? 0 : Math.acosh(1 + a) / tau;
+      const x = new Float64Array(N + 1);
+      for (let k = 0; k <= N; k++) { const t = k * tau; x[k] = kap < 1e-9 ? X * (1 - t / T) : (X * Math.sinh(kap * (T - t))) / Math.sinh(kap * T); }
+      let sn2 = 0, sx2 = 0;
+      for (let k = 1; k <= N; k++) { const nk = x[k - 1] - x[k]; sn2 += nk * nk; sx2 += x[k] * x[k]; }
+      const E = 0.5 * GAM * X * X + EPS * X + (et / tau) * sn2, V = sigma * sigma * tau * sx2;
+      return { x, E, sd: Math.sqrt(V), kap };
+    }
+    function rebuild() {
+      fam = [];
+      for (let i = 0; i < NL; i++) fam.push(plan(LMIN + ((LMAX - LMIN) * i) / (NL - 1), P.sigma).x);
+      front = [];
+      for (let i = 0; i <= 40; i++) { const p = plan(LMIN + ((LMAX - LMIN) * i) / 40, P.sigma); front.push([p.sd, p.E]); }
+      const p = plan(P.lam, P.sigma);
+      tgt = p;
+      if (!cur) cur = Float64Array.from(p.x);
+      setOut(panel, 'lamv', '1e' + P.lam.toFixed(1));
+      setOut(panel, 'sigma', P.sigma.toFixed(2));
+      setOut(panel, 'eis', `$${(p.E / 1e3).toFixed(0)}k · ${((p.E / (X * S0)) * 1e4).toFixed(1)} bp`);
+      setOut(panel, 'sdis', `$${(p.sd / 1e3).toFixed(0)}k`);
+      setOut(panel, 'kappa', p.kap.toFixed(2) + ' /day');
+      setOut(panel, 'half', p.kap < 1e-6 ? '— (TWAP)' : (Math.log(2) / p.kap).toFixed(2) + ' days');
+      drawMini();
+    }
+
+    const tx = (k) => (k / N) * 2 - 1, ly = (l) => 1 - ((l - LMIN) / (LMAX - LMIN)) * 2, zx = (x) => (x / X) * 0.95;
+    function draw() {
+      const { ctx, W, H } = S;
+      ctx.clearRect(0, 0, W, H);
+      const Pj = (x, y, z) => project(cam, S, x, y, z);
+      // floor + walls
+      ctx.strokeStyle = rgba(C.grid, 1); ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let q = 0; q <= 5; q++) { const x = -1 + q * 0.4; let a = Pj(x, -1, 0), b = Pj(x, 1, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); a = Pj(x, 1, 0); b = Pj(x, 1, 0.95); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      for (let q = 0; q <= 4; q++) { const y = -1 + q * 0.5; const a = Pj(-1, y, 0), b = Pj(1, y, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      for (let q = 0; q <= 4; q++) { const z = q * 0.2375; const a = Pj(-1, 1, z), b = Pj(1, 1, z); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      ctx.stroke();
+
+      // family of optimal trajectories over λ: the strategy surface
+      const quads = [];
+      for (let i = 0; i < NL - 1; i++) for (let k = 0; k < N; k += TSTEP) {
+        const l0 = LMIN + ((LMAX - LMIN) * i) / (NL - 1), l1 = LMIN + ((LMAX - LMIN) * (i + 1)) / (NL - 1), k1 = Math.min(N, k + TSTEP);
+        const pts = [Pj(tx(k), ly(l0), zx(fam[i][k])), Pj(tx(k1), ly(l0), zx(fam[i][k1])), Pj(tx(k1), ly(l1), zx(fam[i + 1][k1])), Pj(tx(k), ly(l1), zx(fam[i + 1][k]))];
+        quads.push({ pts, u: i / (NL - 2), d: (pts[0][2] + pts[2][2]) / 2 });
+      }
+      quads.sort((a, b) => b.d - a.d);
+      ctx.lineWidth = 0.6;
+      for (const q of quads) {
+        pathOf(ctx, q.pts); ctx.closePath();
+        ctx.fillStyle = rgba(mix(C.seq0, C.seq1, q.u), 0.22); ctx.fill();
+        ctx.strokeStyle = rgba(C.line2, 0.35); ctx.stroke();
+      }
+
+      // current plan: risk envelope (±2σ price risk of the unexecuted shares, ×3), curve, execution dot
+      for (let k = 0; k <= N; k++) cur[k] += (tgt.x[k] - cur[k]) * 0.14;
+      const y0 = ly(P.lam), tau = T / N;
+      const band = (k) => (cur[k] / X) * ((2 * P.sigma * Math.sqrt(T - k * tau)) / S0) * 3;
+      const up = [], dn = [];
+      for (let k = 0; k <= N; k++) { up.push(Pj(tx(k), y0, zx(cur[k]) + band(k))); dn.push(Pj(tx(k), y0, Math.max(0, zx(cur[k]) - band(k)))); }
+      ctx.fillStyle = rgba(C.signal, 0.16);
+      pathOf(ctx, [...up, ...dn.reverse()]); ctx.closePath(); ctx.fill();
+      ctx.strokeStyle = rgba(C.signal, 0.35); ctx.lineWidth = 1;
+      pathOf(ctx, up); ctx.stroke(); pathOf(ctx, dn); ctx.stroke();
+      const curve = [];
+      for (let k = 0; k <= N; k++) curve.push(Pj(tx(k), y0, zx(cur[k])));
+      const kNow = phase * N;
+      ctx.lineWidth = 3; ctx.strokeStyle = rgba(C.signal, 0.45);
+      pathOf(ctx, curve); ctx.stroke();
+      ctx.strokeStyle = rgba(C.signal, 1);
+      pathOf(ctx, curve.slice(0, Math.floor(kNow) + 1)); ctx.stroke();
+      const k0 = Math.floor(kNow), fr = kNow - k0, k1 = Math.min(N, k0 + 1);
+      const dot = Pj(tx(kNow), y0, zx(cur[k0] * (1 - fr) + cur[k1] * fr));
+      ctx.fillStyle = rgba(C.signal, 0.25); ctx.beginPath(); ctx.arc(dot[0], dot[1], 9, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = rgba(C.signal, 1); ctx.beginPath(); ctx.arc(dot[0], dot[1], 3.5, 0, Math.PI * 2); ctx.fill();
+
+      // child orders n_k on the front wall
+      let nmax = 0;
+      for (let k = 1; k <= N; k++) nmax = Math.max(nmax, cur[k - 1] - cur[k]);
+      ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+      for (let k = 1; k <= N; k++) {
+        const h = ((cur[k - 1] - cur[k]) / nmax) * 0.32, a = Pj(tx(k - 0.5), -1.12, 0), b = Pj(tx(k - 0.5), -1.12, h);
+        ctx.strokeStyle = rgba(k <= kNow ? C.signal : C.ink2, k <= kNow ? 0.95 : 0.35);
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      }
+      ctx.lineCap = 'butt';
+
+      ctx.font = `11px ${MONO}`; ctx.fillStyle = rgba(C.muted, 1);
+      let p = Pj(0, -1.3, 0); ctx.textAlign = 'center'; ctx.fillText('time t (days) · child orders nₖ', p[0], p[1] + 16);
+      p = Pj(1.18, 0, 0); ctx.textAlign = 'left'; ctx.fillText('risk aversion λ', p[0], p[1]);
+      p = Pj(1.14, -1, 0); ctx.fillText('high λ', p[0], p[1]);
+      p = Pj(1.14, 1, 0); ctx.fillText('λ→0 (TWAP)', p[0], p[1]);
+      p = Pj(-1, 1, 1.02); ctx.fillText('inventory xₜ / X', p[0], p[1]);
+    }
+
+    function drawMini() {
+      if (!M) return;
+      const { ctx, W, H } = M;
+      ctx.clearRect(0, 0, W, H);
+      let xl = Infinity, xh = -Infinity, yl = Infinity, yh = -Infinity;
+      for (const [a, b] of front) { xl = Math.min(xl, a); xh = Math.max(xh, a); yl = Math.min(yl, b); yh = Math.max(yh, b); }
+      const f = frame(ctx, 40, 10, W - 50, H - 34, [xl / 1e3, xh / 1e3], [yl / 1e3, yh / 1e3]);
+      drawAxes(ctx, f, [[xl / 1e3, (xl / 1e3).toFixed(0)], [xh / 1e3, (xh / 1e3).toFixed(0) + 'k']], [Math.round(yl / 1e3), Math.round(yh / 1e3)], null, null);
+      ctx.fillStyle = rgba(C.muted, 1); ctx.fillText('SD[IS] $', f.x0 + f.w / 2 - 20, f.y0 + f.h + 16);
+      ctx.strokeStyle = rgba(C.ink2, 0.8); ctx.lineWidth = 1.5;
+      ctx.beginPath(); front.forEach(([a, b], k) => (k ? ctx.lineTo(f.X(a / 1e3), f.Y(b / 1e3)) : ctx.moveTo(f.X(a / 1e3), f.Y(b / 1e3)))); ctx.stroke();
+      ctx.fillStyle = rgba(C.signal, 1);
+      ctx.beginPath(); ctx.arc(f.X(tgt.sd / 1e3), f.Y(tgt.E / 1e3), 4.5, 0, Math.PI * 2); ctx.fill();
+    }
+
+    function loop(now) {
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      phase = (phase + dt / 4.5) % 1;
+      if (!cam.touched || now - cam.touched > 5000) cam.yaw = -0.55 + 0.15 * Math.sin(now / 8000);
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    orbit(canvas, cam, null);
+    const lamIn = $(panel, 'input[data-p="lam"]'), sigIn = $(panel, 'input[data-p="sigma"]');
+    lamIn.value = P.lam; sigIn.value = P.sigma;
+    lamIn.addEventListener('input', () => { P.lam = +lamIn.value; rebuild(); if (!running || reduce) { cur = Float64Array.from(tgt.x); draw(); } });
+    sigIn.addEventListener('input', () => { P.sigma = +sigIn.value; rebuild(); if (!running || reduce) { cur = Float64Array.from(tgt.x); draw(); } });
+
+    S = surface(canvas, () => draw());
+    M = surface(mini, () => drawMini());
+    rebuild();
+    return {
+      start() { if (running) return; running = true; if (reduce) { phase = 1; cur = Float64Array.from(tgt.x); draw(); return; } last = 0; raf = requestAnimationFrame(loop); },
+      stop() { running = false; cancelAnimationFrame(raf); },
+      redraw() { draw(); drawMini(); },
+    };
+  }
+
   // ---------- tabs, visibility, theme ----------
-  const makers = { surface: SurfaceDemo, dbdp: DbdpDemo, sb: SbDemo, kyle: KyleDemo };
+  const makers = { lob: LobDemo, ac: AcDemo, surface: SurfaceDemo, dbdp: DbdpDemo, sb: SbDemo, kyle: KyleDemo };
   const demos = {};
   const tabs = [...lab.querySelectorAll('[role="tab"]')];
   let active = tabs[0].dataset.demo, visible = false;

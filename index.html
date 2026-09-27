@@ -24,13 +24,12 @@ math: true
   <div class="hero-body">
     <div class="wrap" style="width:100%">
       <div class="hero-copy">
-        <p class="eyebrow">Applied Mathematics · École Polytechnique</p>
+        <p class="motto">“All models are wrong, but some are useful.” <span>— G. E. P. Box</span></p>
         <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"lead–lag.","mode":"leadlag"},{"text":"the cross-section.","mode":"cross"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
-        <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>. I study applied mathematics at École Polytechnique and do quantitative research on <strong>stochastic models, financial time series and systematic trading signals</strong>.</p>
+        <p class="sub">Applied Math @ École Polytechnique <i>·</i> Quant Researcher <i>·</i> Building stochastic &amp; generative systems.</p>
         <div class="ctas">
-          <a class="btn primary" href="#lab">Explore the lab →</a>
-          <a class="btn" href="#work">Selected work</a>
-          <a class="btn" href="/file/CV_LizhanHong.pdf">CV (PDF)</a>
+          <a class="btn primary" href="#lab">Enter the lab →</a>
+          <a class="btn" href="/file/CV_LizhanHong.pdf">CV</a>
         </div>
       </div>
     </div>
@@ -39,14 +38,14 @@ math: true
   <div class="hero-hint">drag to rotate · hover a stock</div>
   <div class="hud" data-hud aria-label="Live simulation readout">
     <div class="wrap">
-      <span class="live">LIVE SIM</span>
+      <span class="live">LIVE</span>
       <span>t<b data-k="t">000000</b></span>
       <span>leader σₜ<b data-k="vol">1.00</b></span>
       <span>excess kurt.<b data-k="kurt">+0.0</b></span>
-      <span>lag-ID acc.<b data-k="acc">0%</b></span>
+      <span>lag-ID<b data-k="acc">0%</b></span>
       <span>rank IC<b data-k="ic">+0.000</b></span>
-      <span>long / short<b data-k="ls">0 / 0</b></span>
-      <span>L/S PnL<b data-k="pnl">+0.00%</b></span>
+      <span>L / S<b data-k="ls">0 / 0</b></span>
+      <span>PnL<b data-k="pnl">+0.00%</b></span>
       <span class="legend">
         <span><i style="background:var(--signal)"></i>leader · lead–lag</span>
         <span><i style="background:var(--bid)"></i>long</span>
@@ -57,13 +56,13 @@ math: true
 </header>
 
 <main id="main">
-  <section class="block" style="border-top:0;padding-top:56px">
+  <section class="block" style="border-top:0;padding-top:48px">
     <div class="wrap">
       <div class="creds reveal">
-        <div class="cred"><div class="k">Now</div><div class="v">École Polytechnique</div><div class="s">Ingénieur (M.Sc.) · Applied Mathematics · 2025–27</div></div>
-        <div class="cred"><div class="k">Research</div><div class="v">MathsFI Lab</div><div class="s">Generative models of financial time series, with Prof. Huyên Pham</div></div>
-        <div class="cred"><div class="k">Also</div><div class="v">Shanghai Jiao Tong Univ.</div><div class="s">B.Sc. Computer Science (GPA 4.19/4.3) · M.S. 2026–28</div></div>
-        <div class="cred"><div class="k">Competitions</div><div class="v">IMC Prosperity top 1.5%</div><div class="s">QRT Data Challenge: 1st on the public leaderboard</div></div>
+        <div class="cred"><div class="k">École Polytechnique</div><div class="v">Applied Math</div><div class="s">Ingénieur · 2025–27</div></div>
+        <div class="cred"><div class="k">MathsFI Lab</div><div class="v">Generative models</div><div class="s">with Prof. Huyên Pham</div></div>
+        <div class="cred"><div class="k">IMC Prosperity</div><div class="v">Top 1.5%</div><div class="s">280 / 18,803 teams</div></div>
+        <div class="cred"><div class="k">QRT Data Challenge</div><div class="v">#1</div><div class="s">public leaderboard</div></div>
       </div>
     </div>
   </section>
@@ -73,98 +72,71 @@ math: true
   <section class="block" id="work">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>02</span> / Selected work</div>
-        <div>
-          <h2>Research, trading and forecasting</h2>
-          <p>Research, internships and competitions. Figures are the same as on my CV.</p>
-        </div>
-      </div>
-      <div class="chips reveal" role="group" aria-label="Filter projects">
-        <button class="chip" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" data-filter="quant" aria-pressed="false">Quant Finance</button>
-        <button class="chip" data-filter="stoch" aria-pressed="false">Stochastic Models</button>
-        <button class="chip" data-filter="ml" aria-pressed="false">Machine Learning</button>
-        <button class="chip" data-filter="sci" aria-pressed="false">Scientific ML</button>
+        <div class="sec-idx"><span>02</span> / Work</div>
+        <div><h2>Selected work</h2></div>
       </div>
       <div class="cards">
-        <article class="card reveal" data-cats="stoch quant ml">
-          <div class="meta"><span>École Polytechnique · MathsFI Lab</span><span>Research · 2025–</span></div>
-          <h3>Schrödinger bridges for tail-risk scenarios on SPY</h3>
-          <p>Supervised by Prof. Huyên Pham. A Schrödinger-bridge model of the full SPY return distribution under stochastic volatility and jump-diffusion, used to generate stress scenarios.</p>
-          <ul>
-            <li>Derived the drift and jump-intensity adjustments under the change of measure</li>
-            <li>Traced a downward bias in simulated jump risk to the sequential discretisation, and fixed it</li>
-            <li>Lowest Wasserstein distance of the models benchmarked; matched jump frequency and 95th-percentile jump size</li>
-          </ul>
-          <div class="tags"><span class="tag">Schrödinger bridge</span><span class="tag">jump-diffusion</span><span class="tag">stochastic volatility</span><span class="tag">change of measure</span></div>
+        <article class="card reveal">
+          <div class="meta">Prof. Huyên Pham · École Polytechnique · 2025–</div>
+          <h3>Schrödinger bridges for tail-risk scenarios</h3>
+          <p>SPY return paths under stochastic volatility and jumps.</p>
           <div class="metrics">
             <div class="metric"><div class="n">7</div><div class="l">generative models benchmarked</div></div>
-            <div class="metric"><div class="n">5,068</div><div class="l">daily windows, 20 years</div></div>
-            <div class="metric"><div class="n">3–13×</div><div class="l">baselines' error on jump stats</div></div>
+            <div class="metric"><div class="n">3–13×</div><div class="l">baseline error on jumps</div></div>
+            <div class="metric"><div class="n">5,068</div><div class="l">daily windows</div></div>
           </div>
         </article>
 
-        <article class="card reveal" data-cats="quant ml">
-          <div class="meta"><span>Shanghai Advanced Institute of Finance</span><span>Quant research intern · 2024</span></div>
-          <h3>Cross-sectional equity alpha on the CSI 300</h3>
-          <p>Tested nonlinear temporal features against a simpler baseline, with rolling point-in-time out-of-sample validation.</p>
-          <ul>
-            <li>Turnover constraints, Ledoit–Wolf covariance shrinkage and trading costs in the evaluation</li>
-            <li>IC improved more than net IR did: part of the signal was redundant or too costly to trade</li>
-          </ul>
-          <div class="tags"><span class="tag">factor models</span><span class="tag">OOS validation</span><span class="tag">covariance shrinkage</span><span class="tag">transaction costs</span></div>
+        <article class="card reveal">
+          <div class="meta">SAIF · Quant research intern · 2024</div>
+          <h3>Cross-sectional alpha, CSI 300</h3>
+          <p>Nonlinear temporal features, point-in-time OOS, net of costs.</p>
           <div class="metrics">
-            <div class="metric"><div class="n">.031→.038</div><div class="l">mean rank IC</div></div>
-            <div class="metric"><div class="n">.78→.91</div><div class="l">net information ratio</div></div>
+            <div class="metric"><div class="n">.031→.038</div><div class="l">rank IC</div></div>
+            <div class="metric"><div class="n">.78→.91</div><div class="l">net IR</div></div>
           </div>
         </article>
 
-        <article class="card reveal" data-cats="quant">
-          <div class="meta"><span>IMC · QRT · CSIAM</span><span>Competitions</span></div>
-          <h3>Trading and forecasting competitions</h3>
-          <p>IMC Prosperity is an algorithmic trading competition; the QRT Data Challenge was about forecasting asset-allocation performance.</p>
-          <ul>
-            <li>IMC Prosperity 2026: global rank 280 of 18,803 teams, top 8 in France</li>
-            <li>QRT Data Challenge: ranked 1st on the public leaderboard</li>
-            <li>CSIAM Mathematical Modelling Contest 2023: National Second Prize (top 0.17%)</li>
-          </ul>
-          <div class="tags"><span class="tag">algorithmic trading</span><span class="tag">forecasting</span><span class="tag">modelling</span></div>
+        <article class="card reveal">
+          <div class="meta">Orange · Forward deployed engineer · 2026–</div>
+          <h3>Probabilistic traffic forecasting</h3>
+          <p>Forecasts tied to SLA cost; root-cause search on a network digital twin.</p>
           <div class="metrics">
-            <div class="metric"><div class="n">top 1.5%</div><div class="l">IMC Prosperity</div></div>
-            <div class="metric"><div class="n">#1</div><div class="l">QRT public leaderboard</div></div>
-          </div>
-        </article>
-
-        <article class="card reveal" data-cats="quant stoch">
-          <div class="meta"><span>Project · Python</span><span>Market microstructure</span></div>
-          <h3>Queue-reactive limit order book simulator</h3>
-          <p>An implementation of the Huang–Lehalle–Rosenbaum model. Limit, cancel and market order intensities depend on the size of the queue. The simulator reproduces queue depletion and the resulting mid-price moves.</p>
-          <div class="tags"><span class="tag">order book</span><span class="tag">point processes</span><span class="tag">Markov models</span><span class="tag">simulation</span></div>
-        </article>
-
-        <article class="card reveal" data-cats="ml">
-          <div class="meta"><span>Orange · Wholesale / Innovation</span><span>Forward deployed engineer · 2026–</span></div>
-          <h3>Probabilistic forecasting of network traffic</h3>
-          <p>Worked with the Cloud teams on traffic forecasts linked to incident-resolution cost and SLA reliability. Also built a surrogate model and a rule-based root-cause system on a network digital twin, with fault hypotheses checked by counterfactual replay.</p>
-          <div class="tags"><span class="tag">probabilistic forecasting</span><span class="tag">CRPS</span><span class="tag">surrogate models</span><span class="tag">root cause</span></div>
-          <div class="metrics">
-            <div class="metric"><div class="n">1.68→0.48</div><div class="l">MASE vs seasonal baseline</div></div>
+            <div class="metric"><div class="n">1.68→0.48</div><div class="l">MASE</div></div>
             <div class="metric"><div class="n">4.43→1.28</div><div class="l">CRPS</div></div>
-            <div class="metric"><div class="n">13.8→1.6%</div><div class="l">delay-prediction error</div></div>
+            <div class="metric"><div class="n">13.8→1.6%</div><div class="l">delay error</div></div>
           </div>
         </article>
 
-        <article class="card reveal" data-cats="sci ml">
-          <div class="meta"><span>AISEA Lab · SJTU</span><span>Research assistant · 2022–24</span></div>
-          <h3>Surrogate modelling for high-dimensional inverse problems</h3>
-          <p>Inverse problem on a reduced latent state (SVD-autoencoder), with a kNN surrogate and Latin Hypercube Sampling. Gradients were unreliable on the flat, non-smooth calibration objective, so I compared differential evolution, particle swarm and simulated annealing, then built a coarse-to-fine search.</p>
-          <div class="tags"><span class="tag">inverse problems</span><span class="tag">reduced-order models</span><span class="tag">derivative-free optimisation</span></div>
+        <article class="card reveal">
+          <div class="meta">IMC · QRT · CSIAM</div>
+          <h3>Competitions</h3>
+          <p>Algorithmic trading, allocation forecasting, mathematical modelling.</p>
           <div class="metrics">
-            <div class="metric"><div class="n">~1%</div><div class="l">forward-model error</div></div>
-            <div class="metric"><div class="n">&lt;0.1 s</div><div class="l">per inference</div></div>
-            <div class="metric"><div class="n">~0.3%</div><div class="l">L2 error, coarse-to-fine</div></div>
+            <div class="metric"><div class="n">Top 1.5%</div><div class="l">IMC Prosperity</div></div>
+            <div class="metric"><div class="n">#1</div><div class="l">QRT public LB</div></div>
+            <div class="metric"><div class="n">0.17%</div><div class="l">CSIAM national 2nd prize</div></div>
           </div>
-          <a class="more" href="https://github.com/ApolloHong/ML_for_INDUSTRY">Source on GitHub ↗</a>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta">Project · Python</div>
+          <h3>Queue-reactive order book simulator</h3>
+          <p>Huang–Lehalle–Rosenbaum: queue-size-dependent limit, cancel and market order intensities.</p>
+          <div class="metrics">
+            <div class="metric"><div class="n">HLR</div><div class="l">queue-reactive model</div></div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="meta">AISEA Lab · SJTU · 2022–24</div>
+          <h3>Surrogates for inverse problems</h3>
+          <p>SVD-autoencoder latent state, kNN surrogate, coarse-to-fine search.</p>
+          <div class="metrics">
+            <div class="metric"><div class="n">&lt;0.1 s</div><div class="l">per inference</div></div>
+            <div class="metric"><div class="n">~0.3%</div><div class="l">L2 error</div></div>
+            <div class="metric"><div class="n">3</div><div class="l">journal papers</div></div>
+          </div>
         </article>
       </div>
     </div>
@@ -173,33 +145,14 @@ math: true
   <section class="block" id="approach">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>03</span> / Approach</div>
-        <div>
-          <h2>Working habits</h2>
-          <p>Financial data is noisy and non-stationary, and signals decay once they are traded. These are the habits I try to keep because of that.</p>
-        </div>
+        <div class="sec-idx"><span>03</span> / Principles</div>
+        <div><h2>Four equations</h2></div>
       </div>
       <div class="principles reveal">
-        <div class="pr">
-          <div class="eq">\[p(\theta \mid \mathcal{D}) \;\propto\; p(\mathcal{D} \mid \theta)\, p(\theta)\]</div>
-          <h3>Report the uncertainty with the estimate</h3>
-          <p>A point forecast is not enough to size a position. Priors, shrinkage and posterior widths decide how much weight a signal gets.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">\[\hat{\Sigma} \;=\; \delta\, F + (1-\delta)\, S\]</div>
-          <h3>Regularise before optimising</h3>
-          <p>With few observations per parameter, sample estimates overfit, so I use Ledoit–Wolf shrinkage, penalties and explicit turnover limits.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">\[\mathrm{IR}_{\text{net}} \;=\; \frac{\mathbb{E}[\,r - c\,]}{\sigma(r - c)}\]</div>
-          <h3>Evaluate net of costs</h3>
-          <p>At SAIF, new features raised mean rank IC from 0.031 to 0.038, but after turnover limits, shrinkage and costs, net IR only went from 0.78 to 0.91.</p>
-        </div>
-        <div class="pr">
-          <div class="eq">\[dX_t \;=\; b(X_t, t)\,dt + \sigma(X_t)\,dW_t + dJ_t\]</div>
-          <h3>Derive before fitting</h3>
-          <p>For the SPY Schrödinger bridge, working out the drift and jump-intensity adjustments under the change of measure is what led me to the discretisation bias in simulated jump risk.</p>
-        </div>
+        <div class="pr"><div class="eq">\[p(\theta \mid \mathcal{D}) \propto p(\mathcal{D} \mid \theta)\, p(\theta)\]</div><h3>Uncertainty first</h3></div>
+        <div class="pr"><div class="eq">\[\hat{\Sigma} = \delta F + (1-\delta)\, S\]</div><h3>Shrink before optimising</h3></div>
+        <div class="pr"><div class="eq">\[\mathrm{IR}_{\text{net}} = \frac{\mathbb{E}[\,r - c\,]}{\sigma(r - c)}\]</div><h3>Net of costs</h3></div>
+        <div class="pr"><div class="eq">\[dX_t = b\,dt + \sigma\,dW_t + dJ_t\]</div><h3>Derive, then fit</h3></div>
       </div>
     </div>
   </section>
@@ -208,10 +161,7 @@ math: true
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>04</span> / Publications</div>
-        <div>
-          <h2>Peer-reviewed</h2>
-          <p>Hybrid machine learning for reactor digital twins.</p>
-        </div>
+        <div><h2>Peer-reviewed</h2></div>
       </div>
       <ol class="pubs reveal">
         <li class="pub"><div class="yr">2025</div><div><div class="t">Decision tree based parameter identification and state estimation: application to Reactor Operation Digital Twin</div><div class="v"><em>Hong, L.</em> et al. · Nuclear Engineering and Technology</div></div></li>
@@ -219,21 +169,21 @@ math: true
         <li class="pub"><div class="yr">2024</div><div><div class="t">A noise and vibration tolerant ResNet for field reconstruction with sparse sensors</div><div class="v"><em>Hong, L.</em> et al. · Communications in Computational Physics</div></div></li>
       </ol>
       <a class="more-link" href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Google Scholar ↗</a>
-      <a class="more-link" href="/publications/">Preprints &amp; competition papers →</a>
     </div>
   </section>
 
   <section class="block" id="stack">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-idx"><span>05</span> / Toolkit</div>
-        <div><h2>Skills</h2></div>
+        <div class="sec-idx"><span>05</span> / Stack</div>
+        <div><h2>Toolkit</h2></div>
       </div>
-      <div class="stack reveal">
-        <div><h4>Quant research</h4><p>Alpha research · factor models<br>Backtesting · OOS validation<br>Market microstructure<br>Portfolio optimisation<br>Covariance estimation</p></div>
-        <div><h4>Mathematics</h4><p>Probability &amp; statistics<br>Stochastic calculus<br>Monte Carlo · rare events<br>Optimal transport<br>Numerical optimisation</p></div>
-        <div><h4>Machine learning</h4><p>Generative models<br>Deep learning (PyTorch)<br>Time-series forecasting<br>Regression · scikit-learn<br>LLM agents</p></div>
-        <div><h4>Engineering · languages</h4><p>Python · NumPy · Pandas<br>SQL · Java · MATLAB<br>Git · Linux<br>中文 · English · Français</p></div>
+      <div class="stack-cloud reveal">
+        <div class="grp"><span class="gk">code</span><span class="tb">Python</span><span class="tb">PyTorch</span><span class="tb">NumPy</span><span class="tb">Pandas</span><span class="tb">scikit-learn</span><span class="tb">SQL</span><span class="tb">Java</span><span class="tb">MATLAB</span><span class="tb">Git</span><span class="tb">Linux</span></div>
+        <div class="grp"><span class="gk">math</span><span class="tb">SDEs</span><span class="tb">Stochastic calculus</span><span class="tb">Monte Carlo</span><span class="tb">Rare events</span><span class="tb">Optimal transport</span><span class="tb">Bayesian inference</span><span class="tb">Numerical optimisation</span></div>
+        <div class="grp"><span class="gk">ml</span><span class="tb">Generative models</span><span class="tb">Deep learning</span><span class="tb">Time-series forecasting</span><span class="tb">LLM agents</span></div>
+        <div class="grp"><span class="gk">quant</span><span class="tb">Alpha research</span><span class="tb">Factor models</span><span class="tb">Backtesting</span><span class="tb">OOS validation</span><span class="tb">Microstructure</span><span class="tb">Portfolio optimisation</span><span class="tb">Covariance estimation</span></div>
+        <div class="grp"><span class="gk">lang</span><span class="tb">中文</span><span class="tb">English</span><span class="tb">Français</span></div>
       </div>
     </div>
   </section>
@@ -242,25 +192,16 @@ math: true
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>06</span> / About</div>
-        <div><h2>About me</h2></div>
+        <div><h2>Desk and iron.</h2></div>
       </div>
-      <div class="about">
-        <div class="reveal">
-          <p>I did my bachelor's in computer science at <strong>Shanghai Jiao Tong University</strong> and joined the engineering cycle at <strong>École Polytechnique</strong> through a dual-degree programme. My earlier research was on nuclear-reactor digital twins; now I work mostly on financial time series.</p>
-          <p>I'm <strong>Head of Quant at X-Finance</strong>, the student finance association of École Polytechnique.</p>
-          <p>Outside work I train a lot. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, and do CrossFit and Hyrox. I've also played rugby and American football.</p>
-          <p>I also write essays in Chinese, English and French: <a href="/blogs/">Writing →</a></p>
-          <blockquote>"Back broken from a gym injury, I reinforced my core and trained harder."</blockquote>
-          <div class="gallery">
-            <img src="/images/calisthenics.jpg" alt="Calisthenics training" loading="lazy">
-            <img src="/images/bodybuilding1.jpg" alt="Bodybuilding competition" loading="lazy">
-            <img src="/images/competitionBody2.jpg" alt="On stage at the Shanghai Intercollegiate Cup" loading="lazy">
-          </div>
+      <div class="about2 reveal">
+        <figure class="ph"><img src="/images/LizhanHongsuite.png" alt="Lizhan Hong in a suit" loading="lazy"></figure>
+        <figure class="ph"><img src="/images/正展肱二头肌最好.jpg" alt="Lizhan Hong, front double biceps on stage" loading="lazy"></figure>
+        <div class="about-txt">
+          <p>SJTU computer science → École Polytechnique applied mathematics. Head of Quant at X-Finance.</p>
+          <p>2023 Shanghai intercollegiate bodybuilding champion. Rugby, American football, Hyrox.</p>
+          <a class="more-link" href="/blogs/">Writing →</a>
         </div>
-        <figure class="portrait reveal">
-          <img src="/images/LizhanHongsuite.png" alt="Portrait of Lizhan Hong">
-          <figcaption>Paris · Palaiseau</figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -268,13 +209,12 @@ math: true
   <section class="block contact" id="contact">
     <div class="wrap reveal">
       <div class="sec-idx" style="margin-bottom:20px"><span>07</span> / Contact</div>
-      <h2>Open to <span>quantitative research &amp; trading</span> roles.</h2>
+      <h2>Open to <span>quant research &amp; trading</span>.</h2>
       <div class="links">
         <a class="btn primary" href="mailto:lizhan.hong@polytechnique.edu">lizhan.hong@polytechnique.edu</a>
-        <a class="btn" href="/file/CV_LizhanHong.pdf">CV (PDF)</a>
+        <a class="btn" href="/file/CV_LizhanHong.pdf">CV</a>
         <a class="btn" href="https://www.linkedin.com/in/honglizhan/">LinkedIn ↗</a>
         <a class="btn" href="https://github.com/ApolloHong">GitHub ↗</a>
-        <a class="btn" href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Scholar ↗</a>
       </div>
     </div>
   </section>

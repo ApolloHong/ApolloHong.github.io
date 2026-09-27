@@ -2,40 +2,82 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>01</span> / Lab</div>
-        <div>
-          <h2>Interactive models</h2>
-          <p>Four small models, implemented in JavaScript and computed in the browser. Changing a parameter reruns the computation.</p>
-        </div>
+        <div><h2>See, don't read.</h2></div>
       </div>
 
       <div class="lab-tabs reveal" role="tablist" aria-label="Lab models">
-        <button class="chip" role="tab" id="tab-surface" data-demo="surface" aria-controls="lab-surface" aria-selected="true"><b>01</b>Volatility surface</button>
-        <button class="chip" role="tab" id="tab-dbdp" data-demo="dbdp" aria-controls="lab-dbdp" aria-selected="false" tabindex="-1"><b>02</b>Deep backward PDE solver</button>
-        <button class="chip" role="tab" id="tab-sb" data-demo="sb" aria-controls="lab-sb" aria-selected="false" tabindex="-1"><b>03</b>Schrödinger bridge</button>
-        <button class="chip" role="tab" id="tab-kyle" data-demo="kyle" aria-controls="lab-kyle" aria-selected="false" tabindex="-1"><b>04</b>Kyle equilibrium</button>
+        <button class="chip" role="tab" id="tab-lob" data-demo="lob" aria-controls="lab-lob" aria-selected="true"><b>01</b>Toxic flow</button>
+        <button class="chip" role="tab" id="tab-ac" data-demo="ac" aria-controls="lab-ac" aria-selected="false" tabindex="-1"><b>02</b>Optimal execution</button>
+        <button class="chip" role="tab" id="tab-surface" data-demo="surface" aria-controls="lab-surface" aria-selected="false" tabindex="-1"><b>03</b>Vol surface</button>
+        <button class="chip" role="tab" id="tab-dbdp" data-demo="dbdp" aria-controls="lab-dbdp" aria-selected="false" tabindex="-1"><b>04</b>Deep BSDE</button>
+        <button class="chip" role="tab" id="tab-sb" data-demo="sb" aria-controls="lab-sb" aria-selected="false" tabindex="-1"><b>05</b>Schrödinger bridge</button>
+        <button class="chip" role="tab" id="tab-kyle" data-demo="kyle" aria-controls="lab-kyle" aria-selected="false" tabindex="-1"><b>06</b>Kyle</button>
       </div>
 
-      <!-- 01 SSVI surface -->
-      <div class="lab-panel reveal" role="tabpanel" id="lab-surface" aria-labelledby="tab-surface">
+      <!-- 01 order book under toxic flow -->
+      <div class="lab-panel reveal" role="tabpanel" id="lab-lob" aria-labelledby="tab-lob">
+        <div class="lab-fig">
+          <canvas aria-label="3D order-book depth over time; click to send toxic flow, drag to rotate"></canvas>
+          <div class="lab-cap">click: toxic flow · drag: rotate</div>
+        </div>
+        <div class="lab-side">
+          <h3>Order book under toxic flow</h3>
+          <div class="eqn">\[\delta_t=\gamma\sigma_t^2+\tfrac{2}{\gamma}\ln\!\big(1+\tfrac{\gamma}{k}\big)+\alpha\,\pi_t\]</div>
+          <div class="ctrl">
+            <label><span class="row"><span>toxicity \(\alpha\)</span><output data-out="alpha"></output></span><input type="range" data-p="alpha" min="0" max="1" step="0.01"></label>
+            <label><span class="row"><span>risk aversion \(\gamma\)</span><output data-out="gamma"></output></span><input type="range" data-p="gamma" min="0.05" max="1" step="0.01"></label>
+            <div class="btns"><button class="btn" type="button" data-act="sell">Toxic sell</button><button class="btn" type="button" data-act="buy">Toxic buy</button></div>
+          </div>
+          <div class="stats">
+            <div><div class="k">spread (ticks)</div><div class="v" data-out="spread">—</div></div>
+            <div><div class="k">toxicity \(\pi_t\)</div><div class="v" data-out="pi">—</div></div>
+            <div><div class="k">\(\sigma_t\)</div><div class="v" data-out="vol">—</div></div>
+            <div><div class="k">mid move (ticks)</div><div class="v" data-out="mid">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Almgren–Chriss -->
+      <div class="lab-panel" role="tabpanel" id="lab-ac" aria-labelledby="tab-ac" hidden>
+        <div class="lab-fig">
+          <canvas aria-label="Almgren–Chriss optimal liquidation trajectories over risk aversion, with a risk envelope"></canvas>
+          <div class="lab-cap">drag: rotate · envelope: ±2σ price risk of unexecuted shares (×3)</div>
+        </div>
+        <div class="lab-side">
+          <h3>Almgren–Chriss execution</h3>
+          <div class="eqn">\[x^\star(t)=X\,\frac{\sinh\kappa(T-t)}{\sinh\kappa T},\quad \kappa^2\simeq\frac{\lambda\sigma^2}{\eta}\]</div>
+          <div class="ctrl">
+            <label><span class="row"><span>risk aversion \(\lambda\)</span><output data-out="lamv"></output></span><input type="range" data-p="lam" min="-8" max="-4.5" step="0.05"></label>
+            <label><span class="row"><span>volatility \(\sigma\) ($/share/√day)</span><output data-out="sigma"></output></span><input type="range" data-p="sigma" min="0.3" max="2" step="0.01"></label>
+          </div>
+          <div class="stats">
+            <div><div class="k">\(\mathbb{E}[\mathrm{IS}]\)</div><div class="v" data-out="eis">—</div></div>
+            <div><div class="k">\(\mathrm{SD}[\mathrm{IS}]\)</div><div class="v" data-out="sdis">—</div></div>
+            <div><div class="k">\(\kappa\)</div><div class="v" data-out="kappa">—</div></div>
+            <div><div class="k">inventory half-life</div><div class="v" data-out="half">—</div></div>
+          </div>
+          <div class="mini-cap">efficient frontier · \(\mathbb{E}[\mathrm{IS}]\) vs \(\mathrm{SD}[\mathrm{IS}]\)</div>
+          <canvas class="mini" aria-label="Efficient frontier of expected cost against its standard deviation"></canvas>
+        </div>
+      </div>
+
+      <!-- 03 SSVI surface -->
+      <div class="lab-panel" role="tabpanel" id="lab-surface" aria-labelledby="tab-surface" hidden>
         <div class="lab-fig">
           <canvas aria-label="3D implied-volatility surface; drag to rotate, hover for values"></canvas>
-          <div class="lab-cap">σ(k, T), k = ln(K/F) · drag to rotate</div>
-          <div class="lab-legend"><span><i class="ramp"></i>σ 5% → 65%</span><span><i style="background:var(--ink)"></i>smile at hovered T</span></div>
+          <div class="lab-cap">drag: rotate · hover: smile</div>
+          <div class="lab-legend"><span><i class="ramp"></i>σ 5% → 65%</span></div>
           <div class="tip" role="status"></div>
-        </div>
-        <div class="lab-notes">
-          <div class="eqn">\[w(k,\theta_T)=\frac{\theta_T}{2}\Big(1+\rho\,\varphi k+\sqrt{(\varphi k+\rho)^2+1-\rho^2}\,\Big)\]\[\varphi(\theta)=\frac{\eta}{\theta^{\gamma}(1+\theta)^{1-\gamma}},\qquad \gamma=\tfrac12\]\[\sigma_{\mathrm{imp}}(k,T)=\sqrt{w/T},\qquad \theta_T=\sigma_{\mathrm{ATM}}(T)^2\,T\]</div>
-          <div><p>Surface SVI from Gatheral and Jacquier (2014). The sliders set the ATM term structure, the skew \(\rho\) and the curvature \(\eta\). The two badges test the paper's sufficient conditions for no butterfly and no calendar arbitrage; a large \(\eta\) or \(|\rho|\) breaks the first one.</p>
-          <div class="refs">Gatheral &amp; Jacquier, <a href="https://arxiv.org/abs/1204.0646">Arbitrage-free SVI volatility surfaces</a>, Quant. Finance 2014.</div></div>
         </div>
         <div class="lab-side">
           <h3>SSVI volatility surface</h3>
+          <div class="eqn">\[w=\tfrac{\theta_T}{2}\Big(1+\rho\varphi k+\sqrt{(\varphi k+\rho)^2+1-\rho^2}\Big)\]</div>
           <div class="ctrl">
             <label><span class="row"><span>short-dated ATM vol \(\sigma_0\)</span><output data-out="s0"></output></span><input type="range" data-p="s0" min="0.08" max="0.6" step="0.01"></label>
             <label><span class="row"><span>long-dated ATM vol \(\sigma_\infty\)</span><output data-out="sInf"></output></span><input type="range" data-p="sInf" min="0.08" max="0.5" step="0.01"></label>
-            <label><span class="row"><span>spot–vol correlation \(\rho\) (skew)</span><output data-out="rho"></output></span><input type="range" data-p="rho" min="-0.95" max="0.6" step="0.01"></label>
-            <label><span class="row"><span>vol-of-vol \(\eta\) (curvature)</span><output data-out="eta"></output></span><input type="range" data-p="eta" min="0.1" max="3.5" step="0.05"></label>
-            <div class="btns"><button class="btn" type="button" data-act="reset">Reset to equity-like</button></div>
+            <label><span class="row"><span>skew \(\rho\)</span><output data-out="rho"></output></span><input type="range" data-p="rho" min="-0.95" max="0.6" step="0.01"></label>
+            <label><span class="row"><span>vol-of-vol \(\eta\)</span><output data-out="eta"></output></span><input type="range" data-p="eta" min="0.1" max="3.5" step="0.05"></label>
+            <div class="btns"><button class="btn" type="button" data-act="reset">Reset</button></div>
           </div>
           <div class="badges"><span class="badge" data-badge="fly"></span><span class="badge" data-badge="cal"></span></div>
           <div class="stats">
@@ -47,95 +89,81 @@
         </div>
       </div>
 
-      <!-- 02 deep backward scheme -->
+      <!-- 04 deep backward scheme -->
       <div class="lab-panel" role="tabpanel" id="lab-dbdp" aria-labelledby="tab-dbdp" hidden>
         <div class="lab-fig">
           <canvas aria-label="Forward Brownian paths and the backward regression at each time step"></canvas>
-          <div class="lab-legend"><span><i style="background:var(--ink);opacity:.5"></i>forward paths</span><span><i class="dot" style="background:var(--ink);opacity:.6"></i>regression targets</span><span><i style="background:var(--signal)"></i>fitted uₙ</span><span><i style="background:var(--bid)"></i>exact u(0,0)</span></div>
+          <div class="lab-legend"><span><i style="background:var(--ink);opacity:.5"></i>paths</span><span><i style="background:var(--signal)"></i>fitted uₙ</span><span><i style="background:var(--bid)"></i>exact</span></div>
           <div class="tip" role="status"></div>
         </div>
-        <div class="lab-notes">
-          <div class="eqn">\[\partial_t u+\Delta u-\lambda\lVert\nabla u\rVert^2=0,\qquad x\in\mathbb{R}^d\]\[u(T,x)=\ln\frac{1+\lVert x\rVert^2}{2}\]\[Y_n=\mathbb{E}\Big[\,Y_{n+1}-\lambda\lVert\nabla u_{n+1}\rVert^2\,\Delta t\;\Big|\;X_n\Big]\]\[u(0,x)=-\frac{1}{\lambda}\ln\mathbb{E}\Big[e^{-\lambda\, g(x+\sqrt{2T}\,\xi)}\Big]\]</div>
-          <div><p>In 100 dimensions a grid is not an option, so the PDE is solved on Monte Carlo paths: simulate \(X=\sqrt{2}\,W\) forward, then go backward in time and, at each step, regress the next value on the current state. Huré, Pham and Warin use a neural network for this regression. Here it is a small polynomial basis in \(\ln(1+\lVert x\rVert^2)\), which is enough for this equation. The reference value comes from the Hopf–Cole transform.</p>
-          <div class="refs">Huré, Pham &amp; Warin, <a href="https://arxiv.org/abs/1902.01599">Deep backward schemes for high-dimensional nonlinear PDEs</a>, Math. Comp. 2020 · E, Han &amp; Jentzen, 2017.</div></div>
-        </div>
         <div class="lab-side">
-          <h3>Deep backward scheme, d-dimensional HJB</h3>
+          <h3>Deep backward scheme · 100-d HJB</h3>
+          <div class="eqn">\[Y_n=\mathbb{E}\big[\,Y_{n+1}-\lambda\lVert\nabla u_{n+1}\rVert^2\Delta t\;\big|\;X_n\big]\]</div>
           <div class="ctrl">
             <label><span class="row"><span>dimension \(d\)</span><output data-out="d"></output></span><input type="range" data-p="d" min="0" max="7" step="1"></label>
             <label><span class="row"><span>time steps \(N\)</span><output data-out="N"></output></span><input type="range" data-p="N" min="5" max="50" step="1"></label>
-            <label><span class="row"><span>Monte Carlo paths \(M\)</span><output data-out="M"></output></span><input type="range" data-p="M" min="250" max="4000" step="250"></label>
-            <div class="btns"><button class="btn primary" type="button" data-act="run">Run backward sweep</button></div>
+            <label><span class="row"><span>paths \(M\)</span><output data-out="M"></output></span><input type="range" data-p="M" min="250" max="4000" step="250"></label>
+            <div class="btns"><button class="btn primary" type="button" data-act="run">Run</button></div>
           </div>
           <div class="stats">
             <div><div class="k">scheme \(Y_0\)</div><div class="v" data-out="y0">—</div></div>
             <div><div class="k">exact \(u(0,0)\)</div><div class="v" data-out="ref">—</div></div>
-            <div><div class="k">relative error</div><div class="v" data-out="err">—</div></div>
+            <div><div class="k">rel. error</div><div class="v" data-out="err">—</div></div>
             <div><div class="k">runtime</div><div class="v" data-out="ms">—</div></div>
           </div>
           <div class="stats hist" data-history></div>
         </div>
       </div>
 
-      <!-- 03 Schrödinger bridge -->
+      <!-- 05 Schrödinger bridge -->
       <div class="lab-panel" role="tabpanel" id="lab-sb" aria-labelledby="tab-sb" hidden>
         <div class="lab-fig">
           <canvas aria-label="Particles transported from a Gaussian to a target distribution along Schrödinger-bridge paths"></canvas>
-          <div class="lab-cap">Generative transport: noise → data</div>
-          <div class="lab-legend"><span><i class="dot" style="background:var(--signal)"></i>particles Xₜ</span><span><i class="dot" style="border:1px solid var(--bid)"></i>target samples</span><span><i class="dot" style="background:var(--muted)"></i>source N(0, σ²I)</span></div>
+          <div class="lab-cap">noise → data</div>
+          <div class="lab-legend"><span><i class="dot" style="background:var(--signal)"></i>particles</span><span><i class="dot" style="border:1px solid var(--bid)"></i>target</span></div>
           <div class="tip" role="status"></div>
         </div>
-        <div class="lab-notes">
-          <div class="eqn">\[\pi^\star=\operatorname*{arg\,min}_{\pi\in\Pi(\mu,\nu)}\int\tfrac12\lVert x-y\rVert^2\,d\pi-\varepsilon H(\pi)\]\[f_i\leftarrow\varepsilon\ln a_i-\varepsilon\,\mathrm{LSE}_j\Big(\frac{g_j-C_{ij}}{\varepsilon}\Big)\]\[X_t=(1-t)\,x_0+t\,x_1+\sqrt{\varepsilon}\,\big(W_t-t\,W_1\big)\]</div>
-          <div><p>The Schrödinger bridge is the diffusion from the noise distribution to the data distribution that stays closest to Brownian motion in relative entropy. Its static version is entropic optimal transport, solved here with log-domain Sinkhorn (IPF). Pairs are then sampled from the coupling and joined by Brownian bridges. I use the same construction in my research at the MathsFI lab to generate SPY return paths. A small \(\varepsilon\) gives almost straight transport paths; a large one gives diffuse paths.</p>
-          <div class="refs">De Bortoli et al., <a href="https://arxiv.org/abs/2106.01357">Diffusion Schrödinger Bridge</a>, NeurIPS 2021 · Cuturi, Sinkhorn distances, 2013.</div></div>
-        </div>
         <div class="lab-side">
-          <h3>Schrödinger bridge generative model</h3>
+          <h3>Schrödinger bridge</h3>
+          <div class="eqn">\[X_t=(1-t)\,x_0+t\,x_1+\sqrt{\varepsilon}\,(W_t-tW_1)\]</div>
           <div class="ctrl">
-            <label><span class="row">target distribution</span>
+            <label><span class="row"><span>target</span></span>
               <select data-p="target"><option value="moons">two moons</option><option value="ring">8-Gaussian ring</option><option value="spiral">spiral</option><option value="checker">checkerboard</option></select></label>
-            <label><span class="row"><span>entropic regularisation \(\varepsilon\)</span><output data-out="eps"></output></span><input type="range" data-p="eps" min="-1.7" max="0" step="0.05"></label>
-            <label><span class="row">time \(t\)</span><input type="range" data-p="t" min="0" max="1" step="0.001" value="0"></label>
+            <label><span class="row"><span>entropy \(\varepsilon\)</span><output data-out="eps"></output></span><input type="range" data-p="eps" min="-1.7" max="0" step="0.05"></label>
+            <label><span class="row"><span>time \(t\)</span></span><input type="range" data-p="t" min="0" max="1" step="0.001" value="0"></label>
             <div class="btns"><button class="btn" type="button" data-act="play">Pause</button><button class="btn" type="button" data-act="resample">Resample</button></div>
           </div>
-          <div>
-            <div class="stats">
-              <div><div class="k">Sinkhorn iterations</div><div class="v" data-out="iters">—</div></div>
-              <div><div class="k">marginal error \(\lVert\pi\mathbf{1}-a\rVert_1\)</div><div class="v" data-out="merr">—</div></div>
-              <div><div class="k">\(\mathbb{E}\lVert X_1-X_0\rVert^2\)</div><div class="v" data-out="cost">—</div></div>
-              <div><div class="k">\(\varepsilon\)</div><div class="v" data-out="epsv">—</div></div>
-            </div>
-            <p style="margin-top:12px;font:11px/1.4 var(--mono);color:var(--muted)">IPF convergence, log₁₀ marginal error per iteration</p>
-            <canvas class="mini" aria-label="Sinkhorn convergence"></canvas>
+          <div class="stats">
+            <div><div class="k">Sinkhorn iters</div><div class="v" data-out="iters">—</div></div>
+            <div><div class="k">\(\lVert\pi\mathbf{1}-a\rVert_1\)</div><div class="v" data-out="merr">—</div></div>
+            <div><div class="k">\(\mathbb{E}\lVert X_1-X_0\rVert^2\)</div><div class="v" data-out="cost">—</div></div>
+            <div><div class="k">\(\varepsilon\)</div><div class="v" data-out="epsv">—</div></div>
           </div>
+          <div class="mini-cap">IPF convergence · \(\log_{10}\) marginal error</div>
+          <canvas class="mini" aria-label="Sinkhorn convergence"></canvas>
         </div>
       </div>
 
-      <!-- 04 Kyle–Back -->
+      <!-- 06 Kyle–Back -->
       <div class="lab-panel" role="tabpanel" id="lab-kyle" aria-labelledby="tab-kyle" hidden>
         <div class="lab-fig">
           <canvas aria-label="Price paths converging to the insider's private value in the Kyle equilibrium"></canvas>
-          <div class="lab-legend"><span><i style="background:var(--signal)"></i>highlighted market</span><span><i style="background:var(--ink);opacity:.5"></i>other markets</span><span><i style="background:var(--signal);opacity:.3;height:8px"></i>P ± 2√Σₜ</span><span><i style="background:var(--muted)"></i>noise flow</span></div>
+          <div class="lab-legend"><span><i style="background:var(--signal)"></i>highlighted market</span><span><i style="background:var(--muted)"></i>noise flow</span></div>
           <div class="tip" role="status"></div>
         </div>
-        <div class="lab-notes">
-          <div class="eqn">\[dX_t=\frac{v-P_t}{\lambda\,(1-t)}\,dt,\qquad dZ_t=\sigma_u\,dW_t\]\[dP_t=\lambda\,\big(dX_t+dZ_t\big),\qquad \lambda=\frac{\sigma_v}{\sigma_u}\]\[\Sigma_t=\operatorname{Var}(v\mid\mathcal{F}_t)=\sigma_v^2\,(1-t)\]</div>
-          <div><p>An insider knows the asset value \(v\), noise traders trade at random, and a competitive market maker sets \(P_t=\mathbb{E}[v\mid\text{order flow}]\). In equilibrium the insider trades gradually, the price is a Brownian bridge to \(v\), and the posterior variance falls linearly in time. More noise trading lowers \(\lambda\) and raises the insider's expected profit, but does not change how fast information gets into the price.</p>
-          <div class="refs">Kyle, Continuous auctions and insider trading, Econometrica 1985 · Back, Insider trading in continuous time, RFS 1992.</div></div>
-        </div>
         <div class="lab-side">
-          <h3>Kyle–Back insider equilibrium</h3>
+          <h3>Kyle–Back equilibrium</h3>
+          <div class="eqn">\[dP_t=\lambda\,(dX_t+dZ_t),\quad \lambda=\frac{\sigma_v}{\sigma_u}\]</div>
           <div class="ctrl">
             <label><span class="row"><span>value uncertainty \(\sigma_v\)</span><output data-out="sv"></output></span><input type="range" data-p="sv" min="0.2" max="2" step="0.05"></label>
-            <label><span class="row"><span>noise-trader volatility \(\sigma_u\)</span><output data-out="su"></output></span><input type="range" data-p="su" min="0.2" max="3" step="0.05"></label>
+            <label><span class="row"><span>noise trading \(\sigma_u\)</span><output data-out="su"></output></span><input type="range" data-p="su" min="0.2" max="3" step="0.05"></label>
             <div class="btns"><button class="btn" type="button" data-act="redraw">New draw</button></div>
           </div>
           <div class="stats">
-            <div><div class="k">Kyle's \(\lambda\) (impact)</div><div class="v" data-out="lam">—</div></div>
-            <div><div class="k">insider \(\mathbb{E}[\pi]=\sigma_v\sigma_u\)</div><div class="v" data-out="profit">—</div></div>
-            <div><div class="k">price vol \(=\sigma_v\)</div><div class="v" data-out="pvol">—</div></div>
-            <div><div class="k">info revealed by \(t=\tfrac12\)</div><div class="v" data-out="half">—</div></div>
+            <div><div class="k">impact \(\lambda\)</div><div class="v" data-out="lam">—</div></div>
+            <div><div class="k">\(\mathbb{E}[\pi]=\sigma_v\sigma_u\)</div><div class="v" data-out="profit">—</div></div>
+            <div><div class="k">price vol</div><div class="v" data-out="pvol">—</div></div>
+            <div><div class="k">info by \(t=\tfrac12\)</div><div class="v" data-out="half">—</div></div>
           </div>
         </div>
       </div>
