@@ -1,6 +1,7 @@
 ---
 layout: null
-title: Applied Mathematics · Quantitative Finance
+title: Applied Mathematics · Quantitative Research
+math: true
 ---
 <!doctype html>
 <html lang="en">
@@ -11,7 +12,7 @@ title: Applied Mathematics · Quantitative Finance
 {"@context":"https://schema.org","@type":"Person","name":"Lizhan Hong","alternateName":["Apollo Hong","洪历展"],
  "url":"https://apollohong.github.io/","email":"lizhan.hong@polytechnique.edu",
  "affiliation":[{"@type":"CollegeOrUniversity","name":"École Polytechnique"},{"@type":"CollegeOrUniversity","name":"Shanghai Jiao Tong University"}],
- "knowsAbout":["Quantitative finance","Stochastic processes","Bayesian inference","Machine learning","Market microstructure"],
+ "knowsAbout":["Quantitative research","Stochastic processes","Bayesian inference","Generative models","Market microstructure"],
  "sameAs":["https://github.com/ApolloHong","https://www.linkedin.com/in/honglizhan/","https://scholar.google.com/citations?user=R3KY9QUAAAAJ"]}
 </script>
 </head>
@@ -19,36 +20,37 @@ title: Applied Mathematics · Quantitative Finance
 {% include site-nav.html %}
 
 <header class="hero">
-  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <canvas class="hero-canvas" aria-label="Live 3D simulation of a cross-sectional lead–lag strategy; drag to rotate, hover a stock for its posterior"></canvas>
   <div class="hero-body">
     <div class="wrap" style="width:100%">
       <div class="hero-copy">
         <p class="eyebrow">Applied Mathematics · École Polytechnique</p>
-        <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"sparse data.","mode":"sparse"},{"text":"order flow.","mode":"flow"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
-        <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>. I build models for systems where the noise is loud and the signal is faint: <strong>stochastic processes, Bayesian inference and machine learning</strong>, applied to markets and to engineering systems. I only trust a result once I've seen it hold out of sample, after costs.</p>
+        <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"lead–lag.","mode":"leadlag"},{"text":"the cross-section.","mode":"cross"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
+        <p class="lede">I'm <strong>Lizhan (Apollo) Hong</strong>, an applied-mathematics engineer at École Polytechnique. I do quantitative research on <strong>stochastic models, financial time series and systematic trading signals</strong>, and I only trust a result once it holds out of sample, after costs.</p>
         <div class="ctas">
           <a class="btn primary" href="#lab">Explore the lab →</a>
           <a class="btn" href="#work">Selected work</a>
-          <a class="btn" href="/file/Resume-LizhanHong.pdf">Résumé (EN)</a>
-          </div>
+          <a class="btn" href="/file/CV_LizhanHong.pdf">CV (PDF)</a>
+        </div>
       </div>
     </div>
   </div>
+  <div class="hero-tip tip" role="status"></div>
+  <div class="hero-hint">drag to rotate · hover a stock</div>
   <div class="hud" data-hud aria-label="Live simulation readout">
     <div class="wrap">
       <span class="live">LIVE SIM</span>
       <span>t<b data-k="t">000000</b></span>
-      <span>SNR<b data-k="snr">0.026</b></span>
-      <span>μ̂<b data-k="mu">100.000</b></span>
-      <span>σ̂<b data-k="sigma">0.0000</b></span>
-      <span>spread<b data-k="spread">0.00</b></span>
-      <span>inv q<b data-k="q">+0</b></span>
-      <span>PnL<b data-k="pnl">+0.00</b></span>
+      <span>leader σₜ<b data-k="vol">1.00</b></span>
+      <span>excess kurt.<b data-k="kurt">+0.0</b></span>
+      <span>lag-ID acc.<b data-k="acc">0%</b></span>
+      <span>rank IC<b data-k="ic">+0.000</b></span>
+      <span>long / short<b data-k="ls">0 / 0</b></span>
+      <span>L/S PnL<b data-k="pnl">+0.00%</b></span>
       <span class="legend">
-        <span><i style="background:var(--signal)"></i>posterior E[x|y]</span>
-        <span><i style="background:var(--ink);opacity:.5"></i>obs y</span>
-        <span class="b"><i style="background:var(--bid)"></i>bid</span>
-        <span class="a"><i style="background:var(--ask)"></i>ask</span>
+        <span><i style="background:var(--signal)"></i>leader · lead–lag</span>
+        <span><i style="background:var(--bid)"></i>long</span>
+        <span><i style="background:var(--ask)"></i>short</span>
       </span>
     </div>
   </div>
@@ -58,10 +60,10 @@ title: Applied Mathematics · Quantitative Finance
   <section class="block" style="border-top:0;padding-top:56px">
     <div class="wrap">
       <div class="creds reveal">
-        <div class="cred"><div class="k">Now</div><div class="v">École Polytechnique</div><div class="s">Ingénieur (M.Sc.) · Applied Mathematics</div></div>
-        <div class="cred"><div class="k">Before</div><div class="v">Shanghai Jiao Tong Univ.</div><div class="s">B.S. Computer Science &amp; French</div></div>
-        <div class="cred"><div class="k">Research</div><div class="v">3 journal papers</div><div class="s">ML for digital twins &amp; inverse problems</div></div>
-        <div class="cred"><div class="k">Languages</div><div class="v">中文 · EN · FR</div><div class="s">Native · Fluent · Fluent</div></div>
+        <div class="cred"><div class="k">Now</div><div class="v">École Polytechnique</div><div class="s">Ingénieur (M.Sc.) · Applied Mathematics · 2025–27</div></div>
+        <div class="cred"><div class="k">Research</div><div class="v">MathsFI Lab</div><div class="s">Generative models of financial time series, with Prof. Huyên Pham</div></div>
+        <div class="cred"><div class="k">Also</div><div class="v">Shanghai Jiao Tong Univ.</div><div class="s">B.Sc. Computer Science (GPA 4.19/4.3) · M.S. 2026–28</div></div>
+        <div class="cred"><div class="k">Competitions</div><div class="v">IMC Prosperity top 1.5%</div><div class="s">QRT Data Challenge: 1st on the public leaderboard</div></div>
       </div>
     </div>
   </section>
@@ -73,8 +75,8 @@ title: Applied Mathematics · Quantitative Finance
       <div class="sec-head reveal">
         <div class="sec-idx"><span>02</span> / Selected work</div>
         <div>
-          <h2>Quant research, generative models, scientific ML</h2>
-          <p>Each card lists the method and how the result was evaluated.</p>
+          <h2>Research, trading and forecasting</h2>
+          <p>Each card lists the method and how the result was measured. The numbers are the ones on my CV.</p>
         </div>
       </div>
       <div class="chips reveal" role="group" aria-label="Filter projects">
@@ -82,79 +84,87 @@ title: Applied Mathematics · Quantitative Finance
         <button class="chip" data-filter="quant" aria-pressed="false">Quant Finance</button>
         <button class="chip" data-filter="stoch" aria-pressed="false">Stochastic Models</button>
         <button class="chip" data-filter="ml" aria-pressed="false">Machine Learning</button>
-        <button class="chip" data-filter="sci" aria-pressed="false">AI for Science</button>
+        <button class="chip" data-filter="sci" aria-pressed="false">Scientific ML</button>
       </div>
       <div class="cards">
-        <article class="card reveal" data-cats="quant ml">
-          <div class="meta"><span>Shanghai Advanced Institute of Finance</span><span>Quant</span></div>
-          <h3>Multi-factor equity alpha on the CSI 300</h3>
-          <p>Combined classic technical factors (MACD) with LSTM sequence features, and built the portfolio on a Ledoit–Wolf shrunk covariance.</p>
+        <article class="card reveal" data-cats="stoch quant ml">
+          <div class="meta"><span>École Polytechnique · MathsFI Lab</span><span>Research · 2025–</span></div>
+          <h3>Schrödinger bridges for tail-risk scenarios on SPY</h3>
+          <p>Supervised by Prof. Huyên Pham. A Schrödinger-bridge model of the full SPY return distribution under stochastic volatility and jump-diffusion, used to generate stress scenarios.</p>
           <ul>
-            <li>L1/L2 regularisation and a turnover constraint to limit overfitting</li>
-            <li>Backtested net of 0.1% commission, daily rebalancing</li>
+            <li>Derived the drift and jump-intensity adjustments under the change of measure</li>
+            <li>Traced a downward bias in simulated jump risk to the sequential discretisation, and fixed it</li>
+            <li>Lowest Wasserstein distance of the models benchmarked; matched jump frequency and 95th-percentile jump size</li>
           </ul>
-          <div class="tags"><span class="tag">factor models</span><span class="tag">LSTM</span><span class="tag">covariance shrinkage</span><span class="tag">backtesting</span></div>
+          <div class="tags"><span class="tag">Schrödinger bridge</span><span class="tag">jump-diffusion</span><span class="tag">stochastic volatility</span><span class="tag">change of measure</span></div>
           <div class="metrics">
-            <div class="metric"><div class="n">1.5</div><div class="l">Sharpe ratio</div></div>
-            <div class="metric"><div class="n">&gt;100%</div><div class="l">3-yr return</div></div>
-            <div class="metric"><div class="n">&lt;10%</div><div class="l">max drawdown</div></div>
+            <div class="metric"><div class="n">7</div><div class="l">generative models benchmarked</div></div>
+            <div class="metric"><div class="n">5,068</div><div class="l">daily windows, 20 years</div></div>
+            <div class="metric"><div class="n">3–13×</div><div class="l">baselines' error on jump stats</div></div>
           </div>
         </article>
 
-        <article class="card reveal" data-cats="stoch quant ml">
-          <div class="meta"><span>École Polytechnique</span><span>Generative</span></div>
-          <h3>Schrödinger-bridge diffusions for financial time series</h3>
-          <p>Derived the Markov properties of discrete Schrödinger bridges, then used them as generative models of market paths for simulation and risk scenarios.</p>
+        <article class="card reveal" data-cats="quant ml">
+          <div class="meta"><span>Shanghai Advanced Institute of Finance</span><span>Quant research intern · 2024</span></div>
+          <h3>Cross-sectional equity alpha on the CSI 300</h3>
+          <p>Tested nonlinear temporal features against a simpler baseline, with rolling point-in-time out-of-sample validation.</p>
           <ul>
-            <li>Sinkhorn &amp; Iterative Proportional Fitting (IPF) implemented from scratch</li>
-            <li>Entropic optimal transport between return distributions</li>
+            <li>Turnover constraints, Ledoit–Wolf covariance shrinkage and trading costs in the evaluation</li>
+            <li>The IC gain was larger than the net-IR gain: part of the signal was redundant or too costly to trade</li>
           </ul>
-          <div class="tags"><span class="tag">optimal transport</span><span class="tag">diffusion models</span><span class="tag">stochastic calculus</span><span class="tag">risk scenarios</span></div>
+          <div class="tags"><span class="tag">factor models</span><span class="tag">OOS validation</span><span class="tag">covariance shrinkage</span><span class="tag">transaction costs</span></div>
           <div class="metrics">
-            <div class="metric"><div class="n">SB / IPF</div><div class="l">theory → code</div></div>
+            <div class="metric"><div class="n">.031→.038</div><div class="l">mean rank IC</div></div>
+            <div class="metric"><div class="n">.78→.91</div><div class="l">net information ratio</div></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cats="quant">
+          <div class="meta"><span>IMC · QRT · CSIAM</span><span>Competitions</span></div>
+          <h3>Trading and forecasting competitions</h3>
+          <p>IMC Prosperity is an algorithmic trading competition; the QRT Data Challenge was asset-allocation performance forecasting.</p>
+          <ul>
+            <li>IMC Prosperity 2026: global rank 280 of 18,803 teams, top 8 in France</li>
+            <li>QRT Data Challenge: ranked 1st on the public leaderboard</li>
+            <li>CSIAM Mathematical Modelling Contest 2023: National Second Prize (top 0.17%)</li>
+          </ul>
+          <div class="tags"><span class="tag">algorithmic trading</span><span class="tag">forecasting</span><span class="tag">modelling</span></div>
+          <div class="metrics">
+            <div class="metric"><div class="n">top 1.5%</div><div class="l">IMC Prosperity</div></div>
+            <div class="metric"><div class="n">#1</div><div class="l">QRT public leaderboard</div></div>
+          </div>
+        </article>
+
+        <article class="card reveal" data-cats="quant stoch">
+          <div class="meta"><span>Project · Python</span><span>Market microstructure</span></div>
+          <h3>Queue-reactive limit order book simulator</h3>
+          <p>An implementation of the Huang–Lehalle–Rosenbaum model. Limit, cancel and market order intensities depend on the size of the queue. The simulator reproduces queue depletion and the resulting mid-price moves.</p>
+          <div class="tags"><span class="tag">order book</span><span class="tag">point processes</span><span class="tag">Markov models</span><span class="tag">simulation</span></div>
+        </article>
+
+        <article class="card reveal" data-cats="ml">
+          <div class="meta"><span>Orange · Wholesale / Innovation</span><span>Forward deployed engineer · 2026–</span></div>
+          <h3>Probabilistic forecasting of network traffic</h3>
+          <p>Forecasts built with the Cloud teams, tied to incident-resolution cost and SLA reliability. I also built a surrogate model and a rule-based root-cause system on a network digital twin, and fault hypotheses are checked by counterfactual replay.</p>
+          <div class="tags"><span class="tag">probabilistic forecasting</span><span class="tag">CRPS</span><span class="tag">surrogate models</span><span class="tag">root cause</span></div>
+          <div class="metrics">
+            <div class="metric"><div class="n">1.68→0.48</div><div class="l">MASE vs seasonal baseline</div></div>
+            <div class="metric"><div class="n">4.43→1.28</div><div class="l">CRPS</div></div>
+            <div class="metric"><div class="n">13.8→1.6%</div><div class="l">delay-prediction error</div></div>
           </div>
         </article>
 
         <article class="card reveal" data-cats="sci ml">
-          <div class="meta"><span>AISEA Lab · SJTU</span><span>Project lead</span></div>
-          <h3>Reactor Operation Digital Twin</h3>
-          <p>Real-time parameter identification and state estimation for a nuclear reactor, as a fast inverse problem.</p>
-          <ul>
-            <li>Designed a hybrid KNN-LHS search; SVD-autoencoder model-order reduction</li>
-            <li>Metaheuristics (fast simulated annealing, cuckoo search) for calibration</li>
-          </ul>
-          <div class="tags"><span class="tag">inverse problems</span><span class="tag">reduced-order models</span><span class="tag">optimisation</span></div>
+          <div class="meta"><span>AISEA Lab · SJTU</span><span>Research assistant · 2022–24</span></div>
+          <h3>Surrogate modelling for high-dimensional inverse problems</h3>
+          <p>Solved the inverse problem on a reduced latent state (SVD-autoencoder), using a kNN surrogate and Latin Hypercube Sampling. Gradients were unreliable on the flat, non-smooth calibration objective. I compared differential evolution, particle swarm and simulated annealing, then built a coarse-to-fine search.</p>
+          <div class="tags"><span class="tag">inverse problems</span><span class="tag">reduced-order models</span><span class="tag">derivative-free optimisation</span></div>
           <div class="metrics">
-            <div class="metric"><div class="n">&lt;0.1 s</div><div class="l">inference latency</div></div>
-            <div class="metric"><div class="n">2</div><div class="l">journal papers</div></div>
+            <div class="metric"><div class="n">~1%</div><div class="l">forward-model error</div></div>
+            <div class="metric"><div class="n">&lt;0.1 s</div><div class="l">per inference</div></div>
+            <div class="metric"><div class="n">~0.3%</div><div class="l">L2 error, coarse-to-fine</div></div>
           </div>
           <a class="more" href="https://github.com/ApolloHong/ML_for_INDUSTRY">Source on GitHub ↗</a>
-        </article>
-
-        <article class="card reveal" data-cats="ml sci">
-          <div class="meta"><span>Research</span><span>Deep learning</span></div>
-          <h3>Noise-tolerant ResNet for sparse-sensor field reconstruction</h3>
-          <p>Reconstructs full physical fields from a handful of noisy sensors, and holds up under measurement noise and vibration. The same problem appears in finance: inferring a dense state from sparse, corrupted observations.</p>
-          <div class="tags"><span class="tag">ResNet</span><span class="tag">robustness</span><span class="tag">sparse sensing</span></div>
-          <div class="metrics">
-            <div class="metric"><div class="n">CiCP</div><div class="l">Commun. Comput. Phys. 2024</div></div>
-          </div>
-        </article>
-
-        <article class="card reveal" data-cats="stoch">
-          <div class="meta"><span>COMAP MCM · CUMCM</span><span>Modelling</span></div>
-          <h3>Mathematical modelling competitions</h3>
-          <p>Three 72-hour team papers, each going from an open-ended problem to a validated model: population dynamics, biodiversity resilience, and heliostat-field optimisation with centroidal Voronoi tessellation.</p>
-          <div class="tags"><span class="tag">ODE systems</span><span class="tag">optimisation</span><span class="tag">sensitivity analysis</span></div>
-          <a class="more" href="/publications/">Read the papers →</a>
-        </article>
-
-        <article class="card reveal" data-cats="sci ml">
-          <div class="meta"><span>Sheng Xuanhuai Innovation Contest</span><span>Silver award</span></div>
-          <h3>LLM-driven digital-human interaction</h3>
-          <p>Took the digital-twin stack into a product: digital-character modelling plus LLM-driven interaction, deployed as an AI fitness coach in gym environments.</p>
-          <div class="tags"><span class="tag">Unity</span><span class="tag">LLM</span><span class="tag">product</span></div>
-          <a class="more" href="/projects/">Project page →</a>
         </article>
       </div>
     </div>
@@ -171,24 +181,24 @@ title: Applied Mathematics · Quantitative Finance
       </div>
       <div class="principles reveal">
         <div class="pr">
-          <div class="eq">p(θ | data) ∝ p(data | θ) · p(θ)</div>
+          <div class="eq">\[p(\theta \mid \mathcal{D}) \;\propto\; p(\mathcal{D} \mid \theta)\, p(\theta)\]</div>
           <h3>Every estimate comes with its uncertainty</h3>
           <p>A point forecast on its own is incomplete. Priors, shrinkage and posterior widths decide how hard to lean on a signal, and how much to size it.</p>
         </div>
         <div class="pr">
-          <div class="eq">Σ̂ = δ·F + (1 − δ)·S</div>
+          <div class="eq">\[\hat{\Sigma} \;=\; \delta\, F + (1-\delta)\, S\]</div>
           <h3>Regularise before you optimise</h3>
-          <p>With few observations per parameter, raw sample estimates overfit. I use Ledoit–Wolf shrinkage and L1/L2 penalties, and I control turnover explicitly.</p>
+          <p>With few observations per parameter, raw sample estimates overfit. I use Ledoit–Wolf shrinkage and penalties, and I control turnover explicitly.</p>
         </div>
         <div class="pr">
-          <div class="eq">SR<sub>net</sub> = E[r − c] / σ(r)</div>
+          <div class="eq">\[\mathrm{IR}_{\text{net}} \;=\; \frac{\mathbb{E}[\,r - c\,]}{\sigma(r - c)}\]</div>
           <h3>Costs are part of the model</h3>
-          <p>A backtest that ignores commission, slippage and turnover is measuring something else. I evaluate strategies net of costs, and only out of sample.</p>
+          <p>At SAIF, new features lifted mean rank IC from 0.031 to 0.038. After turnover limits, shrinkage and costs, net IR only moved from 0.78 to 0.91. That second pair of numbers is the one I report.</p>
         </div>
         <div class="pr">
-          <div class="eq">dX<sub>t</sub> = b(X<sub>t</sub>, t) dt + σ dW<sub>t</sub></div>
+          <div class="eq">\[dX_t \;=\; b(X_t, t)\,dt + \sigma(X_t)\,dW_t + dJ_t\]</div>
           <h3>Understand the process, then learn it</h3>
-          <p>I work through the stochastic calculus and the Markov structure first (Schrödinger bridges, diffusions), so that the learned models behave sensibly outside the training range.</p>
+          <p>For the SPY Schrödinger bridge I derived the drift and jump-intensity adjustments under the change of measure before training anything. That derivation is how I found the discretisation bias in the simulated jump risk.</p>
         </div>
       </div>
     </div>
@@ -200,16 +210,15 @@ title: Applied Mathematics · Quantitative Finance
         <div class="sec-idx"><span>04</span> / Publications</div>
         <div>
           <h2>Peer-reviewed</h2>
-          <p>Hybrid machine learning for inverse problems and state estimation.</p>
+          <p>Hybrid machine learning for reactor digital twins: inverse problems and state estimation.</p>
         </div>
       </div>
       <ol class="pubs reveal">
-        <li class="pub"><div class="yr">2025</div><div><div class="t">Decision tree based parameter identification and state estimation: application to Reactor Operation Digital Twin</div><div class="v"><em>Hong, L.</em> et al. · Nuclear Engineering and Techniques</div></div></li>
-        <li class="pub"><div class="yr">2024</div><div><div class="t">Optimizing near-carbon-free nuclear energy systems: advances in reactor operation digital twin through hybrid machine learning algorithms</div><div class="v"><em>Hong, L.</em> et al. · Nuclear Science and Techniques</div></div></li>
+        <li class="pub"><div class="yr">2025</div><div><div class="t">Decision tree based parameter identification and state estimation: application to Reactor Operation Digital Twin</div><div class="v"><em>Hong, L.</em> et al. · Nuclear Engineering and Technology</div></div></li>
+        <li class="pub"><div class="yr">2024</div><div><div class="t">Optimizing near-carbon-free nuclear energy systems: advances in reactor operation digital twin through hybrid machine learning algorithms</div><div class="v"><em>Hong, L.</em> et al. (first author) · Nuclear Science and Techniques</div></div></li>
         <li class="pub"><div class="yr">2024</div><div><div class="t">A noise and vibration tolerant ResNet for field reconstruction with sparse sensors</div><div class="v"><em>Hong, L.</em> et al. · Communications in Computational Physics</div></div></li>
       </ol>
       <a class="more-link" href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Google Scholar ↗</a>
-      &nbsp;&nbsp;
       <a class="more-link" href="/publications/">Preprints &amp; competition papers →</a>
     </div>
   </section>
@@ -221,10 +230,10 @@ title: Applied Mathematics · Quantitative Finance
         <div><h2>What I work with</h2></div>
       </div>
       <div class="stack reveal">
-        <div><h4>Mathematics</h4><p>Stochastic calculus<br>Bayesian inference<br>Optimal transport<br>Convex optimisation</p></div>
-        <div><h4>Statistics / ML</h4><p>Shrinkage &amp; regularisation<br>Time-series models<br>Deep learning (PyTorch, TF)<br>Model-order reduction</p></div>
-        <div><h4>Engineering</h4><p>Python · NumPy · Pandas<br>SQL · C · Java · MATLAB<br>scikit-learn · pyMOR<br>Git</p></div>
-        <div><h4>Languages</h4><p>Mandarin: native<br>English: fluent<br>French: fluent</p></div>
+        <div><h4>Quant research</h4><p>Alpha research · factor models<br>Backtesting · OOS validation<br>Market microstructure<br>Portfolio optimisation<br>Covariance estimation</p></div>
+        <div><h4>Mathematics</h4><p>Probability &amp; statistics<br>Stochastic calculus<br>Monte Carlo · rare events<br>Optimal transport<br>Numerical optimisation</p></div>
+        <div><h4>Machine learning</h4><p>Generative models<br>Deep learning (PyTorch)<br>Time-series forecasting<br>Regression · scikit-learn<br>LLM agents</p></div>
+        <div><h4>Engineering · languages</h4><p>Python · NumPy · Pandas<br>SQL · Java · MATLAB<br>Git · Linux<br>中文 · English · Français</p></div>
       </div>
     </div>
   </section>
@@ -237,9 +246,10 @@ title: Applied Mathematics · Quantitative Finance
       </div>
       <div class="about">
         <div class="reveal">
-          <p>I studied computer science and French at <strong>Shanghai Jiao Tong University</strong> before joining the engineering cycle at <strong>École Polytechnique</strong> in Paris. I've gone from nuclear-reactor digital twins to financial time series, and the question has stayed the same: <strong>what can you infer about a hidden state from noisy data, and how sure should you be?</strong></p>
-          <p>Away from the desk I train seriously. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, led the calisthenics association, and compete in CrossFit and Hyrox. I've also played rugby and American football. Training has taught me to run long experiments, keep a log, and accept slow, noisy feedback.</p>
-          <p>I write essays in Chinese, English and French, on ambition, history and books. <a href="/blogs/">Read them →</a></p>
+          <p>I did my bachelor's in computer science at <strong>Shanghai Jiao Tong University</strong> and joined the engineering cycle at <strong>École Polytechnique</strong> on a dual-degree track. I've gone from nuclear-reactor digital twins to financial time series, and the question has stayed the same: <strong>what can you infer about a hidden state from noisy data, and how sure should you be?</strong></p>
+          <p>At Polytechnique I'm <strong>Head of Quant at X-Finance</strong>, the student finance association.</p>
+          <p>Away from the desk I train seriously. I won the <strong>2023 Shanghai Intercollegiate Bodybuilding Cup</strong>, captained the SPEIT fitness team, and compete in CrossFit and Hyrox. I've also played rugby and American football. Training has taught me to run long experiments, keep a log, and accept slow, noisy feedback.</p>
+          <p>I write essays in Chinese, English and French. <a href="/blogs/">Read them →</a></p>
           <blockquote>"I broke my back in the gym. I rebuilt my core and came back stronger."</blockquote>
           <div class="gallery">
             <img src="/images/calisthenics.jpg" alt="Calisthenics training" loading="lazy">
@@ -261,19 +271,18 @@ title: Applied Mathematics · Quantitative Finance
       <h2>Open to <span>quantitative research &amp; trading</span> roles.</h2>
       <div class="links">
         <a class="btn primary" href="mailto:lizhan.hong@polytechnique.edu">lizhan.hong@polytechnique.edu</a>
+        <a class="btn" href="/file/CV_LizhanHong.pdf">CV (PDF)</a>
         <a class="btn" href="https://www.linkedin.com/in/honglizhan/">LinkedIn ↗</a>
         <a class="btn" href="https://github.com/ApolloHong">GitHub ↗</a>
         <a class="btn" href="https://scholar.google.com/citations?user=R3KY9QUAAAAJ">Scholar ↗</a>
       </div>
-      <p class="cvs">
-        CV: <a href="/file/Resume-LizhanHong.pdf">English</a> · <a href="/file/Lizhan_Hong_CV__French_.pdf">Français</a> · <a href="/file/洪历展中文简历.pdf">中文</a>
-      </p>
     </div>
   </section>
 </main>
 
-{% include site-footer.html note="The hero chart is a live simulation: a Kalman filter tracks a latent random walk through heavy noise, and an inventory-aware market maker quotes around the posterior mean. The Lab models are computed in your browser from the equations shown." %}
+{% include site-footer.html note="The hero is a live simulation. A GARCH leader with Student-t shocks drives 15 followers through hidden lags. Bayesian model averaging over the candidate lags produces each forecast, and a long/short book trades the ranking. The Lab models are computed in your browser from the equations shown." %}
 
+{% include mathjax.html %}
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/hero.js" defer></script>
 <script src="/assets/js/lab.js" defer></script>

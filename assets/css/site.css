@@ -22,6 +22,7 @@
   --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
   --display: 'Space Grotesk', 'Inter', 'PingFang SC', 'Noto Sans SC', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --math: 'STIX Two Text', 'Times New Roman', Times, serif;
   --max: 1160px;
   --gutter: clamp(16px, 4vw, 40px);
 }

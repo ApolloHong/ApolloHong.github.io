@@ -15,7 +15,7 @@ owner:
   github: /ApolloHong/
   linkedin: /honglizhan/
   scholar: https://scholar.google.com/citations?user=R3KY9QUAAAAJ&hl=zh-CN
-  CV: https://apollohong.github.io/file/洪历展简历.pdf
+  CV: https://apollohong.github.io/file/CV_LizhanHong.pdf
   # instagram: 
   # lastfm:
   # tumblr:
@@ -35,7 +35,7 @@ links:
   - title: About Me
     url: /
   - title: Resume
-    url: /file/Resume-LizhanHong.pdf
+    url: /file/CV_LizhanHong.pdf
   - title: Publications
     url: /publications/
   - title: Projects
