@@ -6,58 +6,63 @@
       </div>
 
       <div class="lab-tabs reveal" role="tablist" aria-label="Lab models">
-        <button class="chip" role="tab" id="tab-lob" data-demo="lob" aria-controls="lab-lob" aria-selected="true"><b>01</b>Toxic flow</button>
-        <button class="chip" role="tab" id="tab-ac" data-demo="ac" aria-controls="lab-ac" aria-selected="false" tabindex="-1"><b>02</b>Optimal execution</button>
+        <button class="chip" role="tab" id="tab-lob" data-demo="lob" aria-controls="lab-lob" aria-selected="true"><b>01</b>Hawkes toxic flow</button>
+        <button class="chip" role="tab" id="tab-exec" data-demo="exec" aria-controls="lab-exec" aria-selected="false" tabindex="-1"><b>02</b>Routing &amp; impact</button>
         <button class="chip" role="tab" id="tab-surface" data-demo="surface" aria-controls="lab-surface" aria-selected="false" tabindex="-1"><b>03</b>Vol surface</button>
         <button class="chip" role="tab" id="tab-dbdp" data-demo="dbdp" aria-controls="lab-dbdp" aria-selected="false" tabindex="-1"><b>04</b>Deep BSDE</button>
         <button class="chip" role="tab" id="tab-sb" data-demo="sb" aria-controls="lab-sb" aria-selected="false" tabindex="-1"><b>05</b>Schrödinger bridge</button>
         <button class="chip" role="tab" id="tab-kyle" data-demo="kyle" aria-controls="lab-kyle" aria-selected="false" tabindex="-1"><b>06</b>Kyle</button>
       </div>
 
-      <!-- 01 order book under toxic flow -->
+      <!-- 01 Hawkes order flow, informed trading, adverse selection -->
       <div class="lab-panel reveal" role="tabpanel" id="lab-lob" aria-labelledby="tab-lob">
         <div class="lab-fig">
-          <canvas aria-label="3D order-book depth over time; click to send toxic flow, drag to rotate"></canvas>
-          <div class="lab-cap">click: toxic flow · drag: rotate</div>
+          <canvas aria-label="3D order book driven by Hawkes order flow; click to send informed flow, drag to rotate"></canvas>
+          <div class="lab-cap">click: informed flow · drag: rotate</div>
         </div>
         <div class="lab-side">
-          <h3>Order book under toxic flow</h3>
-          <div class="eqn">\[\delta_t=\gamma\sigma_t^2+\tfrac{2}{\gamma}\ln\!\big(1+\tfrac{\gamma}{k}\big)+\alpha\,\pi_t\]</div>
+          <h3>Hawkes flow &amp; adverse selection</h3>
+          <div class="eqn">\[\lambda^{\pm}_t=\mu+\mu^{I,\pm}_t+\!\sum_{t_i\lt t}\!\alpha\,e^{-\beta(t-t_i)}\]\[\delta_t=\gamma\sigma_t^2+\tfrac{2}{\gamma}\ln\!\big(1+\tfrac{\gamma}{k}\big)+\psi\,\mathrm{VPIN}_t\]</div>
           <div class="ctrl">
-            <label><span class="row"><span>toxicity \(\alpha\)</span><output data-out="alpha"></output></span><input type="range" data-p="alpha" min="0" max="1" step="0.01"></label>
+            <label><span class="row"><span>informed intensity \(\alpha\)</span><output data-out="alpha"></output></span><input type="range" data-p="alpha" min="0" max="1" step="0.01"></label>
+            <label><span class="row"><span>branching ratio \(n\)</span><output data-out="n"></output></span><input type="range" data-p="n" min="0" max="0.95" step="0.01"></label>
             <label><span class="row"><span>risk aversion \(\gamma\)</span><output data-out="gamma"></output></span><input type="range" data-p="gamma" min="0.05" max="1" step="0.01"></label>
-            <div class="btns"><button class="btn" type="button" data-act="sell">Toxic sell</button><button class="btn" type="button" data-act="buy">Toxic buy</button></div>
+            <div class="btns"><button class="btn" type="button" data-act="sell">Informed sell</button><button class="btn" type="button" data-act="buy">Informed buy</button></div>
           </div>
           <div class="stats">
             <div><div class="k">spread (ticks)</div><div class="v" data-out="spread">—</div></div>
-            <div><div class="k">toxicity \(\pi_t\)</div><div class="v" data-out="pi">—</div></div>
-            <div><div class="k">\(\sigma_t\)</div><div class="v" data-out="vol">—</div></div>
-            <div><div class="k">mid move (ticks)</div><div class="v" data-out="mid">—</div></div>
+            <div><div class="k">VPIN</div><div class="v" data-out="vpin">—</div></div>
+            <div><div class="k">spread capture</div><div class="v" data-out="cap">—</div></div>
+            <div><div class="k">adverse selection</div><div class="v" data-out="as">—</div></div>
           </div>
+          <div class="mini-cap">market-maker P&amp;L, ticks · 12-tick markouts</div>
+          <canvas class="mini" aria-label="Market maker P&L: spread capture, adverse selection and net"></canvas>
         </div>
       </div>
 
-      <!-- 02 Almgren–Chriss -->
-      <div class="lab-panel" role="tabpanel" id="lab-ac" aria-labelledby="tab-ac" hidden>
+      <!-- 02 smart order routing and market impact -->
+      <div class="lab-panel" role="tabpanel" id="lab-exec" aria-labelledby="tab-exec" hidden>
         <div class="lab-fig">
-          <canvas aria-label="Almgren–Chriss optimal liquidation trajectories over risk aversion, with a risk envelope"></canvas>
-          <div class="lab-cap">drag: rotate · envelope: ±2σ price risk of unexecuted shares (×3)</div>
+          <canvas aria-label="Child orders routed across five venues and the resulting transient price impact"></canvas>
+          <div class="lab-cap">drag: rotate</div>
         </div>
         <div class="lab-side">
-          <h3>Almgren–Chriss execution</h3>
-          <div class="eqn">\[x^\star(t)=X\,\frac{\sinh\kappa(T-t)}{\sinh\kappa T},\quad \kappa^2\simeq\frac{\lambda\sigma^2}{\eta}\]</div>
+          <h3>Multi-venue execution &amp; impact</h3>
+          <div class="eqn">\[I_t=A\sum_{s\le t}q_s\,(1+\tfrac{t-s}{\tau_0})^{-\beta}\]\[f_i+\tfrac32\,c_i\sqrt{x_i/V_i}=\mu\]</div>
           <div class="ctrl">
-            <label><span class="row"><span>risk aversion \(\lambda\)</span><output data-out="lamv"></output></span><input type="range" data-p="lam" min="-8" max="-4.5" step="0.05"></label>
-            <label><span class="row"><span>volatility \(\sigma\) ($/share/√day)</span><output data-out="sigma"></output></span><input type="range" data-p="sigma" min="0.3" max="2" step="0.01"></label>
+            <label><span class="row"><span>order size \(Q/V\)</span><output data-out="qv"></output></span><input type="range" data-p="q" min="-3" max="-1" step="0.02"></label>
+            <label><span class="row"><span>urgency \(\kappa\)</span><output data-out="urg"></output></span><input type="range" data-p="urg" min="0" max="6" step="0.1"></label>
+            <label><span class="row"><span>impact decay \(\beta\)</span><output data-out="beta"></output></span><input type="range" data-p="beta" min="0.2" max="1.2" step="0.01"></label>
           </div>
+          <div class="alloc" data-alloc aria-label="Share of the order routed to each venue"></div>
           <div class="stats">
-            <div><div class="k">\(\mathbb{E}[\mathrm{IS}]\)</div><div class="v" data-out="eis">—</div></div>
-            <div><div class="k">\(\mathrm{SD}[\mathrm{IS}]\)</div><div class="v" data-out="sdis">—</div></div>
-            <div><div class="k">\(\kappa\)</div><div class="v" data-out="kappa">—</div></div>
-            <div><div class="k">inventory half-life</div><div class="v" data-out="half">—</div></div>
+            <div><div class="k">shortfall</div><div class="v" data-out="is">—</div></div>
+            <div><div class="k">fees + slippage</div><div class="v" data-out="fees">—</div></div>
+            <div><div class="k">peak impact</div><div class="v" data-out="peak">—</div></div>
+            <div><div class="k">residual impact</div><div class="v" data-out="resid">—</div></div>
           </div>
-          <div class="mini-cap">efficient frontier · \(\mathbb{E}[\mathrm{IS}]\) vs \(\mathrm{SD}[\mathrm{IS}]\)</div>
-          <canvas class="mini" aria-label="Efficient frontier of expected cost against its standard deviation"></canvas>
+          <div class="mini-cap">square-root law · ○ \(Y\sigma\sqrt{Q/V}\) &nbsp;● simulated peak</div>
+          <canvas class="mini" aria-label="Square-root law of market impact with the current order"></canvas>
         </div>
       </div>
 

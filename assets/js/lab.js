@@ -4,8 +4,8 @@
  *   dbdp    — deep backward dynamic programming for a d-dimensional HJB equation (Huré, Pham & Warin, 2020)
  *   sb      — Schrödinger bridge via log-domain Sinkhorn / IPF, sampled as Brownian bridges
  *   kyle    — continuous-time Kyle (1985) / Back (1992) insider-trading equilibrium
- *   lob     — limit order book under toxic flow: Avellaneda–Stoikov spread plus adverse selection, liquidity shock waves
- *   ac      — Almgren–Chriss optimal execution: strategy surface over risk aversion, risk envelope, efficient frontier
+ *   lob     — order book under Hawkes order flow and informed trading: VPIN-adjusted spread, adverse-selection markouts
+ *   exec    — smart order routing across venues with transient (propagator) market impact and the square-root law
  */
 (function () {
   const root = document.documentElement;
@@ -853,29 +853,56 @@
   const pathOf = (ctx, pts) => { ctx.beginPath(); pts.forEach((p, k) => (k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); };
 
   // =====================================================================
-  // 5. Limit order book under toxic flow
-  //    queue depths relax to a profile outside the quoted half-spread; the market maker's spread is
-  //    Avellaneda–Stoikov plus an adverse-selection term in the toxicity estimate π_t; an informed burst
-  //    removes liquidity as a wave travelling away from the touch, then the book refills (resilience)
+  // 5. Order book under Hawkes order flow, informed trading and adverse selection
+  //    market orders:  λ±_t = μ + μᴵ±_t + a_self Σ e^{−β(t−tᵢ)} (same side) + a_cross Σ e^{−β(t−tⱼ)} (other side)
+  //                    branching ratio n = (a_self + a_cross)/β < 1
+  //    informed flow:  after a toxic event the hidden value v jumps; informed traders buy (sell) while v > mid (< mid)
+  //    market maker:   Avellaneda–Stoikov spread plus ψ·VPIN; P&L = spread capture + markout (adverse selection)
   // =====================================================================
   function LobDemo(panel) {
-    const canvas = $(panel, 'canvas');
-    const L = 20, ROWS = 46, TPS = 12, K = 1.5;
-    const P = { alpha: 0.6, gamma: 0.3 };
-    const cam = { yaw: -0.42, pitch: 0.66, dist: 6, cx: 0.47, cy: 0.58, sc: 0.31, touched: 0 };
-    const st = { t: 0, sig2: 1, pi: 0.05, h: 1, mid: 0, midV: 0, bid: new Float64Array(L), ask: new Float64Array(L), waves: [], hist: [], idle: 0 };
-    let S, running = false, raf = 0, last = 0, acc = 0, hudT = 0;
+    const canvas = $(panel, 'canvas'), mini = $(panel, 'canvas.mini');
+    const L = 20, ROWS = 46, TPS = 12, K = 1.5, BETA = 0.3, MU = 0.28, JUMP = 5, HMK = 12, PSI = 10, KEEP = 240;
+    const P = { alpha: 0.6, n: 0.7, gamma: 0.3 };
+    const cam = { yaw: -0.42, pitch: 0.66, dist: 6, cx: 0.47, cy: 0.58, sc: 0.29, touched: 0 };
+    const st = {
+      t: 0, sig2: 1, vN: 0.05, vD: 1, h: 1, mid: 0, v: 0, inf: 0, kB: 0, kS: 0, lamB: MU, lamS: MU,
+      bid: new Float64Array(L), ask: new Float64Array(L), waves: [], hist: [], fills: [], cap: 0, as: 0, pnl: [], parts: [], idle: 0,
+    };
+    let S, M, running = false, raf = 0, last = 0, acc = 0, hudT = 0;
 
-    const spread = () => P.gamma * st.sig2 * 2 + (2 / P.gamma) * Math.log(1 + P.gamma / K) + 8 * P.alpha * st.pi;
+    const pois = (lam) => { lam = Math.min(lam, 12); const e = Math.exp(-lam); let k = 0, p = 1; do { k++; p *= Math.random(); } while (p > e); return k - 1; };
+    const vpin = () => st.vN / Math.max(st.vD, 1e-6);
+    const spread = () => P.gamma * st.sig2 * 2 + (2 / P.gamma) * Math.log(1 + P.gamma / K) + PSI * vpin();
     const profile = (d, h) => (d < h ? 0 : 10 * (1 - Math.exp(-(d - h + 0.6) / 3.2)) * (0.8 + 0.3 * Math.exp(-((d - h - 5) ** 2) / 24)));
     for (let d = 0; d < L; d++) { st.bid[d] = profile(d + 1, 1); st.ask[d] = profile(d + 1, 1); }
 
+    function eat(q, n) { // market orders consume the touch
+      let rem = n * 1.3;
+      for (let d = Math.max(0, Math.ceil(st.h) - 1); d < L && rem > 0; d++) { const take = Math.min(q[d], rem); q[d] -= take; rem -= take; }
+    }
     function step() {
       st.t++;
-      st.sig2 += (1 - st.sig2) * 0.025;
-      st.pi += (0.05 - st.pi) * 0.03;
+      const aS = 0.75 * P.n * BETA, aC = 0.25 * P.n * BETA;
+      const gap = st.v - st.mid, muI = Math.abs(gap) > 0.5 ? st.inf : 0;
+      st.inf *= 0.975;
+      if (st.inf < 0.02) st.v = st.mid;
+      st.lamB = MU + (gap > 0 ? muI : 0) + aS * st.kB + aC * st.kS;
+      st.lamS = MU + (gap < 0 ? muI : 0) + aS * st.kS + aC * st.kB;
+      const nB = pois(st.lamB), nS = pois(st.lamS), dec = Math.exp(-BETA);
+      st.kB = st.kB * dec + nB; st.kS = st.kS * dec + nS;
+
+      // price impact of net flow; the market maker fills every market order at the half-spread
+      const dm = 0.35 * (nB - nS) + 0.15 * randn();
+      st.mid += dm;
+      st.sig2 += (dm * dm * 4 - st.sig2) * 0.03;
+      st.cap += (nB + nS) * st.h;
+      if (nB) st.fills.push({ t: st.t, dir: 1, q: nB, m: st.mid - dm });
+      if (nS) st.fills.push({ t: st.t, dir: -1, q: nS, m: st.mid - dm });
+      while (st.fills.length && st.t - st.fills[0].t >= HMK) { const f = st.fills.shift(); st.as -= f.dir * f.q * (st.mid - f.m); }
+      st.vN = 0.95 * st.vN + 0.05 * Math.abs(nB - nS);
+      st.vD = 0.95 * st.vD + 0.05 * (nB + nS);
       st.h += (spread() / 2 - st.h) * 0.25;
-      st.mid += st.midV; st.midV *= 0.88;
+
       const hits = { bid: new Float32Array(L), ask: new Float32Array(L) };
       for (const side of ['bid', 'ask']) {
         const q = st[side];
@@ -889,38 +916,54 @@
           hit = Math.min(0.95, hit);
           hits[side][d] = hit;
           q[d] += (profile(dd, st.h) * (1 - hit) - q[d]) * 0.12 + randn() * 0.25 * Math.sqrt(Math.max(q[d], 0.4));
-          if (q[d] < 0 || dd < st.h) q[d] = Math.max(0, q[d] * (dd < st.h ? 0.4 : 1));
+          if (q[d] < 0) q[d] = 0;
+          if (dd < st.h) q[d] *= 0.4;
         }
       }
-      // uninformed market orders nibble at the touch
-      if (Math.random() < 0.35) { const s = Math.random() < 0.5 ? 'bid' : 'ask'; const i = clamp(Math.ceil(st.h) - 1, 0, L - 1); st[s][i] *= 0.7; }
+      eat(st.ask, nB); eat(st.bid, nS);
+      for (let k = 0; k < Math.min(nB, 4); k++) st.parts.push({ side: 'ask', t0: st.t + Math.random() });
+      for (let k = 0; k < Math.min(nS, 4); k++) st.parts.push({ side: 'bid', t0: st.t + Math.random() });
+      st.parts = st.parts.filter((p) => st.t - p.t0 < 4);
       st.waves = st.waves.filter((w) => st.t - w.t0 < 90);
-      st.hist.push({ bid: Float32Array.from(st.bid), ask: Float32Array.from(st.ask), hb: hits.bid, ha: hits.ask, h: st.h });
+      st.hist.push({ bid: Float32Array.from(st.bid), ask: Float32Array.from(st.ask), hb: hits.bid, ha: hits.ask, h: st.h, lB: st.lamB, lS: st.lamS });
       if (st.hist.length > ROWS) st.hist.shift();
+      st.pnl.push([st.cap, st.as]);
+      if (st.pnl.length > KEEP) st.pnl.shift();
       if (!reduce && ++st.idle > TPS * 7) toxic(Math.random() < 0.5 ? 'ask' : 'bid');
     }
-    function toxic(side) { // side hit: informed buying lifts the asks, informed selling hits the bids
+    function toxic(side) { // 'ask': informed buyers lift the offer; 'bid': informed sellers hit the bid
       st.idle = 0;
-      st.waves.push({ t0: st.t, side, amp: 0.35 + 0.6 * P.alpha });
-      st.pi = Math.min(1, st.pi + 0.3 + 0.6 * P.alpha);
-      st.sig2 += 1.5 + 4 * P.alpha;
-      st.midV += (side === 'ask' ? 1 : -1) * (0.3 + 0.9 * P.alpha);
+      st.v = st.mid + (side === 'ask' ? 1 : -1) * JUMP * (0.5 + P.alpha);
+      st.inf = 0.4 + 1.6 * P.alpha;
+      st.waves.push({ t0: st.t, side, amp: 0.3 + 0.5 * P.alpha });
     }
-    for (let i = 0; i < ROWS + 20; i++) { st.idle = 0; step(); }
+    for (let i = 0; i < KEEP; i++) { st.idle = 0; step(); }
 
-    function draw() {
+    function draw(frac = 0) {
       const { ctx, W, H } = S;
       ctx.clearRect(0, 0, W, H);
       const Pj = (x, y, z) => project(cam, S, x, y, z);
-      const n = st.hist.length, Y = (r) => 1 - (2 * r) / (ROWS - 1), Z = (q) => (q / 14) * 0.55;
-      // floor
+      const n = st.hist.length, Y = (r) => 1 - (2 * r) / (ROWS - 1), Z = (q) => (q / 14) * 0.55, WL = 1.14, LZ = (l) => Math.min(l, 6) / 6 * 0.62;
       ctx.strokeStyle = rgba(C.grid, 1); ctx.lineWidth = 1;
       ctx.beginPath();
       for (let o = -L; o <= L; o += 5) { const a = Pj(o / L, 1, 0), b = Pj(o / L, -1, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
-      for (let r = 0; r < ROWS; r += 5) { const a = Pj(-1, Y(r), 0), b = Pj(1, Y(r), 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      for (let r = 0; r < ROWS; r += 5) { const a = Pj(-WL, Y(r), 0), b = Pj(WL, Y(r), 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
       ctx.stroke();
+
+      // Hawkes intensity walls: λ⁻ (sell orders) behind the bids, λ⁺ (buy orders) behind the asks
+      for (const [key, x, col] of [['lS', -WL, C.bid], ['lB', WL, C.ask]]) {
+        const pts = st.hist.map((row, r) => Pj(x, Y(r + ROWS - n), LZ(row[key])));
+        const f0 = Pj(x, Y(ROWS - n), 0), f1 = Pj(x, Y(ROWS - 1), 0);
+        const g = ctx.createLinearGradient(0, Math.min(...pts.map((p) => p[1])), 0, f1[1]);
+        g.addColorStop(0, rgba(col, 0.35)); g.addColorStop(1, rgba(col, 0.03));
+        ctx.fillStyle = g;
+        pathOf(ctx, [f0, ...pts, f1]); ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = rgba(col, 0.95); ctx.lineWidth = 1.5;
+        pathOf(ctx, pts); ctx.stroke();
+      }
+
       const mid0 = Pj(0, 1, 0), mid1 = Pj(0, -1.05, 0);
-      ctx.strokeStyle = rgba(C.signal, 0.35); ctx.setLineDash([3, 4]);
+      ctx.strokeStyle = rgba(C.signal, 0.35); ctx.setLineDash([3, 4]); ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(mid0[0], mid0[1]); ctx.lineTo(mid1[0], mid1[1]); ctx.stroke(); ctx.setLineDash([]);
 
       const order = [...Array(n).keys()].sort((a, b) => Pj(0, Y(b), 0)[2] - Pj(0, Y(a), 0)[2]);
@@ -930,7 +973,7 @@
           const sgn = side === 'bid' ? -1 : 1, q = row[side], hits = side === 'bid' ? row.hb : row.ha, col = side === 'bid' ? C.bid : C.ask;
           const pts = [];
           for (let d = L - 1; d >= 0; d--) pts.push(Pj((sgn * (d + 1)) / L, y, Z(q[d])));
-          const base0 = Pj((sgn * L) / L, y, 0), base1 = Pj(sgn / L, y, 0);
+          const base0 = Pj(sgn, y, 0), base1 = Pj(sgn / L, y, 0);
           ctx.fillStyle = rgba(C.bg, 0.9);
           pathOf(ctx, [base0, ...pts, base1]); ctx.closePath(); ctx.fill();
           ctx.fillStyle = rgba(col, 0.05 + 0.2 * rec);
@@ -943,37 +986,69 @@
           }
         }
       }
-      // spread bracket on the newest row
-      const hNow = st.hist[n - 1].h, yF = Y(ROWS - 1) - 0.08;
-      const a = Pj(-hNow / L, yF, 0), b = Pj(hNow / L, yF, 0);
+
+      // incoming market orders, falling onto the touch of the newest book
+      const hNow = st.hist[n - 1].h, yF = Y(ROWS - 1);
+      for (const p of st.parts) {
+        const age = clamp((st.t + frac - p.t0) / 2.5, 0, 1), sgn = p.side === 'bid' ? -1 : 1;
+        const q = p.side === 'bid' ? st.bid : st.ask, zt = Z(q[clamp(Math.ceil(hNow) - 1, 0, L - 1)]);
+        const pt = Pj((sgn * (hNow + 0.5)) / L, yF, zt + (1 - age) * 0.7);
+        ctx.fillStyle = rgba(p.side === 'bid' ? C.bid : C.ask, 1 - age * 0.6);
+        ctx.beginPath(); ctx.arc(pt[0], pt[1], 2.6, 0, Math.PI * 2); ctx.fill();
+      }
+
+      const a = Pj(-hNow / L, yF - 0.08, 0), b = Pj(hNow / L, yF - 0.08, 0);
       ctx.strokeStyle = rgba(C.signal, 0.95); ctx.lineWidth = 2;
       ctx.beginPath(); ctx.moveTo(a[0], a[1] - 5); ctx.lineTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(b[0], b[1] - 5); ctx.stroke();
       ctx.font = `11px ${MONO}`; ctx.fillStyle = rgba(C.signal, 1); ctx.textAlign = 'center';
-      ctx.fillText(`spread ${(2 * hNow).toFixed(1)} ticks`, (a[0] + b[0]) / 2, Math.max(a[1], b[1]) + 26);
+      ctx.fillText(`spread ${(2 * hNow).toFixed(1)}`, (a[0] + b[0]) / 2, Math.max(a[1], b[1]) + 22);
       ctx.fillStyle = rgba(C.muted, 1);
-      const lb = Pj(-0.6, -1.15, 0), la = Pj(0.6, -1.15, 0);
-      ctx.fillText('bids', lb[0], lb[1] + 14); ctx.fillText('asks', la[0], la[1] + 14);
-      const lt = Pj(1.12, 0, 0); ctx.fillText('time ↑', lt[0], lt[1]);
+      let p = Pj(-WL, 1, LZ(6) + 0.08); ctx.fillText('λ⁻ sells (Hawkes)', p[0], p[1]);
+      p = Pj(WL, 1, LZ(6) + 0.08); ctx.fillText('λ⁺ buys (Hawkes)', p[0], p[1]);
+      p = Pj(-0.55, -1.15, 0); ctx.fillText('bids', p[0], p[1] + 14);
+      p = Pj(0.55, -1.15, 0); ctx.fillText('asks', p[0], p[1] + 14);
       ctx.textAlign = 'left';
     }
 
+    function drawMini() {
+      const { ctx, W, H } = M;
+      ctx.clearRect(0, 0, W, H);
+      const n = st.pnl.length, c0 = st.pnl[0][0], a0 = st.pnl[0][1];
+      const cap = st.pnl.map((p) => p[0] - c0), as = st.pnl.map((p) => p[1] - a0), net = cap.map((c, i) => c + as[i]);
+      let lo = 0, hi = 1;
+      for (const arr of [cap, as, net]) for (const v of arr) { lo = Math.min(lo, v); hi = Math.max(hi, v); }
+      const f = frame(ctx, 40, 8, W - 88, H - 22, [0, n - 1], [lo, hi]);
+      drawAxes(ctx, f, [], [Math.round(lo), 0, Math.round(hi)], null, null);
+      const line = (arr, col, lw, lab) => {
+        ctx.strokeStyle = col; ctx.lineWidth = lw;
+        ctx.beginPath(); arr.forEach((v, i) => (i ? ctx.lineTo(f.X(i), f.Y(v)) : ctx.moveTo(f.X(i), f.Y(v)))); ctx.stroke();
+        ctx.fillStyle = col; ctx.fillText(lab, f.x0 + f.w + 6, f.Y(arr[n - 1]) + 3);
+      };
+      ctx.font = `10px ${MONO}`;
+      line(cap, rgba(C.bid, 1), 1.5, 'spread');
+      line(as, rgba(C.ask, 1), 1.5, 'adverse');
+      line(net, rgba(C.signal, 1), 2, 'net');
+    }
+
+    function hud() {
+      const c0 = st.pnl[0][0], a0 = st.pnl[0][1], lp = st.pnl[st.pnl.length - 1];
+      setOut(panel, 'spread', (2 * st.h).toFixed(2));
+      setOut(panel, 'vpin', vpin().toFixed(2));
+      setOut(panel, 'cap', '+' + (lp[0] - c0).toFixed(0));
+      setOut(panel, 'as', (lp[1] - a0 >= 0 ? '+' : '−') + Math.abs(lp[1] - a0).toFixed(0));
+      drawMini();
+    }
     function loop(now) {
       const dt = Math.min(0.1, (now - (last || now)) / 1000); last = now;
       acc += dt * TPS;
       while (acc >= 1) { step(); acc -= 1; }
       if (!cam.touched || now - cam.touched > 5000) cam.yaw = -0.42 + 0.12 * Math.sin(now / 7000);
-      draw();
-      if (now - hudT > 200) { hudT = now; hud(); }
+      draw(acc);
+      if (now - hudT > 250) { hudT = now; hud(); }
       raf = requestAnimationFrame(loop);
     }
-    function hud() {
-      setOut(panel, 'spread', (2 * st.h).toFixed(2));
-      setOut(panel, 'pi', st.pi.toFixed(2));
-      setOut(panel, 'vol', Math.sqrt(st.sig2).toFixed(2));
-      setOut(panel, 'mid', (st.mid >= 0 ? '+' : '−') + Math.abs(st.mid).toFixed(1));
-    }
 
-    const fire = (side) => { toxic(side); if (!running || reduce) { for (let i = 0; i < 8; i++) step(); draw(); hud(); } };
+    const fire = (side) => { toxic(side); if (!running || reduce) { for (let i = 0; i < 10; i++) step(); draw(); hud(); } };
     orbit(canvas, cam, (x) => fire(x < S.W / 2 ? 'bid' : 'ask'));
     panel.querySelectorAll('input[data-p]').forEach((inp) => {
       inp.value = P[inp.dataset.p]; setOut(panel, inp.dataset.p, (+inp.value).toFixed(2));
@@ -983,164 +1058,205 @@
     $(panel, '[data-act="sell"]').addEventListener('click', () => fire('bid'));
 
     S = surface(canvas, () => draw());
+    M = surface(mini, () => drawMini());
     return {
       start() { if (running) return; running = true; hud(); if (reduce) { draw(); return; } last = 0; raf = requestAnimationFrame(loop); },
-      stop() { running = false; cancelAnimationFrame(raf); },
-      redraw() { draw(); },
-    };
-  }
-
-  // =====================================================================
-  // 6. Almgren–Chriss optimal execution (parameters from Almgren & Chriss, 2000)
-  //    x_k = X sinh(κ(T − t_k)) / sinh(κT),  cosh(κτ) = 1 + λσ²τ² / (2η̃),  η̃ = η − γτ/2
-  //    E[IS] = ½γX² + εX + (η̃/τ) Σ n_k²,   Var[IS] = σ²τ Σ x_k²
-  // =====================================================================
-  function AcDemo(panel) {
-    const canvas = $(panel, 'canvas'), mini = $(panel, 'canvas.mini');
-    const X = 1e6, S0 = 50, T = 5, N = 50, ETA = 2.5e-6, GAM = 2.5e-7, EPS = 0.0625;
-    const NL = 25, LMIN = -8, LMAX = -4.5, TSTEP = 2;
-    const P = { lam: -6, sigma: 0.95 };
-    const cam = { yaw: -0.55, pitch: 0.55, dist: 6, cx: 0.47, cy: 0.6, sc: 0.26, touched: 0 };
-    let S, M, running = false, raf = 0, phase = 0, last = 0, fam = [], cur = null, tgt = null, front = [];
-
-    function plan(lam, sigma) {
-      const tau = T / N, et = ETA - 0.5 * GAM * tau;
-      const a = (Math.pow(10, lam) * sigma * sigma * tau * tau) / (2 * et);
-      const kap = a < 1e-12 ? 0 : Math.acosh(1 + a) / tau;
-      const x = new Float64Array(N + 1);
-      for (let k = 0; k <= N; k++) { const t = k * tau; x[k] = kap < 1e-9 ? X * (1 - t / T) : (X * Math.sinh(kap * (T - t))) / Math.sinh(kap * T); }
-      let sn2 = 0, sx2 = 0;
-      for (let k = 1; k <= N; k++) { const nk = x[k - 1] - x[k]; sn2 += nk * nk; sx2 += x[k] * x[k]; }
-      const E = 0.5 * GAM * X * X + EPS * X + (et / tau) * sn2, V = sigma * sigma * tau * sx2;
-      return { x, E, sd: Math.sqrt(V), kap };
-    }
-    function rebuild() {
-      fam = [];
-      for (let i = 0; i < NL; i++) fam.push(plan(LMIN + ((LMAX - LMIN) * i) / (NL - 1), P.sigma).x);
-      front = [];
-      for (let i = 0; i <= 40; i++) { const p = plan(LMIN + ((LMAX - LMIN) * i) / 40, P.sigma); front.push([p.sd, p.E]); }
-      const p = plan(P.lam, P.sigma);
-      tgt = p;
-      if (!cur) cur = Float64Array.from(p.x);
-      setOut(panel, 'lamv', '1e' + P.lam.toFixed(1));
-      setOut(panel, 'sigma', P.sigma.toFixed(2));
-      setOut(panel, 'eis', `$${(p.E / 1e3).toFixed(0)}k · ${((p.E / (X * S0)) * 1e4).toFixed(1)} bp`);
-      setOut(panel, 'sdis', `$${(p.sd / 1e3).toFixed(0)}k`);
-      setOut(panel, 'kappa', p.kap.toFixed(2) + ' /day');
-      setOut(panel, 'half', p.kap < 1e-6 ? '— (TWAP)' : (Math.log(2) / p.kap).toFixed(2) + ' days');
-      drawMini();
-    }
-
-    const tx = (k) => (k / N) * 2 - 1, ly = (l) => 1 - ((l - LMIN) / (LMAX - LMIN)) * 2, zx = (x) => (x / X) * 0.95;
-    function draw() {
-      const { ctx, W, H } = S;
-      ctx.clearRect(0, 0, W, H);
-      const Pj = (x, y, z) => project(cam, S, x, y, z);
-      // floor + walls
-      ctx.strokeStyle = rgba(C.grid, 1); ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let q = 0; q <= 5; q++) { const x = -1 + q * 0.4; let a = Pj(x, -1, 0), b = Pj(x, 1, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); a = Pj(x, 1, 0); b = Pj(x, 1, 0.95); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
-      for (let q = 0; q <= 4; q++) { const y = -1 + q * 0.5; const a = Pj(-1, y, 0), b = Pj(1, y, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
-      for (let q = 0; q <= 4; q++) { const z = q * 0.2375; const a = Pj(-1, 1, z), b = Pj(1, 1, z); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
-      ctx.stroke();
-
-      // family of optimal trajectories over λ: the strategy surface
-      const quads = [];
-      for (let i = 0; i < NL - 1; i++) for (let k = 0; k < N; k += TSTEP) {
-        const l0 = LMIN + ((LMAX - LMIN) * i) / (NL - 1), l1 = LMIN + ((LMAX - LMIN) * (i + 1)) / (NL - 1), k1 = Math.min(N, k + TSTEP);
-        const pts = [Pj(tx(k), ly(l0), zx(fam[i][k])), Pj(tx(k1), ly(l0), zx(fam[i][k1])), Pj(tx(k1), ly(l1), zx(fam[i + 1][k1])), Pj(tx(k), ly(l1), zx(fam[i + 1][k]))];
-        quads.push({ pts, u: i / (NL - 2), d: (pts[0][2] + pts[2][2]) / 2 });
-      }
-      quads.sort((a, b) => b.d - a.d);
-      ctx.lineWidth = 0.6;
-      for (const q of quads) {
-        pathOf(ctx, q.pts); ctx.closePath();
-        ctx.fillStyle = rgba(mix(C.seq0, C.seq1, q.u), 0.22); ctx.fill();
-        ctx.strokeStyle = rgba(C.line2, 0.35); ctx.stroke();
-      }
-
-      // current plan: risk envelope (±2σ price risk of the unexecuted shares, ×3), curve, execution dot
-      for (let k = 0; k <= N; k++) cur[k] += (tgt.x[k] - cur[k]) * 0.14;
-      const y0 = ly(P.lam), tau = T / N;
-      const band = (k) => (cur[k] / X) * ((2 * P.sigma * Math.sqrt(T - k * tau)) / S0) * 3;
-      const up = [], dn = [];
-      for (let k = 0; k <= N; k++) { up.push(Pj(tx(k), y0, zx(cur[k]) + band(k))); dn.push(Pj(tx(k), y0, Math.max(0, zx(cur[k]) - band(k)))); }
-      ctx.fillStyle = rgba(C.signal, 0.16);
-      pathOf(ctx, [...up, ...dn.reverse()]); ctx.closePath(); ctx.fill();
-      ctx.strokeStyle = rgba(C.signal, 0.35); ctx.lineWidth = 1;
-      pathOf(ctx, up); ctx.stroke(); pathOf(ctx, dn); ctx.stroke();
-      const curve = [];
-      for (let k = 0; k <= N; k++) curve.push(Pj(tx(k), y0, zx(cur[k])));
-      const kNow = phase * N;
-      ctx.lineWidth = 3; ctx.strokeStyle = rgba(C.signal, 0.45);
-      pathOf(ctx, curve); ctx.stroke();
-      ctx.strokeStyle = rgba(C.signal, 1);
-      pathOf(ctx, curve.slice(0, Math.floor(kNow) + 1)); ctx.stroke();
-      const k0 = Math.floor(kNow), fr = kNow - k0, k1 = Math.min(N, k0 + 1);
-      const dot = Pj(tx(kNow), y0, zx(cur[k0] * (1 - fr) + cur[k1] * fr));
-      ctx.fillStyle = rgba(C.signal, 0.25); ctx.beginPath(); ctx.arc(dot[0], dot[1], 9, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = rgba(C.signal, 1); ctx.beginPath(); ctx.arc(dot[0], dot[1], 3.5, 0, Math.PI * 2); ctx.fill();
-
-      // child orders n_k on the front wall
-      let nmax = 0;
-      for (let k = 1; k <= N; k++) nmax = Math.max(nmax, cur[k - 1] - cur[k]);
-      ctx.lineWidth = 2.5; ctx.lineCap = 'round';
-      for (let k = 1; k <= N; k++) {
-        const h = ((cur[k - 1] - cur[k]) / nmax) * 0.32, a = Pj(tx(k - 0.5), -1.12, 0), b = Pj(tx(k - 0.5), -1.12, h);
-        ctx.strokeStyle = rgba(k <= kNow ? C.signal : C.ink2, k <= kNow ? 0.95 : 0.35);
-        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
-      }
-      ctx.lineCap = 'butt';
-
-      ctx.font = `11px ${MONO}`; ctx.fillStyle = rgba(C.muted, 1);
-      let p = Pj(0, -1.3, 0); ctx.textAlign = 'center'; ctx.fillText('time t (days) · child orders nₖ', p[0], p[1] + 16);
-      p = Pj(1.18, 0, 0); ctx.textAlign = 'left'; ctx.fillText('risk aversion λ', p[0], p[1]);
-      p = Pj(1.14, -1, 0); ctx.fillText('high λ', p[0], p[1]);
-      p = Pj(1.14, 1, 0); ctx.fillText('λ→0 (TWAP)', p[0], p[1]);
-      p = Pj(-1, 1, 1.02); ctx.fillText('inventory xₜ / X', p[0], p[1]);
-    }
-
-    function drawMini() {
-      if (!M) return;
-      const { ctx, W, H } = M;
-      ctx.clearRect(0, 0, W, H);
-      let xl = Infinity, xh = -Infinity, yl = Infinity, yh = -Infinity;
-      for (const [a, b] of front) { xl = Math.min(xl, a); xh = Math.max(xh, a); yl = Math.min(yl, b); yh = Math.max(yh, b); }
-      const f = frame(ctx, 40, 10, W - 50, H - 34, [xl / 1e3, xh / 1e3], [yl / 1e3, yh / 1e3]);
-      drawAxes(ctx, f, [[xl / 1e3, (xl / 1e3).toFixed(0)], [xh / 1e3, (xh / 1e3).toFixed(0) + 'k']], [Math.round(yl / 1e3), Math.round(yh / 1e3)], null, null);
-      ctx.fillStyle = rgba(C.muted, 1); ctx.fillText('SD[IS] $', f.x0 + f.w / 2 - 20, f.y0 + f.h + 16);
-      ctx.strokeStyle = rgba(C.ink2, 0.8); ctx.lineWidth = 1.5;
-      ctx.beginPath(); front.forEach(([a, b], k) => (k ? ctx.lineTo(f.X(a / 1e3), f.Y(b / 1e3)) : ctx.moveTo(f.X(a / 1e3), f.Y(b / 1e3)))); ctx.stroke();
-      ctx.fillStyle = rgba(C.signal, 1);
-      ctx.beginPath(); ctx.arc(f.X(tgt.sd / 1e3), f.Y(tgt.E / 1e3), 4.5, 0, Math.PI * 2); ctx.fill();
-    }
-
-    function loop(now) {
-      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
-      phase = (phase + dt / 4.5) % 1;
-      if (!cam.touched || now - cam.touched > 5000) cam.yaw = -0.55 + 0.15 * Math.sin(now / 8000);
-      draw();
-      raf = requestAnimationFrame(loop);
-    }
-
-    orbit(canvas, cam, null);
-    const lamIn = $(panel, 'input[data-p="lam"]'), sigIn = $(panel, 'input[data-p="sigma"]');
-    lamIn.value = P.lam; sigIn.value = P.sigma;
-    lamIn.addEventListener('input', () => { P.lam = +lamIn.value; rebuild(); if (!running || reduce) { cur = Float64Array.from(tgt.x); draw(); } });
-    sigIn.addEventListener('input', () => { P.sigma = +sigIn.value; rebuild(); if (!running || reduce) { cur = Float64Array.from(tgt.x); draw(); } });
-
-    S = surface(canvas, () => draw());
-    M = surface(mini, () => drawMini());
-    rebuild();
-    return {
-      start() { if (running) return; running = true; if (reduce) { phase = 1; cur = Float64Array.from(tgt.x); draw(); return; } last = 0; raf = requestAnimationFrame(loop); },
       stop() { running = false; cancelAnimationFrame(raf); },
       redraw() { draw(); drawMini(); },
     };
   }
 
+  // =====================================================================
+  // 6. Smart order routing across venues + transient market impact
+  //    schedule   q_k from x(t) = sinh(κ(1−t))/sinh κ  (κ = 0: TWAP)
+  //    routing    min Σ fᵢxᵢ + cᵢ xᵢ^{3/2}/√Vᵢ  s.t. Σ xᵢ = q_k  ⇒  fᵢ + (3/2) cᵢ √(xᵢ/Vᵢ) = μ  (dark pool capped)
+  //    impact     I_t = A Σ_{s≤t} q_s G(t−s),  G(τ) = (1 + τ/τ₀)^{−β},  A calibrated so a TWAP peaks at Yσ√(Q/V)
+  // =====================================================================
+  function ExecDemo(panel) {
+    const canvas = $(panel, 'canvas'), mini = $(panel, 'canvas.mini'), allocEl = $(panel, '[data-alloc]');
+    const VEN = [
+      { id: 'XNYS', fee: 0.30, V: 0.26, c: 1.0 },
+      { id: 'XNAS', fee: 0.30, V: 0.30, c: 1.0 },
+      { id: 'BATS', fee: 0.20, V: 0.17, c: 1.1 },
+      { id: 'IEXG', fee: 0.09, V: 0.08, c: 0.9 },
+      { id: 'DARK', fee: 0.10, V: 0.19, c: 0.45, dark: true },
+    ];
+    const VCOL = () => [C.signal, C.bid, C.ask, [96, 150, 245], [176, 120, 245]];
+    const NE = 40, NP = 44, NT = NE + NP, SIG = 200, YC = 0.7, TAU0 = 2, K0 = 6;
+    const P = { q: -2, urg: 1.5, beta: 0.5 };
+    const cam = { yaw: -0.42, pitch: 0.52, dist: 7, cx: 0.5, cy: 0.56, sc: 0.29, touched: 0 };
+    let S, M, running = false, raf = 0, last = 0, cur = 0, hold = 0, plan = null;
+
+    function build() {
+      const Q = Math.pow(10, P.q), kap = P.urg;
+      const xr = (t) => (kap < 1e-6 ? 1 - t : Math.sinh(kap * (1 - t)) / Math.sinh(kap));
+      const q = [];
+      for (let k = 0; k < NE; k++) q.push(Q * (xr(k / NE) - xr((k + 1) / NE)));
+      const vk = 1 / NE; // each step trades against 1/NE of the day's volume
+      const alloc = [], vcost = [];
+      const liq = VEN.map((v) => v.V);
+      for (let k = 0; k < NE; k++) {
+        for (let i = 0; i < VEN.length; i++) liq[i] = VEN[i].V * Math.exp(0.35 * randn()) * 0.5 + liq[i] * 0.5; // venue liquidity drifts
+        const cap = q[k] * (0.15 + 0.35 * Math.random());
+        const xs = (mu) => VEN.map((v, i) => {
+          if (mu <= v.fee) return 0;
+          const x = liq[i] * vk * ((mu - v.fee) / (1.5 * K0 * v.c)) ** 2;
+          return v.dark ? Math.min(x, cap) : x;
+        });
+        let lo = 0, hi = 1e4;
+        for (let it = 0; it < 60; it++) { const mid = (lo + hi) / 2; const s = xs(mid).reduce((a, b) => a + b, 0); if (s > q[k]) hi = mid; else lo = mid; }
+        const x = xs((lo + hi) / 2), tot = x.reduce((a, b) => a + b, 0) || 1;
+        const xn = x.map((v) => (v * q[k]) / tot);
+        alloc.push(xn);
+        let c = 0;
+        xn.forEach((v, i) => { if (v > 0) c += v * (VEN[i].fee + K0 * VEN[i].c * Math.sqrt(v / (liq[i] * vk))); });
+        vcost.push(c);
+      }
+      const G = (tau) => Math.pow(1 + tau / TAU0, -P.beta);
+      const prop = (sched) => { const I = new Float64Array(NT); for (let t = 0; t < NT; t++) { let s = 0; for (let j = 0; j <= Math.min(t, NE - 1); j++) s += sched[j] * G(t - j); I[t] = s; } return I; };
+      const twap = prop(new Array(NE).fill(Q / NE));
+      const sqrtLaw = YC * SIG * Math.sqrt(Q);
+      const A = sqrtLaw / twap[NE - 1];
+      const I = prop(q).map((v) => v * A);
+      let impCost = 0, feeCost = 0;
+      for (let k = 0; k < NE; k++) { impCost += q[k] * I[k]; feeCost += vcost[k]; }
+      impCost /= Q; feeCost /= Q;
+      const share = VEN.map((_, i) => alloc.reduce((a, x) => a + x[i], 0) / Q);
+      let peak = 0; for (const v of I) peak = Math.max(peak, v);
+      plan = { Q, q, alloc, I, sqrtLaw, peak, resid: I[NT - 1], impCost, feeCost, share, amax: Math.max(...alloc.flat()) };
+
+      setOut(panel, 'qv', (Q * 100).toFixed(Q < 0.01 ? 2 : 1) + '% ADV');
+      setOut(panel, 'urg', kap.toFixed(1));
+      setOut(panel, 'beta', P.beta.toFixed(2));
+      setOut(panel, 'is', (impCost + feeCost).toFixed(1) + ' bp');
+      setOut(panel, 'fees', feeCost.toFixed(1) + ' bp');
+      setOut(panel, 'peak', peak.toFixed(1) + ' bp');
+      setOut(panel, 'resid', plan.resid.toFixed(1) + ' bp');
+      const cols = VCOL();
+      allocEl.innerHTML = VEN.map((v, i) => `<span style="flex:${Math.max(share[i], 0.001)};background:${rgba(cols[i], 0.9)}" title="${v.id} ${(share[i] * 100).toFixed(0)}%"><b>${v.id}</b>${(share[i] * 100).toFixed(0)}%</span>`).join('');
+      drawMini();
+    }
+
+    const X = (k) => -1.1 + (2.2 * k) / (NT - 1), LY = (i) => -0.85 + i * 0.36, WALL = 0.98;
+    function draw() {
+      if (!plan) return;
+      const { ctx, W, H } = S;
+      ctx.clearRect(0, 0, W, H);
+      const Pj = (x, y, z) => project(cam, S, x, y, z), cols = VCOL();
+      const Imax = Math.max(plan.peak, plan.sqrtLaw) * 1.15, IZ = (v) => (v / Imax) * 0.75;
+      // floor, lanes and impact wall grid
+      ctx.strokeStyle = rgba(C.grid, 1); ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let k = 0; k < NT; k += 8) { let a = Pj(X(k), -1.05, 0), b = Pj(X(k), WALL, 0); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); a = Pj(X(k), WALL, 0); b = Pj(X(k), WALL, 0.8); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      for (const z of [0.2, 0.4, 0.6, 0.8]) { const a = Pj(X(0), WALL, z), b = Pj(X(NT - 1), WALL, z); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); }
+      ctx.stroke();
+      VEN.forEach((v, i) => {
+        const a = Pj(X(0), LY(i), 0), b = Pj(X(NE - 1), LY(i), 0);
+        ctx.strokeStyle = rgba(cols[i], 0.25); ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+        const l = Pj(X(0) - 0.08, LY(i), 0);
+        ctx.font = `600 10px ${MONO}`; ctx.fillStyle = rgba(cols[i], 1); ctx.textAlign = 'right'; ctx.fillText(v.id, l[0], l[1] + 3);
+      });
+      ctx.textAlign = 'left';
+
+      // impact on the back wall: build-up while trading, decay after (the "wake")
+      const kNow = Math.min(cur, NT - 1), kc = Math.floor(kNow);
+      const wall = [];
+      for (let k = 0; k <= kc; k++) wall.push(Pj(X(k), WALL, IZ(plan.I[k])));
+      if (wall.length > 1) {
+        const f0 = Pj(X(0), WALL, 0), f1 = Pj(X(kc), WALL, 0);
+        const g = ctx.createLinearGradient(0, Math.min(...wall.map((p) => p[1])), 0, f0[1]);
+        g.addColorStop(0, rgba(C.signal, 0.4)); g.addColorStop(1, rgba(C.signal, 0.02));
+        ctx.fillStyle = g; pathOf(ctx, [f0, ...wall, f1]); ctx.closePath(); ctx.fill();
+        ctx.strokeStyle = rgba(C.signal, 1); ctx.lineWidth = 2.2; pathOf(ctx, wall); ctx.stroke();
+      }
+      const s0 = Pj(X(0), WALL, IZ(plan.sqrtLaw)), s1 = Pj(X(NT - 1), WALL, IZ(plan.sqrtLaw));
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = rgba(C.ink, 0.5); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(s0[0], s0[1]); ctx.lineTo(s1[0], s1[1]); ctx.stroke();
+      const e0 = Pj(X(NE - 1), -1.05, 0), e1 = Pj(X(NE - 1), WALL, 0.8);
+      ctx.strokeStyle = rgba(C.muted, 0.6);
+      ctx.beginPath(); ctx.moveTo(e0[0], e0[1]); ctx.lineTo(Pj(X(NE - 1), WALL, 0)[0], Pj(X(NE - 1), WALL, 0)[1]); ctx.lineTo(e1[0], e1[1]); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = `10px ${MONO}`; ctx.fillStyle = rgba(C.ink2, 0.9);
+      ctx.fillText('√-law  Yσ√(Q/V)', s0[0] + 4, s0[1] - 6);
+      const el = Pj(X(NE - 1), WALL, 0.84); ctx.fillStyle = rgba(C.muted, 1); ctx.fillText('execution ends · impact decays', el[0] - 60, el[1]);
+      const wl = Pj(X(0), WALL, 0.86); ctx.fillText('price impact (bp)', wl[0], wl[1]);
+
+      // child orders routed to each venue, back lanes first
+      const dx = (X(1) - X(0)) * 0.34;
+      for (let i = VEN.length - 1; i >= 0; i--) {
+        for (let k = 0; k <= Math.min(kc, NE - 1); k++) {
+          const hgt = (plan.alloc[k][i] / plan.amax) * 0.5;
+          if (hgt < 0.004) continue;
+          const x = X(k), y = LY(i);
+          const fr = [Pj(x - dx, y - 0.06, 0), Pj(x + dx, y - 0.06, 0), Pj(x + dx, y - 0.06, hgt), Pj(x - dx, y - 0.06, hgt)];
+          const tp = [Pj(x - dx, y - 0.06, hgt), Pj(x + dx, y - 0.06, hgt), Pj(x + dx, y + 0.06, hgt), Pj(x - dx, y + 0.06, hgt)];
+          const fresh = k > kNow - 3 ? 1 : 0.75;
+          ctx.fillStyle = rgba(cols[i], 0.55 * fresh); pathOf(ctx, fr); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = rgba(mix(cols[i], [255, 255, 255], 0.25), 0.85 * fresh); pathOf(ctx, tp); ctx.closePath(); ctx.fill();
+        }
+      }
+      // routing pulses at the cursor
+      if (kc < NE) {
+        const ph = kNow - kc;
+        VEN.forEach((v, i) => {
+          if (plan.alloc[kc][i] <= 0) return;
+          const r = 0.05 + 0.18 * ph, ring = [];
+          for (let a = 0; a <= 24; a++) ring.push(Pj(X(kc) + r * Math.cos((a / 24) * 2 * Math.PI), LY(i) + r * 0.6 * Math.sin((a / 24) * 2 * Math.PI), 0));
+          ctx.strokeStyle = rgba(cols[i], 0.8 * (1 - ph)); ctx.lineWidth = 1.2; pathOf(ctx, ring); ctx.stroke();
+        });
+      }
+      // cursor plane and head of the impact curve
+      const c0 = Pj(X(kNow), -1.05, 0), c1 = Pj(X(kNow), WALL, 0), c2 = Pj(X(kNow), WALL, 0.8);
+      ctx.strokeStyle = rgba(C.ink, 0.35); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(c0[0], c0[1]); ctx.lineTo(c1[0], c1[1]); ctx.lineTo(c2[0], c2[1]); ctx.stroke();
+      const hd = Pj(X(kc), WALL, IZ(plan.I[kc]));
+      ctx.fillStyle = rgba(C.signal, 0.25); ctx.beginPath(); ctx.arc(hd[0], hd[1], 9, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = rgba(C.signal, 1); ctx.beginPath(); ctx.arc(hd[0], hd[1], 3.5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = rgba(C.signal, 1); ctx.fillText(plan.I[kc].toFixed(1) + ' bp', hd[0] + 10, hd[1] - 8);
+      const tl = Pj(0, -1.2, 0); ctx.fillStyle = rgba(C.muted, 1); ctx.textAlign = 'center'; ctx.fillText('time →', tl[0], tl[1] + 14); ctx.textAlign = 'left';
+    }
+
+    function drawMini() {
+      if (!M || !plan) return;
+      const { ctx, W, H } = M;
+      ctx.clearRect(0, 0, W, H);
+      const xs = [], ymax = Math.max(YC * SIG * Math.sqrt(0.1), plan.peak) * 1.1;
+      const f = frame(ctx, 36, 8, W - 46, H - 30, [0, 10], [0, ymax]);
+      drawAxes(ctx, f, [[0, '0'], [5, '5%'], [10, '10%']], [0, Math.round(ymax / 2), Math.round(ymax)], null, null);
+      ctx.strokeStyle = rgba(C.ink2, 0.8); ctx.lineWidth = 1.5; ctx.beginPath();
+      for (let i = 0; i <= 60; i++) { const q = (i / 60) * 10, y = YC * SIG * Math.sqrt(q / 100); i ? ctx.lineTo(f.X(q), f.Y(y)) : ctx.moveTo(f.X(q), f.Y(y)); }
+      ctx.stroke();
+      const qx = plan.Q * 100;
+      ctx.strokeStyle = rgba(C.ink, 0.8); ctx.beginPath(); ctx.arc(f.X(qx), f.Y(plan.sqrtLaw), 4, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = rgba(C.signal, 1); ctx.beginPath(); ctx.arc(f.X(qx), f.Y(plan.peak), 4, 0, Math.PI * 2); ctx.fill();
+    }
+
+    function loop(now) {
+      const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+      if (cur < NT - 1) cur = Math.min(NT - 1, cur + dt * 11);
+      else if ((hold += dt) > 1.8) { cur = 0; hold = 0; }
+      if (!cam.touched || now - cam.touched > 5000) cam.yaw = -0.42 + 0.12 * Math.sin(now / 8000);
+      draw();
+      raf = requestAnimationFrame(loop);
+    }
+
+    orbit(canvas, cam, null);
+    panel.querySelectorAll('input[data-p]').forEach((inp) => {
+      inp.value = P[inp.dataset.p];
+      inp.addEventListener('input', () => { P[inp.dataset.p] = +inp.value; build(); if (!running || reduce) draw(); });
+    });
+    S = surface(canvas, () => draw());
+    M = surface(mini, () => drawMini());
+    build();
+    return {
+      start() { if (running) return; running = true; if (reduce) { cur = NT - 1; draw(); return; } last = 0; raf = requestAnimationFrame(loop); },
+      stop() { running = false; cancelAnimationFrame(raf); },
+      redraw() { build(); draw(); },
+    };
+  }
+
   // ---------- tabs, visibility, theme ----------
-  const makers = { lob: LobDemo, ac: AcDemo, surface: SurfaceDemo, dbdp: DbdpDemo, sb: SbDemo, kyle: KyleDemo };
+  const makers = { lob: LobDemo, exec: ExecDemo, surface: SurfaceDemo, dbdp: DbdpDemo, sb: SbDemo, kyle: KyleDemo };
   const demos = {};
   const tabs = [...lab.querySelectorAll('[role="tab"]')];
   let active = tabs[0].dataset.demo, visible = false;

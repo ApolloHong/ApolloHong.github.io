@@ -264,3 +264,8 @@ mjx-container { font-family: var(--math); }
   .grp { padding-left: 0; padding-top: 22px; }
   .gk { top: 0; }
 }
+
+.alloc { display: flex; height: 34px; border-radius: 8px; overflow: hidden; gap: 2px; background: var(--bg); }
+.alloc span { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 0 6px; font: 10px/1.2 var(--mono); color: #0b0b0b; overflow: hidden; white-space: nowrap; }
+.alloc span b { font-weight: 600; font-size: 9px; opacity: .8; }
+.lab-side .eqn { font-size: 14px; }
