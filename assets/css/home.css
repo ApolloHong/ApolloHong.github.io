@@ -279,14 +279,34 @@ mjx-container { font-family: var(--math); }
   --coin-hi: #ffffff; --coin-mid: #ebe8e0; --coin-lo: #c9c4b6; --coin-rim: rgba(176, 110, 18, .45); --coin-edge: #b3ad9d;
   --em-1: #4a3208; --em-2: #9b6614; --em-3: #d9a84e;
 }
-.schools { position: relative; padding: 28px 0 20px; overflow: hidden; }
-.schools::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 45% 70% at 50% 45%, color-mix(in srgb, var(--signal) 7%, transparent), transparent 70%); }
-.schools-grid { position: relative; display: grid; grid-template-columns: 1fr minmax(140px, 280px) 1fr; align-items: center; justify-items: center; }
-.coin { margin: 0; --d: clamp(170px, 18vw, 240px); display: flex; flex-direction: column; align-items: center; }
-.coin-stage { position: relative; width: calc(var(--d) * 1.62); height: calc(var(--d) * 1.62); display: grid; place-items: center; perspective: 900px; }
-.coin-ring { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.coin-text { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; animation: coinspin 90s linear infinite; font: 500 6.4px var(--mono); letter-spacing: .12em; fill: var(--muted); }
-.coin:last-child .coin-text { animation-direction: reverse; }
+
+
+.schools { position: relative; height: clamp(440px, 44vw, 640px); overflow: hidden; }
+.schools::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(var(--bg), transparent 14%, transparent 86%, var(--bg)); }
+.schools::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 40% at 50% 66%, color-mix(in srgb, var(--signal) 9%, transparent), transparent 70%); }
+.skyline { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--ink); }
+.skyline path, .skyline circle { fill: none; stroke: currentColor; stroke-width: 1; stroke-linejoin: round; }
+.skyline [pathLength] { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.8s cubic-bezier(.65, .05, .25, 1); }
+.skyline.drawn [pathLength] { stroke-dashoffset: 0; }
+.skyline .l-far path { stroke-opacity: .16; }
+.skyline .l-mid path, .skyline .l-mid circle { stroke-opacity: .62; transition-delay: .35s; }
+.skyline .l-near path, .skyline .l-near circle { stroke-opacity: .42; transition-delay: .7s; }
+.skyline .l-refl path, .skyline .l-refl circle { stroke-opacity: .7; transition-delay: 1.1s; }
+.skyline .faint { stroke-opacity: .22 !important; }
+.skyline .win { stroke-opacity: .2 !important; }
+.skyline .accent { stroke: var(--signal); stroke-opacity: .85 !important; }
+.skyline .grid { stroke-opacity: .1; }
+.skyline .horizon { stroke-opacity: .32; }
+.skyline .pulse { fill: var(--signal); stroke: none; filter: drop-shadow(0 0 6px var(--signal)); }
+.skyline .lights circle { fill: var(--signal); stroke: none; animation: towerlight 2.6s var(--d) infinite; }
+@keyframes towerlight { 0%, 68%, 100% { opacity: .2; } 78% { opacity: 1; } }
+.skyline .geo { fill: var(--muted); font: 10px var(--mono); letter-spacing: .14em; }
+.schools-grid { position: relative; z-index: 2; height: 100%; display: grid; grid-template-columns: 1fr minmax(100px, 220px) 1fr; }
+.coin { margin: 0; --d: clamp(104px, 16vw, 224px); height: 100%; display: flex; flex-direction: column; align-items: center; }
+.coin-stage { position: relative; margin-top: 7%; width: calc(var(--d) * 1.28); height: calc(var(--d) * 1.28); display: grid; place-items: center; perspective: 900px; }
+.orbit { position: absolute; inset: 0; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); animation: coinspin 16s linear infinite; }
+.orbit::after { content: ''; position: absolute; top: -3px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 10px var(--signal); }
+.coin:last-child .orbit { animation-direction: reverse; }
 @keyframes coinspin { to { transform: rotate(360deg); } }
 .coin-3d {
   all: unset; box-sizing: border-box; cursor: pointer; position: relative; width: var(--d); height: var(--d); border-radius: 50%;
@@ -296,7 +316,7 @@ mjx-container { font-family: var(--math); }
 .coin-3d .face {
   position: absolute; inset: 0; border-radius: 50%; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden;
   background: radial-gradient(circle at 32% 26%, var(--coin-hi), var(--coin-mid) 58%, var(--coin-lo));
-  box-shadow: inset 0 0 0 1px var(--coin-rim), inset 0 0 0 7px var(--coin-mid), inset 0 0 0 8px var(--coin-rim), inset 0 -18px 40px rgba(0, 0, 0, .35), 0 30px 60px -20px rgba(0, 0, 0, .55);
+  box-shadow: inset 0 0 0 1px var(--coin-rim), inset 0 0 0 7px var(--coin-mid), inset 0 0 0 8px var(--coin-rim), inset 0 -18px 40px rgba(0, 0, 0, .35), 0 40px 70px -24px rgba(0, 0, 0, .7);
 }
 .coin-3d .front { transform: translateZ(7px); }
 .coin-3d .back { transform: rotateY(180deg) translateZ(7px); display: grid; place-items: center; }
@@ -318,21 +338,23 @@ mjx-container { font-family: var(--math); }
 .coin-3d .glare { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; mix-blend-mode: overlay; background: radial-gradient(circle at var(--gx) var(--gy), rgba(255, 255, 255, .32), transparent 42%); }
 .back-txt { position: relative; font: 11px/1.95 var(--mono); color: var(--ink-2); text-align: center; letter-spacing: .03em; }
 .back-txt b { color: var(--signal); font-weight: 500; }
-.back-txt i { color: var(--muted); font-style: normal; }
-.coin figcaption { margin-top: 6px; text-align: center; }
-.coin figcaption b { display: block; font: 600 17px/1.3 var(--display); letter-spacing: -.01em; }
-.coin figcaption span { font: 10.5px/1.6 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
-.bridge { position: relative; width: 100%; height: 120px; }
-.bridge svg { width: 100%; height: 100%; overflow: visible; }
-.bridge path { fill: none; stroke: var(--line-2); stroke-width: 1.2; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
-.bridge circle { fill: var(--signal); filter: drop-shadow(0 0 4px var(--signal)); }
-.bridge span { position: absolute; left: 0; right: 0; text-align: center; font: 10.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-.bridge .b-top { top: -6px; color: var(--signal); }
-.bridge .b-bot { bottom: -6px; color: var(--muted); }
-.schools-hint { text-align: center; font: 10.5px/1 var(--mono); color: var(--muted); letter-spacing: .08em; margin: 18px 0 0; }
-@media (prefers-reduced-motion: reduce) { .coin-text { animation: none; } }
+.coin figcaption { margin-top: auto; margin-bottom: 9%; text-align: center; }
+.coin figcaption b { display: block; font: 600 clamp(15px, 1.6vw, 21px)/1.25 var(--display); letter-spacing: -.015em; text-shadow: 0 0 18px var(--bg), 0 0 6px var(--bg); }
+.coin figcaption span { font: 10.5px/1.8 var(--mono); color: var(--muted); letter-spacing: .1em; text-transform: uppercase; text-shadow: 0 0 8px var(--bg); }
+.seam { position: relative; height: 100%; }
+.seam::before { content: ''; position: absolute; left: 50%; top: 10%; height: 56.7%; width: 1px; background: linear-gradient(transparent, color-mix(in srgb, var(--signal) 55%, transparent) 70%, transparent); }
+.seam span { position: absolute; top: 8%; left: 0; right: 0; text-align: center; font: 10.5px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--signal); background: var(--bg); padding: 4px 0; }
+@media (prefers-reduced-motion: reduce) { .orbit { animation: none; } .skyline .lights circle { animation: none; opacity: .8; } }
 @media (max-width: 760px) {
-  .schools-grid { grid-template-columns: 1fr; }
-  .bridge { width: 140px; height: 70px; margin: -10px 0; }
-  .bridge span { display: none; }
+  .schools { height: auto; display: flex; flex-direction: column; padding-top: 28px; }
+  .schools-grid { order: 0; height: auto; grid-template-columns: 1fr 24px 1fr; }
+  .skyline { position: relative; order: 1; height: auto; aspect-ratio: 1440 / 600; margin-top: -8px; }
+  .coin { height: auto; }
+  .coin-stage { margin-top: 0; }
+  .coin figcaption { margin: 12px 0 0; }
+  .seam::before { display: none; }
+  .seam span { display: none; }
+  .coin figcaption b { font-size: 13px; }
+  .coin figcaption span { font-size: 9px; letter-spacing: .06em; }
+  .back-txt { font-size: 8px; }
 }

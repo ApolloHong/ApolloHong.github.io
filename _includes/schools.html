@@ -1,41 +1,30 @@
-  <section class="schools reveal" aria-label="Education">
+  <section class="schools" aria-label="Education">
+    {% include skyline.svg %}
     <div class="wrap schools-grid">
       <figure class="coin" data-coin>
         <div class="coin-stage">
-          <canvas class="coin-ring" aria-hidden="true"></canvas>
-          <svg class="coin-text" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring-sjtu" d="M100,100 m-94,0 a94,94 0 1,1 188,0 a94,94 0 1,1 -188,0"/></defs><text><textPath href="#ring-sjtu" textLength="584" lengthAdjust="spacing">SHANGHAI JIAO TONG UNIVERSITY · 上海交通大学 · EST. 1896 · COMPUTER SCIENCE ·</textPath></text></svg>
-          <button class="coin-3d" type="button" aria-label="Shanghai Jiao Tong University; flip for details">
+          <span class="orbit" aria-hidden="true"></span>
+          <button class="coin-3d" type="button" title="Click to flip" aria-label="Shanghai Jiao Tong University; flip for details">
             <span class="edge" aria-hidden="true"></span>
             <span class="face front"><span class="emblem" style="--mask:url(/images/emblems/sjtu.png)"></span><span class="glare"></span></span>
-            <span class="face back"><span class="back-txt"><b>B.Sc.</b> Computer Science<br><b>GPA</b> 4.19 / 4.3<br><b>M.S.</b> 2026–28<br><i>Shanghai · 2022–</i></span><span class="glare"></span></span>
+            <span class="face back"><span class="back-txt"><b>B.Sc.</b> Computer Science<br><b>GPA</b> 4.19 / 4.3<br><b>M.S.</b> 2026–28</span><span class="glare"></span></span>
           </button>
         </div>
-        <figcaption><b>Shanghai Jiao Tong University</b><span>Computer Science · B.Sc. → M.S.</span></figcaption>
+        <figcaption><b>Shanghai Jiao Tong University</b><span>Computer Science · 2022–28</span></figcaption>
       </figure>
 
-      <div class="bridge" aria-hidden="true">
-        <svg viewBox="0 0 300 120" preserveAspectRatio="none">
-          <path id="bridge-path" d="M4,60 C90,6 210,114 296,60" />
-          <circle r="2.6"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#bridge-path"/></animateMotion></circle>
-          <circle r="2.6"><animateMotion dur="2.8s" begin="0.93s" repeatCount="indefinite"><mpath href="#bridge-path"/></animateMotion></circle>
-          <circle r="2.6"><animateMotion dur="2.8s" begin="1.86s" repeatCount="indefinite"><mpath href="#bridge-path"/></animateMotion></circle>
-        </svg>
-        <span class="b-top">dual degree</span>
-        <span class="b-bot">2022 → 2028</span>
-      </div>
+      <div class="seam" aria-hidden="true"><span>Dual degree</span></div>
 
       <figure class="coin" data-coin>
         <div class="coin-stage">
-          <canvas class="coin-ring" aria-hidden="true"></canvas>
-          <svg class="coin-text" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring-x" d="M100,100 m-94,0 a94,94 0 1,1 188,0 a94,94 0 1,1 -188,0"/></defs><text><textPath href="#ring-x" textLength="584" lengthAdjust="spacing">ÉCOLE POLYTECHNIQUE · POUR LA PATRIE, LES SCIENCES ET LA GLOIRE · EST. 1794 ·</textPath></text></svg>
-          <button class="coin-3d" type="button" aria-label="École Polytechnique; flip for details">
+          <span class="orbit" aria-hidden="true"></span>
+          <button class="coin-3d" type="button" title="Click to flip" aria-label="École Polytechnique; flip for details">
             <span class="edge" aria-hidden="true"></span>
             <span class="face front"><span class="emblem tall" style="--mask:url(/images/emblems/polytechnique.svg)"></span><span class="glare"></span></span>
-            <span class="face back"><span class="back-txt"><b>Ingénieur</b> Polytechnicien<br>Applied Mathematics<br><b>MathsFI</b> · Prof. H. Pham<br><i>Palaiseau · 2025–27</i></span><span class="glare"></span></span>
+            <span class="face back"><span class="back-txt"><b>Ingénieur</b><br>Applied Mathematics<br><b>MathsFI</b> · Prof. H. Pham</span><span class="glare"></span></span>
           </button>
         </div>
-        <figcaption><b>École Polytechnique</b><span>Applied Mathematics · Ingénieur</span></figcaption>
+        <figcaption><b>École Polytechnique</b><span>Applied Mathematics · 2025–27</span></figcaption>
       </figure>
     </div>
-    <p class="schools-hint">hover to tilt · click a coin to flip</p>
   </section>
