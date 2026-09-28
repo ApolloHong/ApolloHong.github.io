@@ -272,12 +272,12 @@ mjx-container { font-family: var(--math); }
 
 /* ---------- school emblems as 3-D coins ---------- */
 :root {
-  --coin-hi: #3a4150; --coin-mid: #151a23; --coin-lo: #07090d; --coin-rim: rgba(242, 180, 65, .38); --coin-edge: #4d535f;
-  --em-1: #7a561a; --em-2: #e7b457; --em-3: #fff3cf;
+  --coin-hi: #323a4a; --coin-mid: #121824; --coin-lo: #080c14; --coin-rim: rgba(255, 122, 26, .42); --coin-edge: #465063;
+  --em-1: #5b6475; --em-2: #d5dbe5; --em-3: #ffffff;
 }
 :root[data-theme="light"] {
-  --coin-hi: #ffffff; --coin-mid: #ebe8e0; --coin-lo: #c9c4b6; --coin-rim: rgba(176, 110, 18, .45); --coin-edge: #b3ad9d;
-  --em-1: #4a3208; --em-2: #9b6614; --em-3: #d9a84e;
+  --coin-hi: #ffffff; --coin-mid: #eceff3; --coin-lo: #c7ced8; --coin-rim: rgba(217, 88, 10, .45); --coin-edge: #aeb6c2;
+  --em-1: #1f2937; --em-2: #4b5563; --em-3: #9ca3af;
 }
 
 
@@ -358,3 +358,72 @@ mjx-container { font-family: var(--math); }
   .coin figcaption span { font-size: 9px; letter-spacing: .06em; }
   .back-txt { font-size: 8px; }
 }
+
+/* ================= aesthetic system v2: glass surfaces, pointer glow, precise hover ================= */
+.hero h1, .sec-head h2, .contact h2, .coin figcaption b { text-shadow: var(--h-glow); }
+.hero h1 .cyc { text-shadow: 0 0 36px color-mix(in srgb, var(--signal) 35%, transparent); }
+.sec-head h2 { color: var(--ink); }
+
+.card, .cred, .pr, .lab-panel, .tb, .metric, .stats, .pub-glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--r);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: opacity .7s ease, border-color .25s cubic-bezier(.16, 1, .3, 1), box-shadow .25s cubic-bezier(.16, 1, .3, 1), transform .25s cubic-bezier(.16, 1, .3, 1);
+}
+.creds { background: none; border: 0; border-radius: 0; overflow: visible; gap: 12px; }
+.cred { border-right: 1px solid var(--glass-line); border-bottom: 1px solid var(--glass-line); }
+.principles { background: none; border: 0; border-radius: 0; overflow: visible; gap: 12px; }
+.pr { background: var(--glass); }
+.stats { background: var(--glass-line); gap: 1px; }
+.stats div { background: var(--bg-2); }
+.metric { background: rgba(0, 0, 0, .12); }
+:root[data-theme="light"] .metric { background: rgba(255, 255, 255, .6); }
+.lab-panel { border-radius: var(--r); }
+.lab-fig { background: transparent; }
+.eqn { border-radius: var(--r); border-color: var(--glass-line); background: rgba(0, 0, 0, .15); }
+:root[data-theme="light"] .eqn { background: rgba(255, 255, 255, .6); }
+.chip { border-radius: 4px; }
+.alloc { border-radius: 4px; }
+.about2 .ph, .portrait { border-radius: var(--r); border-color: var(--glass-line); }
+
+/* hover: orange hairline, lift, soft glow, pointer spotlight + crosshair + live coordinates */
+.q { position: relative; isolation: isolate; --mx: 50%; --my: 50%; }
+.q::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(420px circle at var(--mx) var(--my), color-mix(in srgb, var(--signal) 9%, transparent), transparent 60%);
+}
+.q.xhair::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .2s;
+  background:
+    linear-gradient(90deg, transparent calc(var(--mx) - .5px), color-mix(in srgb, var(--signal) 30%, transparent) calc(var(--mx) - .5px), color-mix(in srgb, var(--signal) 30%, transparent) calc(var(--mx) + .5px), transparent calc(var(--mx) + .5px)),
+    linear-gradient(180deg, transparent calc(var(--my) - .5px), color-mix(in srgb, var(--signal) 30%, transparent) calc(var(--my) - .5px), color-mix(in srgb, var(--signal) 30%, transparent) calc(var(--my) + .5px), transparent calc(var(--my) + .5px));
+  -webkit-mask: radial-gradient(160px circle at var(--mx) var(--my), #000, transparent 70%); mask: radial-gradient(160px circle at var(--mx) var(--my), #000, transparent 70%);
+}
+.q:hover { border-color: color-mix(in srgb, var(--signal) 40%, transparent); box-shadow: 0 8px 30px rgba(0, 0, 0, .4), 0 0 0 1px color-mix(in srgb, var(--signal) 8%, transparent); }
+:root[data-theme="light"] .q:hover { box-shadow: 0 8px 30px rgba(13, 17, 23, .08); }
+.q.lift:hover { transform: translateY(-2px); }
+.q:hover::before, .q:hover::after { opacity: 1; }
+.q .coord {
+  position: absolute; top: 8px; right: 10px; font: 9.5px/1 var(--mono); letter-spacing: .06em; color: var(--signal);
+  opacity: 0; transition: opacity .2s; pointer-events: none; font-variant-numeric: tabular-nums;
+}
+.q:hover .coord { opacity: .85; }
+.tb.q:hover { color: var(--signal); }
+@media (hover: none) { .q::before, .q::after, .q .coord { display: none; } }
+
+/* skyline at 8–12% opacity, fading into one image at the centre */
+.skyline {
+  -webkit-mask: linear-gradient(90deg, #000 0%, #000 30%, rgba(0, 0, 0, .25) 47%, rgba(0, 0, 0, .25) 53%, #000 70%, #000 100%);
+  mask: linear-gradient(90deg, #000 0%, #000 30%, rgba(0, 0, 0, .25) 47%, rgba(0, 0, 0, .25) 53%, #000 70%, #000 100%);
+}
+.skyline .l-far path { stroke-opacity: .07; }
+.skyline .l-mid path, .skyline .l-mid circle { stroke-opacity: .12; }
+.skyline .l-near path, .skyline .l-near circle { stroke-opacity: .1; }
+.skyline .l-refl path, .skyline .l-refl circle { stroke-opacity: .1; }
+.skyline .faint, .skyline .win { stroke-opacity: .06 !important; }
+.skyline .accent { stroke-opacity: .3 !important; }
+.skyline .grid { stroke-opacity: .06; }
+.skyline .horizon { stroke-opacity: .16; }
+.skyline .geo { opacity: .7; }
+.schools::before { background: radial-gradient(ellipse 60% 40% at 50% 66%, color-mix(in srgb, var(--signal) 6%, transparent), transparent 70%); }

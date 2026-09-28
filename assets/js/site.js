@@ -29,6 +29,24 @@
     onScroll();
   }
 
+  // glass surfaces: pointer spotlight, crosshair and live coordinates on hover
+  var fine = window.matchMedia('(hover: hover)').matches;
+  [['.card, .cred, .pr', true, true], ['.lab-panel', false, false], ['.tb, .metric', false, true]].forEach(function (g) {
+    document.querySelectorAll(g[0]).forEach(function (el) {
+      el.classList.add('q');
+      if (g[1]) { el.classList.add('xhair'); var c = document.createElement('span'); c.className = 'coord'; c.setAttribute('aria-hidden', 'true'); el.appendChild(c); }
+      if (g[2]) el.classList.add('lift');
+      if (!fine) return;
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+        var c = el.querySelector(':scope > .coord');
+        if (c) c.textContent = 'x ' + x.toFixed(3) + '  y ' + (1 - y).toFixed(3);
+      });
+    });
+  });
+
   // reveal on scroll; anything already on screen is shown straight away
   var els = [].slice.call(document.querySelectorAll('.reveal'));
   var show = function (el) { el.classList.add('in'); };
