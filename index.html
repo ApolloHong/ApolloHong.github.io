@@ -25,7 +25,7 @@ math: true
     <div class="wrap" style="width:100%">
       <div class="hero-copy">
         <p class="motto">“All models are wrong, but some are useful.” <span>— G. E. P. Box</span></p>
-        <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise.","mode":"noise"},{"text":"lead–lag.","mode":"leadlag"},{"text":"the cross-section.","mode":"cross"},{"text":"uncertainty.","mode":"uncertainty"}]'>noise.</span><span class="caret" aria-hidden="true"></span></h1>
+        <h1>Extracting signal from<br><span class="cyc" data-cycle='[{"text":"noise ?","mode":"noise"},{"text":"lead–lag ?","mode":"leadlag"},{"text":"the cross-section ?","mode":"cross"},{"text":"uncertainty ?","mode":"uncertainty"}]'>noise ?</span><span class="caret" aria-hidden="true"></span></h1>
         <p class="sub">Applied Math @ École Polytechnique <i>·</i> Quant Researcher <i>·</i> Building stochastic &amp; generative systems.</p>
         <div class="ctas">
           <a class="btn primary" href="#lab">Enter the lab →</a>
@@ -56,13 +56,15 @@ math: true
 </header>
 
 <main id="main">
-  <section class="block" style="border-top:0;padding-top:48px">
+{% include schools.html %}
+
+  <section class="block" style="border-top:0;padding-top:24px">
     <div class="wrap">
       <div class="creds reveal">
-        <div class="cred"><div class="k">École Polytechnique</div><div class="v">Applied Math</div><div class="s">Ingénieur · 2025–27</div></div>
-        <div class="cred"><div class="k">MathsFI Lab</div><div class="v">Generative models</div><div class="s">with Prof. Huyên Pham</div></div>
+                <div class="cred"><div class="k">MathsFI Lab</div><div class="v">Generative models</div><div class="s">with Prof. Huyên Pham</div></div>
         <div class="cred"><div class="k">IMC Prosperity</div><div class="v">Top 1.5%</div><div class="s">280 / 18,803 teams</div></div>
         <div class="cred"><div class="k">QRT Data Challenge</div><div class="v">#1</div><div class="s">public leaderboard</div></div>
+        <div class="cred"><div class="k">Publications</div><div class="v">3 journals</div><div class="s">incl. first author, NST 2024</div></div>
       </div>
     </div>
   </section>
@@ -226,5 +228,6 @@ math: true
 <script src="/assets/js/site.js" defer></script>
 <script src="/assets/js/hero.js" defer></script>
 <script src="/assets/js/lab.js" defer></script>
+<script src="/assets/js/emblems.js" defer></script>
 </body>
 </html>

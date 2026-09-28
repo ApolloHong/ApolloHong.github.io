@@ -269,3 +269,70 @@ mjx-container { font-family: var(--math); }
 .alloc span { display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 0 6px; font: 10px/1.2 var(--mono); color: #0b0b0b; overflow: hidden; white-space: nowrap; }
 .alloc span b { font-weight: 600; font-size: 9px; opacity: .8; }
 .lab-side .eqn { font-size: 14px; }
+
+/* ---------- school emblems as 3-D coins ---------- */
+:root {
+  --coin-hi: #3a4150; --coin-mid: #151a23; --coin-lo: #07090d; --coin-rim: rgba(242, 180, 65, .38); --coin-edge: #4d535f;
+  --em-1: #7a561a; --em-2: #e7b457; --em-3: #fff3cf;
+}
+:root[data-theme="light"] {
+  --coin-hi: #ffffff; --coin-mid: #ebe8e0; --coin-lo: #c9c4b6; --coin-rim: rgba(176, 110, 18, .45); --coin-edge: #b3ad9d;
+  --em-1: #4a3208; --em-2: #9b6614; --em-3: #d9a84e;
+}
+.schools { position: relative; padding: 28px 0 20px; overflow: hidden; }
+.schools::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 45% 70% at 50% 45%, color-mix(in srgb, var(--signal) 7%, transparent), transparent 70%); }
+.schools-grid { position: relative; display: grid; grid-template-columns: 1fr minmax(140px, 280px) 1fr; align-items: center; justify-items: center; }
+.coin { margin: 0; --d: clamp(170px, 18vw, 240px); display: flex; flex-direction: column; align-items: center; }
+.coin-stage { position: relative; width: calc(var(--d) * 1.62); height: calc(var(--d) * 1.62); display: grid; place-items: center; perspective: 900px; }
+.coin-ring { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.coin-text { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; animation: coinspin 90s linear infinite; font: 500 6.4px var(--mono); letter-spacing: .12em; fill: var(--muted); }
+.coin:last-child .coin-text { animation-direction: reverse; }
+@keyframes coinspin { to { transform: rotate(360deg); } }
+.coin-3d {
+  all: unset; box-sizing: border-box; cursor: pointer; position: relative; width: var(--d); height: var(--d); border-radius: 50%;
+  transform-style: preserve-3d; will-change: transform; --gx: 35%; --gy: 30%; --sheen: 0deg; --gp: 50%;
+}
+.coin-3d:focus-visible { outline: 2px solid var(--signal); outline-offset: 8px; }
+.coin-3d .face {
+  position: absolute; inset: 0; border-radius: 50%; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: radial-gradient(circle at 32% 26%, var(--coin-hi), var(--coin-mid) 58%, var(--coin-lo));
+  box-shadow: inset 0 0 0 1px var(--coin-rim), inset 0 0 0 7px var(--coin-mid), inset 0 0 0 8px var(--coin-rim), inset 0 -18px 40px rgba(0, 0, 0, .35), 0 30px 60px -20px rgba(0, 0, 0, .55);
+}
+.coin-3d .front { transform: translateZ(7px); }
+.coin-3d .back { transform: rotateY(180deg) translateZ(7px); display: grid; place-items: center; }
+.coin-3d .face::before {
+  content: ''; position: absolute; inset: 0; border-radius: 50%; mix-blend-mode: screen; pointer-events: none;
+  background: conic-gradient(from var(--sheen), transparent 0 8%, rgba(255, 255, 255, .16) 14%, transparent 22% 55%, rgba(255, 255, 255, .1) 62%, transparent 70%);
+}
+.coin-3d .edge, .coin-3d .edge::before, .coin-3d .edge::after { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(90deg, var(--coin-lo), var(--coin-edge) 50%, var(--coin-lo)); }
+.coin-3d .edge { transform-style: preserve-3d; }
+.coin-3d .edge::before { content: ''; transform: translateZ(3.5px); }
+.coin-3d .edge::after { content: ''; transform: translateZ(-3.5px); }
+.coin-3d .emblem {
+  position: absolute; inset: 16%;
+  -webkit-mask: var(--mask) center / contain no-repeat; mask: var(--mask) center / contain no-repeat;
+  background: linear-gradient(115deg, var(--em-1) 0%, var(--em-2) 30%, var(--em-3) 48%, var(--em-2) 62%, var(--em-1) 100%);
+  background-size: 260% 260%; background-position: var(--gp) 50%;
+}
+.coin-3d .emblem.tall { inset: 14% 22%; }
+.coin-3d .glare { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; mix-blend-mode: overlay; background: radial-gradient(circle at var(--gx) var(--gy), rgba(255, 255, 255, .32), transparent 42%); }
+.back-txt { position: relative; font: 11px/1.95 var(--mono); color: var(--ink-2); text-align: center; letter-spacing: .03em; }
+.back-txt b { color: var(--signal); font-weight: 500; }
+.back-txt i { color: var(--muted); font-style: normal; }
+.coin figcaption { margin-top: 6px; text-align: center; }
+.coin figcaption b { display: block; font: 600 17px/1.3 var(--display); letter-spacing: -.01em; }
+.coin figcaption span { font: 10.5px/1.6 var(--mono); color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.bridge { position: relative; width: 100%; height: 120px; }
+.bridge svg { width: 100%; height: 100%; overflow: visible; }
+.bridge path { fill: none; stroke: var(--line-2); stroke-width: 1.2; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
+.bridge circle { fill: var(--signal); filter: drop-shadow(0 0 4px var(--signal)); }
+.bridge span { position: absolute; left: 0; right: 0; text-align: center; font: 10.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.bridge .b-top { top: -6px; color: var(--signal); }
+.bridge .b-bot { bottom: -6px; color: var(--muted); }
+.schools-hint { text-align: center; font: 10.5px/1 var(--mono); color: var(--muted); letter-spacing: .08em; margin: 18px 0 0; }
+@media (prefers-reduced-motion: reduce) { .coin-text { animation: none; } }
+@media (max-width: 760px) {
+  .schools-grid { grid-template-columns: 1fr; }
+  .bridge { width: 140px; height: 70px; margin: -10px 0; }
+  .bridge span { display: none; }
+}
