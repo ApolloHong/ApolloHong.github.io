@@ -246,17 +246,16 @@ mjx-container { font-family: var(--math); }
 .tb { font: 500 13px/1 var(--mono); color: var(--ink); padding: 9px 13px; border: 1px solid var(--line-2); border-radius: 6px; background: var(--bg-2); transition: border-color .2s, color .2s, transform .2s; }
 .tb:hover { border-color: var(--signal); color: var(--signal); transform: translateY(-1px); }
 
-.about2 { display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 14px; align-items: end; }
+.about2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: end; }
 .about2 .ph { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
 .about2 .ph img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; }
-.about2 .ph:nth-child(2) img { filter: grayscale(1) contrast(1.1); }
-.about-txt { padding: 0 0 8px 16px; }
+.about-txt { grid-column: 1 / -1; padding: 14px 0 0; max-width: 760px; }
 .about-txt p { font: 500 clamp(18px, 1.8vw, 22px)/1.45 var(--display); color: var(--ink); margin: 0 0 18px; letter-spacing: -.01em; }
 
 @media (max-width: 1020px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .principles { grid-template-columns: repeat(2, 1fr); }
-  .about2 { grid-template-columns: 1fr 1fr; }
+  .about2 { grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .about-txt { grid-column: 1 / -1; padding: 8px 0 0; }
 }
 @media (max-width: 640px) {
