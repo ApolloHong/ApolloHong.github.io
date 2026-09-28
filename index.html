@@ -148,13 +148,45 @@ math: true
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="sec-idx"><span>03</span> / Principles</div>
-        <div><h2>Four equations</h2></div>
+        <div><h2>How I see the world</h2></div>
       </div>
       <div class="principles reveal">
-        <div class="pr"><div class="eq">\[p(\theta \mid \mathcal{D}) \propto p(\mathcal{D} \mid \theta)\, p(\theta)\]</div><h3>Uncertainty first</h3></div>
-        <div class="pr"><div class="eq">\[\hat{\Sigma} = \delta F + (1-\delta)\, S\]</div><h3>Shrink before optimising</h3></div>
-        <div class="pr"><div class="eq">\[\mathrm{IR}_{\text{net}} = \frac{\mathbb{E}[\,r - c\,]}{\sigma(r - c)}\]</div><h3>Net of costs</h3></div>
-        <div class="pr"><div class="eq">\[dX_t = b\,dt + \sigma\,dW_t + dJ_t\]</div><h3>Derive, then fit</h3></div>
+        <article class="pr" tabindex="0" aria-expanded="false">
+          <span class="pr-i">01</span><span class="pr-plus" aria-hidden="true"></span>
+          <div class="eq">\[p(\theta \mid \mathcal{D}) \;\propto\; p(\mathcal{D} \mid \theta)\, p(\theta)\]</div>
+          <h3>Uncertainty first</h3>
+          <div class="pr-more">
+            <blockquote>“Probability theory is nothing but common sense reduced to calculation.”<cite>Pierre-Simon Laplace, 1819</cite></blockquote>
+            <p>Never trust a single deterministic point when the data is noisy. Keep a posterior, and update it as evidence arrives. That discipline is behind my forecasts in the QRT Data Challenge, ranked 1st on the public leaderboard.</p>
+          </div>
+        </article>
+        <article class="pr" tabindex="0" aria-expanded="false">
+          <span class="pr-i">02</span><span class="pr-plus" aria-hidden="true"></span>
+          <div class="eq">\[dX_t = b(t, X_t)\,dt + \sigma(t, X_t)\,dW_t + dJ_t\]</div>
+          <h3>Stochastic processes &amp; jumps</h3>
+          <div class="pr-more">
+            <blockquote>“The market, unbeknownst to itself, obeys a law which governs it: the law of probability.”<cite>Louis Bachelier, Théorie de la spéculation, 1900</cite></blockquote>
+            <p>Prices are not smooth deterministic curves but stochastic paths: Brownian diffusion plus sudden jumps. With Prof. Huyên Pham I use Schrödinger bridges, an entropic stochastic-control problem, to generate SPY tail-risk scenarios under stochastic volatility and jumps.</p>
+          </div>
+        </article>
+        <article class="pr" tabindex="0" aria-expanded="false">
+          <span class="pr-i">03</span><span class="pr-plus" aria-hidden="true"></span>
+          <div class="eq">\[\partial_t v(t,x) + \sup_{u}\big\{\mathcal{L}^u v(t,x) + f(t,x,u)\big\} = 0\]</div>
+          <h3>Dynamic optimization</h3>
+          <div class="pr-more">
+            <blockquote>“An optimal policy has the property that whatever the initial state and initial decision are, the remaining decisions must constitute an optimal policy with regard to the state resulting from the first decision.”<cite>Richard Bellman, 1957</cite></blockquote>
+            <p>Executing and splitting an order is not a static fit but a Bellman problem: trading off transient market impact against inventory risk, step by step, over a multi-dimensional state.</p>
+          </div>
+        </article>
+        <article class="pr" tabindex="0" aria-expanded="false">
+          <span class="pr-i">04</span><span class="pr-plus" aria-hidden="true"></span>
+          <div class="eq">\[I_t = Y \sigma \sqrt{\frac{Q}{V}}\]</div>
+          <h3>Market friction &amp; net alpha</h3>
+          <div class="pr-more">
+            <blockquote>“Noise trading provides camouflage which conceals his trading from market makers.”<cite>Albert S. Kyle, Continuous Auctions and Insider Trading, 1985</cite></blockquote>
+            <p>Every trade leaves a footprint. Impact grows like the square root of size (the square-root law, Tóth, Bouchaud et al.), so alpha measured before friction is an illusion; net-of-costs performance is the only criterion that survives.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>

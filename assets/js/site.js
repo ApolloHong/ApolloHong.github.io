@@ -31,7 +31,7 @@
 
   // glass surfaces: pointer spotlight, crosshair and live coordinates on hover
   var fine = window.matchMedia('(hover: hover)').matches;
-  [['.card, .cred, .pr', true, true], ['.lab-panel', false, false], ['.tb, .metric', false, true]].forEach(function (g) {
+  [['.card, .cred', true, true], ['.lab-panel', false, false], ['.tb, .metric, .pr', false, true]].forEach(function (g) {
     document.querySelectorAll(g[0]).forEach(function (el) {
       el.classList.add('q');
       if (g[1]) { el.classList.add('xhair'); var c = document.createElement('span'); c.className = 'coord'; c.setAttribute('aria-hidden', 'true'); el.appendChild(c); }
@@ -45,6 +45,13 @@
         if (c) c.textContent = 'x ' + x.toFixed(3) + '  y ' + (1 - y).toFixed(3);
       });
     });
+  });
+
+  // principle cards: tap / Enter pins the quote open
+  document.querySelectorAll('.pr').forEach(function (el) {
+    var toggle = function () { var o = el.classList.toggle('open'); el.setAttribute('aria-expanded', String(o)); };
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
   });
 
   // reveal on scroll; anything already on screen is shown straight away
